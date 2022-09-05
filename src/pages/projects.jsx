@@ -42,7 +42,7 @@ class Projects extends React.Component {
             </div>
         </div>
 
-        {/* PHOTO APP */}
+        {/* WEBSITE */}
         <div className='singleProject'>
             <div className='projectImage'><img src={websiteImage}></img></div>
             <div className='projectText'>
