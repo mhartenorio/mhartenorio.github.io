@@ -1,0 +1,59 @@
+.colorContainer {
+    display: flex;
+    flex-direction: row;
+    justify-content: center; 
+    align-items: center; 
+    /* border-style: solid; */
+}
+
+.colorBoxes {
+    width: 70%;
+    display: flex;
+    flex: row;
+    align-items: center;
+    justify-content: center;
+    justify-self: center;
+}
+
+.colorBox1 {
+    background-color: aqua;
+    width: 12%;
+    height: 2vh;
+    border-top: solid;
+    border-bottom: solid;
+    border-left: solid;
+}
+
+.colorBox2 {
+    background-color: magenta;
+    width: 12%;
+    height: 2vh;
+    border-top: solid;
+    border-bottom: solid;
+    border-left: solid;
+}
+
+.colorBox3 {
+    background-color: #FFC700;
+    width: 12%;
+    height: 2vh;
+    border-top: solid;
+    border-bottom: solid;
+    border-left: solid;
+}
+
+.colorBox4 {
+    background-color: green;
+    width: 12%;
+    height: 2vh;
+    border-top: solid;
+    border-bottom: solid;
+    border-left: solid;
+}
+
+.colorBox5 {
+    background-color: red;
+    width: 12%;
+    height: 2vh;
+    border-style: solid;
+}

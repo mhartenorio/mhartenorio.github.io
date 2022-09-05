@@ -1,0 +1,92 @@
+.screen2 {
+    width: 100%;
+    /* background-color: #F9F2E1; */
+    border-top: solid;
+}
+
+.projectsTitle {
+    font-size: 4vw;
+    font-family: 'Oi';
+    margin: 4%;
+}
+
+
+.singleProject {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    grid-template-rows: 1fr;
+    grid-column-gap: 64px;
+    margin-bottom: 10vh;
+}
+
+.projectImage {
+    display: flex;
+    /* border-style: solid;
+    border-width: 3px;
+    width: 55%;
+    height: 30vh;
+    justify-content: center;
+    border-radius: 36px;
+    box-shadow: 10px 12px 0px 15px; */
+    background-color: white;
+    margin-left: auto; 
+    margin-right: 0;
+}
+
+.projectText {
+    width: 60%;
+    height: 10vh;
+    border-radius: 36px;
+    margin-right: auto; 
+    margin-left: 0;
+    display: flex;
+    flex-direction: column;
+}
+
+img {
+    background-size: cover;
+    border-style: solid;
+    border-width: 3px;
+    width: 100%;
+    height: auto;
+    /* Magic! */
+    max-width: 28vw;
+    justify-content: center;
+    border-radius: 36px;
+    box-shadow: 10px 12px 0px 0.5vw;
+}
+
+.projectTitle {
+    font-size:calc(16px + 2vw);
+    font-family: 'Petrona';
+    font-weight: lighter;
+    font-style: italic;
+    text-align: left;
+}
+
+.projectTools {
+    font-size:calc(8px + 0.5vw);
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    text-align: left;
+    text-transform: uppercase;
+    margin-top: 3%;
+}
+
+a:hover {
+    text-decoration: green wavy underline;
+}
+
+.projectDesc {
+    font-size:calc(8px + 0.8vw);
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    text-align: left;
+    font-weight: lighter;
+    font-weight: 200;
+    margin-top: 3%;
+}
+
+.projectLinks {
+    display: flex;
+    flex-direction: row;
+    margin-top: 3%;
+}
