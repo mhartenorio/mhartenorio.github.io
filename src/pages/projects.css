@@ -5,18 +5,19 @@
 }
 
 .projectsTitle {
-    font-size: 4vw;
+    font-size: calc(2em + 1vmin);
     font-family: 'Oi';
     margin: 4%;
 }
 
-
 .singleProject {
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    grid-template-rows: 1fr;
-    grid-column-gap: 64px;
-    margin-bottom: 10vh;
+    display: flex;
+    flex-direction: row;
+    width: 64%;
+    margin: 4% auto;
+    /* grid-template-columns: repeat(2, 1fr);
+    grid-template-rows: auto;
+    grid-column-gap: 64px; */
 }
 
 .projectImage {
@@ -36,9 +37,8 @@
 .projectText {
     width: 60%;
     height: 10vh;
-    border-radius: 36px;
     margin-right: auto; 
-    margin-left: 0;
+    margin-left: 6%;
     display: flex;
     flex-direction: column;
 }

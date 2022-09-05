@@ -26,8 +26,10 @@ class Landing extends React.Component {
               </span>
             </div>
             <Header/>
+            <div className='landingArrow'>Selected Works ↓</div>
           </div>
         </div>
+        
       </div>
     );
   }
