@@ -6,6 +6,8 @@
       repeating-linear-gradient(#ccc 0 1px, transparent 1px 100%),
       repeating-linear-gradient(90deg, #ccc 0 1px, transparent 1px 100%);
     background-size: 64px 64px;
+    border-bottom: solid;
+    overflow: hidden;
 }
 
 .landingContainer {
@@ -13,7 +15,8 @@
     border-style: solid;
     border-width: 3px;
     width: 60%;
-    height: 72vh;
+    padding-top: 6%;
+    padding-bottom: 6%;
     justify-content: center;
     position: absolute;
     left: 50%;
@@ -93,4 +96,10 @@
     to {
       transform: translateY(-10px);
     }
+}
+
+.blob {
+    position: absolute;
+    top: 0px;
+    left: 0px;
 }
