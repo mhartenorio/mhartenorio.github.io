@@ -52,7 +52,9 @@ class Projects extends React.Component {
                 <a href="https://github.com/mhartenorio/mhartenorio.github.io"><div className='projectTools'>→ GitHub</div></a>
             </div>
         </div>
-
+        <div className='projectDesign'>
+            To see design work, click <a href="https://drive.google.com/drive/folders/1WeEJ8_xRmctUNa-umUSlV83ZKVjZCv6-?usp=sharing" target="_blank">→ HERE ←</a>
+        </div>
       </div>
     );
   }
