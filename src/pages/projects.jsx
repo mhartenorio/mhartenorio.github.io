@@ -4,6 +4,7 @@ import './projects.css';
 import pingImage from '../images/tech-header.png';
 import photoAppImage from '../images/photo-app.png';
 import websiteImage from '../images/website-header.png';
+import spotifyImage from '../images/spotify-header.png';
 
 /**
  * Define UserList, a React componment of CS142 project #5
@@ -44,12 +45,12 @@ class Projects extends React.Component {
 
         {/* WEBSITE */}
         <div className='singleProject'>
-            <div className='projectImage'><img src={websiteImage}></img></div>
+            <div className='projectImage'><img src={spotifyImage}></img></div>
             <div className='projectText'>
-                <div className='projectTitle' >Personal Website</div>
-                <div className='projectTools'>React, JavaScript</div>
-                <div className='projectDesc'> I designed and develop this personal website to serve as a portfolio.  </div>
-                <a href="https://github.com/mhartenorio/mhartenorio.github.io"><div className='projectTools'>→ GitHub</div></a>
+                <div className='projectTitle' >Spotify Top Tracks</div>
+                <div className='projectTools'>React Native</div>
+                <div className='projectDesc'> Utilizing the Spotify API, I developed an app that will let users connect their Spotify accounts and see their listening patterns.  </div>
+                <a href="https://github.com/mhartenorio/Spotify-Top-Tracks"><div className='projectTools'>→ GitHub</div></a>
             </div>
         </div>
         <div className='projectDesign'>

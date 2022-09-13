@@ -11,7 +11,7 @@ function App() {
       <header className="App-header">
         <Landing/>
         <Projects/>
-        <div className='footer'>Mhar Tenorio &nbsp;|&nbsp; 2022</div>
+        <div className='footer'>Made by Mhar Tenorio &nbsp;|&nbsp; 2022</div>
       </header>
     </div>
   );
