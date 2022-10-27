@@ -1,13 +1,13 @@
 .screen {
     width: 100%;
     height: 100vh;
-    background-color: #F9F2E1;
+    overflow: hidden;
+    /* background-color: #F9F2E1; */
     /* background-image:
       repeating-linear-gradient(#ccc 0 1px, transparent 1px 100%),
       repeating-linear-gradient(90deg, #ccc 0 1px, transparent 1px 100%);
     background-size: 64px 64px; */
     /* border-bottom: solid; */
-    overflow: hidden;
 }
 
 /* @media (max-height: 1000px) {
@@ -17,7 +17,7 @@
 } */
 
 .landingContainer {
-    
+  
     border-style: solid;
     border-width: 3px;
     width: 60%;
@@ -27,12 +27,28 @@
     justify-content: center;
     position: absolute;
     left: 50%;
-    top: 52%; 
+    top: 50%; 
     -webkit-transform: translate(-50%, -50%);
     transform: translate(-50%, -50%);
     border-radius: 36px;
     box-shadow: 10px 12px 0px 15px;
     background-color: white;
+}
+
+.landingContainerV2 {
+    border-style: solid;
+    border-width: 3px;
+    width: 60%;
+    /* height: 74vh; */
+    
+    padding-top: 100px;
+    margin-top: -120px;
+    padding-bottom: 36px;
+    justify-content: center;
+    border-radius: 36px;
+    box-shadow: 10px 12px 0px 15px;
+    background-color: white;
+    z-index: 0;
 }
 
 /* .landingContent {
@@ -43,17 +59,15 @@
 } */
 
 .landingHeadline {
-    font-size: min(400%, 7vw);
+    font-size: min(400%, 9vw);
     font-family: 'Oi';
 }
 
 .landingHeadlineMyName {
-    font-size: min(400%, 7vw);
+    font-size: min(400%, 9vw);
     font-family: 'Petrona';
     font-style: italic;
 }
-
-
 
 .landingHeadlineMyName:hover {
     animation: color-change 2s infinite;
@@ -116,6 +130,7 @@
     position: absolute;
     top: 0px;
     left: 0px;
+    
     overflow: hidden;
 }
 
@@ -134,4 +149,27 @@
     /* z-index: 2; */
   }
   
+.experiment {
+    display: block;
+    position: absolute;
+    width: 40%;
+    height: 616px;
+    left: 45px;
+    top: 466px;
+    background: #FF007A;
+    filter: blur(180px);
+    
+}
+
+.experiment2 {
+    display: block;
+    position: absolute;
+width: 616px;
+height: 616px;
+left: 1112px;
+top: -57px;
+
+background: #4200FF;
+filter: blur(180px);
+}
   

@@ -3,6 +3,7 @@ import './about.css';
 import Grid from '@mui/material/Grid';
 import mharImage from '../images/Mhar2.JPG';
 
+
 import {Link} from 'react-router-dom'
 
 
@@ -34,8 +35,10 @@ class About extends React.Component {
   render() {
     return (
         <div >
+            
             <Tabs/>
             <div className='projectsTitle'>About Me</div>
+            
             <Grid container direction="row" alignContent="center" justifyContent="center" style={{padding: "0 64px"}} columnSpacing={12} rowSpacing={8} >
                 <Grid item xs={12} sm={12} md={4} alignContent="center" justifyContent="center">
                     <div style={{height: "100%", display: "flex", alignContent: "center"}}>

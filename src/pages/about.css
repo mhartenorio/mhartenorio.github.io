@@ -25,5 +25,18 @@
     /* justify-content: center; */
     border-radius: 50%;
     /* box-shadow: 10px 12px 0px 0.5vw; */
-    
+}
+
+.mharImageV2 {
+    position: relative;
+    border-style: solid;
+    border-width: 4px;
+    width: 240px;
+    height: auto;
+    /* Magic! */
+    /* max-width: 28vw; */
+    /* justify-content: center; */
+    border-radius: 50%;
+    /* box-shadow: 10px 12px 0px 0.5vw; */
+    z-index: 1;
 }

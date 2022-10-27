@@ -19,8 +19,8 @@ function App() {
           <Route exact path="/projects" element={<Projects />} />
         </Routes>
         {/* <About/>
-        <Projects/>
-        <div className='footer'>Made by Mhar Tenorio &nbsp;|&nbsp; 2022</div> */}
+        <Projects/>*/}
+        <div className='footer'>Made by Mhar Tenorio &nbsp;|&nbsp; 2022</div> 
       </header>
     </div>
   );
