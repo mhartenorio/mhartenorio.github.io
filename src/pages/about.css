@@ -31,7 +31,8 @@
     position: relative;
     border-style: solid;
     border-width: 4px;
-    width: 240px;
+   
+    width: min(240px, 32vw);
     height: auto;
     /* Magic! */
     /* max-width: 28vw; */
@@ -40,3 +41,4 @@
     /* box-shadow: 10px 12px 0px 0.5vw; */
     z-index: 1;
 }
+
