@@ -17,7 +17,8 @@
 }
 
 .tab:hover {
-    text-decoration: green wavy underline;
+    animation: color-change 2s infinite;
+
 }
 
 .tabsContainer {

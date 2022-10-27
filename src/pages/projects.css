@@ -57,6 +57,13 @@
     margin-right: 0;
 } */
 
+.projectImage {
+    width: 100%;
+    height: auto;
+    box-shadow: 10px 12px 0px 15px;
+    border-radius: 36px;
+}
+
 .projectText {
     width: 100%;
     height: 10vh;
@@ -66,7 +73,7 @@
     flex-direction: column;
 }
 
-img {
+.notimage {
     background-size: cover;
     border-style: solid;
     border-width: 3px;
@@ -80,7 +87,7 @@ img {
 }
 
 @media only screen and (min-width: 1100px) {
-    img {
+    .notimage {
         max-width: 56vw;
     }
 }
@@ -101,7 +108,9 @@ img {
     margin-top: 3%;
 }
 
-a:hover {
+
+
+.underlineButtonText:hover {
     text-decoration: green wavy underline;
 }
 

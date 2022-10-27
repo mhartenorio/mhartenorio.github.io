@@ -1,12 +1,12 @@
 .screen {
     width: 100%;
     height: 100vh;
-    /* background-color: #F9F2E1; */
-    background-image:
+    background-color: #F9F2E1;
+    /* background-image:
       repeating-linear-gradient(#ccc 0 1px, transparent 1px 100%),
       repeating-linear-gradient(90deg, #ccc 0 1px, transparent 1px 100%);
-    background-size: 64px 64px;
-    border-bottom: solid;
+    background-size: 64px 64px; */
+    /* border-bottom: solid; */
     overflow: hidden;
 }
 
@@ -17,17 +17,17 @@
 } */
 
 .landingContainer {
-    display: flex;
+    
     border-style: solid;
     border-width: 3px;
     width: 60%;
     /* height: 74vh; */
-    padding-top: 12vh;
-    padding-bottom: 12vh;
+    padding-top: 11vh;
+    padding-bottom: 6vh;
     justify-content: center;
     position: absolute;
     left: 50%;
-    top: 50%; 
+    top: 52%; 
     -webkit-transform: translate(-50%, -50%);
     transform: translate(-50%, -50%);
     border-radius: 36px;
@@ -35,12 +35,12 @@
     background-color: white;
 }
 
-.landingContent {
+/* .landingContent {
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-self: center;
-}
+} */
 
 .landingHeadline {
     font-size: min(400%, 7vw);
@@ -53,6 +53,12 @@
     font-style: italic;
 }
 
+
+
+.landingHeadlineMyName:hover {
+    animation: color-change 2s infinite;
+}
+
 .landingSecondLine {
     margin-top: max(-7%, -12vh);
 }
@@ -61,12 +67,12 @@
     /* font-size: 2vw; */
     font-size: min(150%, calc(16px + 1.2vw));
     /* font-size:calc(16px + 1.2vw); */
-    font-family: 'Petrona';
+    /* font-family: 'Petrona'; */
     text-align: center;
     display: flex;
     margin-top: max(-4%, -8vh);
-    margin-bottom: 4%;
-    font-weight: lighter;
+    margin-bottom: 3%;
+    font-weight: bold;
 }
 
 .landingSubHeadingText {
@@ -110,5 +116,22 @@
     position: absolute;
     top: 0px;
     left: 0px;
+    overflow: hidden;
 }
 
+
+.hiddenimg {
+    display: none;
+  }
+
+  
+.hiddentxt:hover ~ .hiddenimg {
+    
+    display: block;
+    position: absolute;
+    top: 6%;
+    left: 56%;
+    /* z-index: 2; */
+  }
+  
+  

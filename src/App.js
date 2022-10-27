@@ -3,15 +3,24 @@ import './App.css';
 
 import Landing from './pages/landing';
 import Projects from './pages/projects';
+import About from './pages/about';
+
+import { Routes, Route, Link } from "react-router-dom";
 
 
 function App() {
   return (
     <div className="App">
       <header className="App-header">
-        <Landing/>
+      <Routes>
+        <Route path="/" element={<Landing/>} />
+        <Route path="about" element={<About />} />
+        <Route path="projects" element={<Projects />} />
+      </Routes>
+        
+        {/* <About/>
         <Projects/>
-        <div className='footer'>Made by Mhar Tenorio &nbsp;|&nbsp; 2022</div>
+        <div className='footer'>Made by Mhar Tenorio &nbsp;|&nbsp; 2022</div> */}
       </header>
     </div>
   );

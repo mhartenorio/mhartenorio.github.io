@@ -1,6 +1,10 @@
 .App {
   text-align: center;
+  cursor:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg'  width='40' height='70' viewport='0 0 100 100' style='fill:black;font-size:40px;'><text y='50%'>👆</text></svg>") 16 0,auto; /*!emojicursor.app*/
+  
 }
+
+
 
 .App-logo {
   height: 40vmin;
@@ -44,4 +48,8 @@
   font-weight: 300;
   text-transform: uppercase;
   margin-top: 2%;
+}
+
+.pointer {
+  cursor:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg'  width='40' height='48' viewport='0 0 100 100' style='fill:black;font-size:24px;'><text y='50%'>↖︎</text></svg>") 16 0,auto; /*!emojicursor.app*/
 }

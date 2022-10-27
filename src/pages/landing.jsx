@@ -1,29 +1,49 @@
 import React from 'react';
 import './landing.css';
+import Grid from '@mui/material/Grid';
+
 
 import Header from '../components/header';
+import Header2 from '../components/header2';
+
 import ColorBox from '../components/colorbox';
+
+import blob from '../images/blob.svg'
+import blob2 from '../images/blob2.svg'
+import blob3 from '../images/blob3.svg'
+import blob4 from '../images/blob4.svg'
+
+import wave1 from '../images/wave1.svg'
+import wave2 from '../images/wave2.svg'
+import gradient from '../images/gradient.svg'
+import mharImage from '../images/Mhar.png';
+
+
 
 class Landing extends React.Component {
   render() {
     return (
       <div className='screen'>
-        {/* <svg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg" stroke="black" >
-          <path fill="#FF0066" d="M43.3,-44.5C55.8,-41.2,65.4,-27.2,66.9,-12.6C68.5,1.9,62.1,17.1,54,31.1C45.8,45.2,35.8,58.1,22.7,63.3C9.6,68.5,-6.7,65.9,-15.1,56.4C-23.5,46.9,-24,30.5,-35.4,17.3C-46.8,4,-69.2,-6.1,-72.5,-17.2C-75.8,-28.4,-60.1,-40.6,-44.9,-43.4C-29.6,-46.2,-14.8,-39.6,0.3,-40C15.4,-40.3,30.9,-47.7,43.3,-44.5Z" transform="translate(0 100)" />
-        </svg>
-        <svg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg" className='blob' stroke="black">
-          <path fill="#0F62FE" d="M43.3,-44.5C55.8,-41.2,65.4,-27.2,66.9,-12.6C68.5,1.9,62.1,17.1,54,31.1C45.8,45.2,35.8,58.1,22.7,63.3C9.6,68.5,-6.7,65.9,-15.1,56.4C-23.5,46.9,-24,30.5,-35.4,17.3C-46.8,4,-69.2,-6.1,-72.5,-17.2C-75.8,-28.4,-60.1,-40.6,-44.9,-43.4C-29.6,-46.2,-14.8,-39.6,0.3,-40C15.4,-40.3,30.9,-47.7,43.3,-44.5Z" transform="translate(170 0)" />
-        </svg> */}
+        <img src={blob3} className='blob' style={{objectFit: "cover", width: "100%", height: "100vh", mixBlendMode: "multiply"}}></img>
+        <img src={wave1} style={{objectFit: "cover", width: "100%", height: "100vh", position: "absolute", right: "8%" }}></img>
+        <img src={wave2} style={{objectFit: "cover", width: "100%", height: "100vh", position: "absolute", left: "8%" }}></img>
         <div className='landingContainer'>
-          <div className='landingContent'>
-            <ColorBox/>
-            <div className='landingHeadline'>
+          <div style={{display: "flex", justifyContent: "center", width: "100%", marginBottom: "16px"}}>
+            <img src={mharImage} className='mharImage2'/>
+            </div>
+            {/* <ColorBox/> */}
+            <Grid container justifyContent="center">
+              <Grid item md={12}>
+              <div className='landingHeadline'>
               Hello,
             </div>
             <div className='landingSecondLine'>
               <span className='landingHeadline'>I&rsquo;m </span> 
               <span className='landingHeadlineMyName'>Mhar!</span>
+
+              {/* <span className='landingHeadlineMyName'><span class="hiddentxt">Mhar!</span><span class="hiddenimg"><img src={mharImage} className='mharImage'/></span></span> */}
             </div>
+           
             <div className='landingSubheading'>
               <span className='landingSubHeadingText'>
                 Mhar Tenorio is a junior at Stanford University 
@@ -31,10 +51,18 @@ class Landing extends React.Component {
                 Computer Science and Art. 
               </span>
             </div>
+             
+              </Grid>
+            </Grid>
+            
+            
             <Header/>
-            <div className='landingArrow'>Selected Works ↓</div>
+            
+            {/* <div style={{height: "32px"}}/> */}
+            <Header2/>
+           
+            {/* <div className='landingArrow'>Selected Works ↓</div> */}
           </div>
-        </div>
       </div>
     );
   }
