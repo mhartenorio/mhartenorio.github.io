@@ -7,6 +7,8 @@ import { BsLinkedin, BsGithub, BsPersonCircle } from 'react-icons/bs';
 import { AiFillMail } from 'react-icons/ai';
 import { GrDocumentPdf } from 'react-icons/gr';
 
+import {Link} from 'react-router-dom'
+
 
 const scroll = () => {
   const section = document.getElementById( 'screen2' );
@@ -18,18 +20,18 @@ class Header2 extends React.Component {
     return (
       <Grid container rowSpacing={2} alignItems="center" justifyContent="center" style={{padding: "8px", marginTop: "4px"}}>
         <Grid item xs={12} sm={12} md={2}>
-            <a href='/projects'>
+            <Link to="/projects">
             <div className='textButton'>
                 Projects
             </div>
-            </a>
+            </Link>
         </Grid>
         <Grid item xs={12} sm={12} md={2} >
-            <a href='/about'>
+        <Link to="/about">
             <div className='textButton'>
                 About
             </div>
-            </a>
+            </Link>
         </Grid>
       </Grid>
     );

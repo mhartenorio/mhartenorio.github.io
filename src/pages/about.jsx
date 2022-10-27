@@ -3,22 +3,25 @@ import './about.css';
 import Grid from '@mui/material/Grid';
 import mharImage from '../images/Mhar2.JPG';
 
+import {Link} from 'react-router-dom'
+
+
 const Tabs = () => {
     return (
         <Grid container justifyContent='center'>
             <Grid item xs={4}>
-            <a href="/">
+            <Link to="/">
                 <div className='underlineButtonText' style={{marginTop: "64px"}}>
                     ← Home
                 </div> 
-             </a>
+             </Link>
             </Grid>
             <Grid item xs={4}>
-            <a href="/projects">
+            <Link to="/projects">
                 <div className='underlineButtonText' style={{marginTop: "64px"}}>
                     Projects →
                 </div> 
-             </a>
+             </Link>
             </Grid>
         </Grid>
     )

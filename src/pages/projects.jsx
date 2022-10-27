@@ -7,22 +7,24 @@ import photoAppImage from '../images/photo-app.png';
 import websiteImage from '../images/website-header.png';
 import spotifyImage from '../images/spotify-header.png';
 
+import {Link} from 'react-router-dom'
+
 const Tabs = () => {
     return (
         <Grid container justifyContent='center'>
             <Grid item xs={4}>
-            <a href="/">
+            <Link to="/">
                 <div className='underlineButtonText' style={{marginTop: "64px"}}>
                     ← Home
                 </div> 
-             </a>
+             </Link>
             </Grid>
             <Grid item xs={4}>
-            <a href="/about">
+            <Link to="/about">
                 <div className='underlineButtonText' style={{marginTop: "64px"}}>
                     About →
                 </div> 
-             </a>
+             </Link>
             </Grid>
         </Grid>
     )
