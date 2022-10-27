@@ -1,7 +1,7 @@
 .screen {
     width: 100%;
     height: 100vh;
-    overflow: hidden;
+    /* overflow: hidden; */
     /* background-color: #F9F2E1; */
     /* background-image:
       repeating-linear-gradient(#ccc 0 1px, transparent 1px 100%),
@@ -133,6 +133,7 @@
     
     overflow: hidden;
 }
+
 
 
 .hiddenimg {
