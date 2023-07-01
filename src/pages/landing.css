@@ -73,6 +73,10 @@
     animation: color-change 2s infinite;
 }
 
+.letsChat:hover {
+  animation: color-change 2s infinite;
+}
+
 .landingSecondLine {
     margin-top: max(-7%, -12vh);
 }

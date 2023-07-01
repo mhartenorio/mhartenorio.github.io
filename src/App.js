@@ -20,7 +20,7 @@ function App() {
         </Routes>
         {/* <About/>
         <Projects/>*/}
-        <div className='footer'>Made by Mhar Tenorio &nbsp;|&nbsp; 2022</div> 
+        {/* <div className='footer'>Made by Mhar Tenorio &nbsp;|&nbsp; 2022</div>  */}
       </header>
     </div>
   );

@@ -4,7 +4,7 @@ import Grid from '@mui/material/Grid';
 
 import pingImage from '../images/tech-header.png';
 import photoAppImage from '../images/photo-app.png';
-import websiteImage from '../images/website-header.png';
+import cs448bProjectImage from '../images/cs448b.png';
 import spotifyImage from '../images/spotify-header.png';
 
 import {Link} from 'react-router-dom'
@@ -38,10 +38,28 @@ class Projects extends React.Component {
     return (
       <div className='screen2' id='screen2'>
         
-        <Tabs/>
+        {/* <Tabs/> */}
+        <div style={{height: "64px"}}/>
         <div className='projectsTitle'>
             Projects
         </div>
+        <Grid container justifyContent='center' columnSpacing={4} style={{padding: "0 48px"}}>
+            <Grid item xs={12} sm={12} md={4}>
+            <img src={cs448bProjectImage} className='projectImage'></img>
+            </Grid>
+            <Grid item xs={12} sm={12} md={4}>
+            <div className='projectText'>
+                <div className='projectTitle' >Bay Area Food Finder</div>
+                <div className='projectTools'>Javascript</div>
+                <div className='projectDesc'>Using d3.js and a Yelp dataset, I implemented an interactive visualization software that shows all coffee shops, cafes, and bubble tea shops in a map of the Bay Area. This visualization will show shops that lie in the intersection of the two circles and satisfies the price, rating, and search constraints. </div>
+                <div className='projectLinks'>
+                    <a href="https://mhartenorio.github.io/sf-restaurants-js/" className='underlineButtonText'><div className='projectTools'>→ Demo /</div></a>
+                    <a href="https://github.com/mhartenorio/sf-restaurants-js" className='underlineButtonText'><div className='projectTools'>&nbsp;GitHub</div></a>
+                </div>
+            </div>
+            </Grid>
+        </Grid>
+        <div style={{height: "64px"}}/>
         <Grid container justifyContent='center' columnSpacing={4} style={{padding: "0 48px"}}>
             <Grid item xs={12} sm={12} md={4}>
             <img src={pingImage} className='projectImage'></img>
@@ -72,7 +90,7 @@ class Projects extends React.Component {
                 <div className='projectTitle' >Photo Sharing Web App</div>
                 <div className='projectTools'>Full MERN Stack</div>
                 <div className='projectDesc'>I developed both the server-side and client-side of a photo sharing application that allows users to register, login, view friends profiles, and post, like, favorite, and comment on different photos. </div>
-                <a href="https://youtu.be/zruWuQmHWa8"><div className='projectTools'>→ Demo</div></a>
+                <a href="https://youtu.be/zruWuQmHWa8" className='underlineButtonText'><div className='projectTools'>→ Demo</div></a>
             </div>
             </Grid>
         </Grid>
@@ -88,17 +106,20 @@ class Projects extends React.Component {
                 <div className='projectTitle' >Spotify Top Tracks</div>
                 <div className='projectTools'>React Native</div>
                 <div className='projectDesc'> Utilizing the Spotify API, I developed an app that will let users connect their Spotify accounts and see their listening patterns.  </div>
-                <a href="https://github.com/mhartenorio/Spotify-Top-Tracks"><div className='projectTools'>→ GitHub</div></a>
+                <a href="https://github.com/mhartenorio/Spotify-Top-Tracks" className='underlineButtonText'><div className='projectTools'>→ GitHub</div></a>
             </div>
             </Grid>
         </Grid>
 
-        <Tabs/>
+        <div style={{height: "64px"}}/>
 
-        <div style={{height: "32px"}}/>
+        {/* <Tabs/> */}
+
+        {/* <div style={{height: "32px"}}/> */}
         {/* <div className='projectDesign'>
             To see design work, click <a href="https://drive.google.com/drive/folders/1WeEJ8_xRmctUNa-umUSlV83ZKVjZCv6-?usp=sharing" target="_blank">→ HERE ←</a>
         </div> */}
+        
       </div>
     );
   }

@@ -7,35 +7,33 @@ import { BsLinkedin, BsGithub, BsPersonCircle } from 'react-icons/bs';
 import { AiFillMail } from 'react-icons/ai';
 import { GrDocumentPdf } from 'react-icons/gr';
 
-import {Link} from 'react-router-dom'
+import { Link } from 'react-router-dom'
 
 
 const scroll = () => {
-  const section = document.getElementById( 'screen2' );
+  const section = document.getElementById('screen2');
   section.scrollIntoView();
 };
 
-class Header2 extends React.Component {
-  render() {
-    return (
-      <Grid container rowSpacing={2} alignItems="center" justifyContent="center" style={{padding: "8px", marginTop: "4px"}}>
-        <Grid item xs={12} sm={12} md={2}>
-            <Link to="/projects">
-            <div className='textButton'>
-                Projects
-            </div>
-            </Link>
-        </Grid>
-        <Grid item xs={12} sm={12} md={2} >
-        <Link to="/about">
-            <div className='textButton'>
-                About
-            </div>
-            </Link>
-        </Grid>
+const Header2 = ({ goToProjects }) => {
+  return (
+    <Grid container rowSpacing={2} alignItems="center" justifyContent="center" style={{ padding: "8px", marginTop: "4px" }}>
+      <Grid item xs={12} sm={12} md={2}>
+        <a onClick={goToProjects}>
+          <div className='textButton'>
+            Projects
+          </div>
+        </a>
       </Grid>
-    );
-  }
+      <Grid item xs={12} sm={12} md={2} >
+        <Link to="/about">
+          <div className='textButton'>
+            About
+          </div>
+        </Link>
+      </Grid>
+    </Grid>
+  );
 }
 
 export default Header2;
