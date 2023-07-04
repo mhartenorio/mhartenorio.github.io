@@ -1,10 +1,11 @@
 {
   "files": {
-    "main.css": "/static/css/main.5799e1b3.css",
-    "main.js": "/static/js/main.96591f81.js",
+    "main.css": "/static/css/main.b62d1946.css",
+    "main.js": "/static/js/main.37dcc754.js",
     "static/js/787.dd4029b4.chunk.js": "/static/js/787.dd4029b4.chunk.js",
     "static/media/Mhar2.JPG": "/static/media/Mhar2.34b07e4dc1b86e7aa42e.JPG",
     "static/media/cs448b.png": "/static/media/cs448b.4f8f2f972e3d49ec8ade.png",
+    "static/media/bospies.png": "/static/media/bospies.69bb24e405afb77d8148.png",
     "static/media/Mhar.png": "/static/media/Mhar.6d405045d7f41fee8c7c.png",
     "static/media/tech-header.png": "/static/media/tech-header.bb920b89cd5a558851ac.png",
     "static/media/spotify-header.png": "/static/media/spotify-header.1b77e3956ee3d958816a.png",
@@ -19,12 +20,12 @@
     "static/media/gradient.svg": "/static/media/gradient.dd7dc6588854de569811a3390028dbec.svg",
     "index.html": "/index.html",
     "static/media/wave1.svg": "/static/media/wave1.d382869570d7fc0053f9fccdd64e271d.svg",
-    "main.5799e1b3.css.map": "/static/css/main.5799e1b3.css.map",
-    "main.96591f81.js.map": "/static/js/main.96591f81.js.map",
+    "main.b62d1946.css.map": "/static/css/main.b62d1946.css.map",
+    "main.37dcc754.js.map": "/static/js/main.37dcc754.js.map",
     "787.dd4029b4.chunk.js.map": "/static/js/787.dd4029b4.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.5799e1b3.css",
-    "static/js/main.96591f81.js"
+    "static/css/main.b62d1946.css",
+    "static/js/main.37dcc754.js"
   ]
 }
