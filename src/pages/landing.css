@@ -163,6 +163,7 @@
     top: 466px;
     background: #FF007A;
     filter: blur(180px);
+    z-index: 0;
     
 }
 
@@ -176,5 +177,6 @@ top: -57px;
 
 background: #4200FF;
 filter: blur(180px);
+z-index: 0;
 }
   

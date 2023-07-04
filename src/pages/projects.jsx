@@ -6,6 +6,8 @@ import pingImage from '../images/tech-header.png';
 import photoAppImage from '../images/photo-app.png';
 import cs448bProjectImage from '../images/cs448b.png';
 import spotifyImage from '../images/spotify-header.png';
+import bospiesImage from '../images/bospies.png';
+
 
 import {Link} from 'react-router-dom'
 
@@ -62,6 +64,23 @@ class Projects extends React.Component {
         <div style={{height: "64px"}}/>
         <Grid container justifyContent='center' columnSpacing={4} style={{padding: "0 48px"}}>
             <Grid item xs={12} sm={12} md={4}>
+            <img src={bospiesImage} className='projectImage'></img>
+            </Grid>
+            <Grid item xs={12} sm={12} md={4}>
+            <div className='projectText'>
+                <div className='projectTitle' >BOSPies</div>
+                <div className='projectTools'>React</div>
+                <div className='projectDesc'>Our team created a social computing system where Stanford students who are interested in study abroad and students who have previously done the program can connect.</div>
+                <div className='projectLinks'>
+                    <a href="http://52.38.65.221" className='underlineButtonText'><div className='projectTools'>→ Demo /</div></a>
+                    <a href="https://github.com/DaivdYuan/Bospies" className='underlineButtonText'><div className='projectTools'>&nbsp;GitHub</div></a>
+                </div>
+            </div>
+            </Grid>
+        </Grid>
+        <div style={{height: "64px"}}/>
+        <Grid container justifyContent='center' columnSpacing={4} style={{padding: "0 48px"}}>
+            <Grid item xs={12} sm={12} md={4}>
             <img src={pingImage} className='projectImage'></img>
             </Grid>
             <Grid item xs={12} sm={12} md={4}>
@@ -111,7 +130,7 @@ class Projects extends React.Component {
             </Grid>
         </Grid>
 
-        <div style={{height: "64px"}}/>
+        <div style={{height: "32px"}}/>
 
         {/* <Tabs/> */}
 

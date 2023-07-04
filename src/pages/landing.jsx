@@ -82,8 +82,8 @@ const Landing = () => {
         <img src={wave2} style={{objectFit: "cover", width: "100%", height: "100vh", position: "absolute", left: "8%" }}></img> */}
       <img src={bg} className='blob' style={{ objectFit: "fill", width: "100%", overflow: "hidden" }}></img>
       <img src={mharImage} className="mharImageV2" />
-      {/* <div className='experiment'/>
-        <div className='experiment2'/> */}
+      {/* <div className='experiment'/> */}
+      {/* <div className='experiment2'/> */}
       <div style={{ display: "flex", justifyContent: "center" }}>
         <div className='landingContainerV2'>
           <div style={{ display: "flex", justifyContent: "center", width: "100%", marginBottom: "16px" }}>
