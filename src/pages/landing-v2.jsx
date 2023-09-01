@@ -6,6 +6,7 @@ import Marquee from "react-fast-marquee";
 import { DarkMode, LightMode } from '@mui/icons-material';
 import { useState } from 'react';
 import { useEffect } from 'react';
+import { Link } from 'react-router-dom';
 
 const GREEN = '#B0EE00'
 const ORANGE = '#EE4700'
@@ -22,41 +23,11 @@ const FONT_SIZE = {
 // const FONT_FAMILY = "'Overpass Mono', monospace"
 const FONT_FAMILY = 'Petrona'
 
-const LandingV2 = () => {
-  const [isLightMode, setIsLightMode] = useState(true);
-  const [textColor, setTextColor] = useState('black');
-
-  useEffect(() => {
-    if (isLightMode) {
-      setTextColor('black');
-      document.getElementsByClassName("App-header")[0].style.backgroundColor = "white";
-    } else {
-      setTextColor('white');
-      document.getElementsByClassName("App-header")[0].style.backgroundColor = "#1E1E1E";
-    }
-  }, [isLightMode])
+const LandingV2 = ({ isLightMode, textColor }) => {
+  
 
   return (
     <>
-      <div
-        onClick={() => setIsLightMode(!isLightMode)}
-      >
-        {isLightMode ?
-          <>
-            <LightMode fontSize='large' sx={{ position: 'absolute', top: 0, right: 0, padding: 2, '&:hover': { cursor: 'pointer' } }} />
-            <LightMode fontSize='large' sx={{ position: 'absolute', top: 0, left: 0, padding: 2, '&:hover': { cursor: 'pointer' } }} />
-            <LightMode fontSize='large' sx={{ position: 'absolute', bottom: 0, left: 0, padding: 2, '&:hover': { cursor: 'pointer' } }} />
-            <LightMode fontSize='large' sx={{ position: 'absolute', bottom: 0, right: 0, padding: 2, '&:hover': { cursor: 'pointer' } }} />
-          </>
-          :
-          <>
-            <DarkMode fontSize='large' htmlColor='white' sx={{ position: 'absolute', top: 0, right: 0, padding: 2, '&:hover': { cursor: 'pointer' } }} />
-            <DarkMode fontSize='large' htmlColor='white' sx={{ position: 'absolute', top: 0, left: 0, padding: 2, '&:hover': { cursor: 'pointer' } }} />
-            <DarkMode fontSize='large' htmlColor='white' sx={{ position: 'absolute', bottom: 0, left: 0, padding: 2, '&:hover': { cursor: 'pointer' } }} />
-            <DarkMode fontSize='large' htmlColor='white' sx={{ position: 'absolute', bottom: 0, right: 0, padding: 2, '&:hover': { cursor: 'pointer' } }} />
-          </>
-        }
-      </div>
       <Stack direction='column' rowGap={8} justifyContent='center'
         sx={{
           height: '100vh',
@@ -106,9 +77,6 @@ const LandingV2 = () => {
               // fontWeight: 600,
               letterSpacing: -2,
               color: textColor,
-              // textDecoration: 'underline wavy violet',
-              // fontStyle: 'italic',
-              mb: 1
             }}
             >
               Mhar 👨‍💻 Tenorio
@@ -131,34 +99,38 @@ const LandingV2 = () => {
             </Typography>
           </Stack>
           <Stack direction='row' columnGap={3}>
-            <Typography className='tab' sx={{
-              fontFamily: FONT_FAMILY,
-              whiteSpace: 'nowrap',
-              alignItems: 'center',
-              height: '100%',
-              fontSize: FONT_SIZE,
-              fontWeight: 300,
-              letterSpacing: -2,
-              color: textColor
-            }}>
-              🖼️ Projects
-            </Typography>
+            <Link to='/'>
+              <Typography className='tab' sx={{
+                fontFamily: FONT_FAMILY,
+                whiteSpace: 'nowrap',
+                alignItems: 'center',
+                height: '100%',
+                fontSize: FONT_SIZE,
+                fontWeight: 300,
+                letterSpacing: -2,
+                color: textColor
+              }}>
+                🖼️ Projects
+              </Typography>
+            </Link>
             <div style={{ width: '100%', height: '85%', background: BLUE, borderRadius: 200 }} />
           </Stack>
           <Stack direction='row' columnGap={3}>
             <div style={{ width: '100%', height: '85%', background: PINK, borderRadius: 200 }} />
-            <Typography className='tab' sx={{
-              fontFamily: FONT_FAMILY,
-              whiteSpace: 'nowrap',
-              alignItems: 'center',
-              height: '100%',
-              fontSize: FONT_SIZE,
-              fontWeight: 300,
-              letterSpacing: -2,
-              color: textColor
-            }}>
-              About ✨ Me
-            </Typography>
+            <Link to='/'>
+              <Typography className='tab' sx={{
+                fontFamily: FONT_FAMILY,
+                whiteSpace: 'nowrap',
+                alignItems: 'center',
+                height: '100%',
+                fontSize: FONT_SIZE,
+                fontWeight: 300,
+                letterSpacing: -2,
+                color: textColor
+              }}>
+                About ✨ Me
+              </Typography>
+            </Link>
           </Stack>
         </Stack>
         <HeaderV3 textColor={textColor} />
