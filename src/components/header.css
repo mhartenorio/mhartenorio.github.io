@@ -18,6 +18,7 @@
 
 .tab:hover {
     animation: color-change 2s infinite;
+    cursor: pointer;
 }
 
 .tabsContainer {
