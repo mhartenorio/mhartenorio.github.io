@@ -9,11 +9,19 @@
     animation: color-change 2s infinite;
 }
 
-@keyframes color-change {
+/* @keyframes color-change {
     0% { color: aqua;}
     20% { color: magenta; }
     40% { color: #FFC700; }
     60% { color: green; }
     80% {color: red; }
     100% { color: aqua; }
+} */
+
+@keyframes color-change {
+  0% { color: #B0EE00;}
+  25% { color: #EE4700; }
+  50% { color: #FFC700; }
+  75% { color: #0043EE; }
+  100% {color: #FF0099; }
 }
