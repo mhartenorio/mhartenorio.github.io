@@ -15,6 +15,8 @@ const FONT_SIZE = {
   md: '68px'
 }
 
+const FONT_FAMILY = 'Overpass Mono, monospace'
+
 const LandingV2 = () => {
   return (
     <Stack direction='column' rowGap={8} justifyContent='center' 
@@ -32,7 +34,7 @@ const LandingV2 = () => {
         <Stack direction='row' columnGap={3} >
           <div style={{ width: '100%', background: GREEN, borderRadius: 200 }} />
           <Typography sx={{
-            fontFamily: "Overpass Mono",
+            fontFamily: FONT_FAMILY,
             whiteSpace: 'nowrap',
             alignItems: 'center',
             height: '100%',
@@ -43,7 +45,7 @@ const LandingV2 = () => {
         </Stack>
         <Stack direction='row' columnGap={3} >
           <Typography sx={{
-            fontFamily: "Overpass Mono",
+            fontFamily: FONT_FAMILY,
             whiteSpace: 'nowrap',
             alignItems: 'center',
             height: '100%',
@@ -57,7 +59,7 @@ const LandingV2 = () => {
         <Stack direction='row' columnGap={3}>
           <div style={{ width: '100%', background: YELLOW, borderRadius: 200 }} />
           <Typography sx={{
-            fontFamily: "Overpass Mono",
+            fontFamily: FONT_FAMILY,
             whiteSpace: 'nowrap',
             alignItems: 'center',
             height: '100%',
@@ -68,7 +70,7 @@ const LandingV2 = () => {
         </Stack>
         <Stack direction='row' columnGap={3}>
           <Typography sx={{
-            fontFamily: "Overpass Mono",
+            fontFamily: FONT_FAMILY,
             whiteSpace: 'nowrap',
             alignItems: 'center',
             height: '100%',
@@ -81,7 +83,7 @@ const LandingV2 = () => {
         <Stack direction='row' columnGap={3}>
           <div style={{ width: '100%', background: PINK, borderRadius: 200 }} />
           <Typography sx={{
-            fontFamily: "Overpass Mono",
+            fontFamily: FONT_FAMILY,
             whiteSpace: 'nowrap',
             alignItems: 'center',
             height: '100%',
