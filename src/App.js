@@ -29,28 +29,29 @@ function App() {
   return (
     <div className="App">
       <header className="App-header">
+      {/* <div style={{background: 'linear-gradient(0deg, rgba(255,0,101,1) 0%, rgba(255,255,255,1) 0%, rgba(255,255,255,0) 40%)', position: 'fixed', bottom: 0, width: '100vw', height: '100vh'}}/> */}
       <div
         onClick={() => setIsLightMode(!isLightMode)}
       >
         {isLightMode ?
           <>
-            <LightMode fontSize='large' sx={{ position: 'absolute', top: 0, right: 0, padding: 2, '&:hover': { cursor: 'pointer' } }} />
-            <LightMode fontSize='large' sx={{ position: 'absolute', top: 0, left: 0, padding: 2, '&:hover': { cursor: 'pointer' } }} />
-            <LightMode fontSize='large' sx={{ position: 'absolute', bottom: 0, left: 0, padding: 2, '&:hover': { cursor: 'pointer' } }} />
-            <LightMode fontSize='large' sx={{ position: 'absolute', bottom: 0, right: 0, padding: 2, '&:hover': { cursor: 'pointer' } }} />
+            <LightMode fontSize='large' sx={{ position: 'fixed', top: 0, right: 0, padding: 2, '&:hover': { cursor: 'pointer' } }} />
+            <LightMode fontSize='large' sx={{ position: 'fixed', top: 0, left: 0, padding: 2, '&:hover': { cursor: 'pointer' } }} />
+            <LightMode fontSize='large' sx={{ position: 'fixed', bottom: 0, left: 0, padding: 2, '&:hover': { cursor: 'pointer' } }} />
+            <LightMode fontSize='large' sx={{ position: 'fixed', bottom: 0, right: 0, padding: 2, '&:hover': { cursor: 'pointer' } }} />
           </>
           :
           <>
-            <DarkMode fontSize='large' htmlColor='white' sx={{ position: 'absolute', top: 0, right: 0, padding: 2, '&:hover': { cursor: 'pointer' } }} />
-            <DarkMode fontSize='large' htmlColor='white' sx={{ position: 'absolute', top: 0, left: 0, padding: 2, '&:hover': { cursor: 'pointer' } }} />
-            <DarkMode fontSize='large' htmlColor='white' sx={{ position: 'absolute', bottom: 0, left: 0, padding: 2, '&:hover': { cursor: 'pointer' } }} />
-            <DarkMode fontSize='large' htmlColor='white' sx={{ position: 'absolute', bottom: 0, right: 0, padding: 2, '&:hover': { cursor: 'pointer' } }} />
+            <DarkMode fontSize='large' htmlColor='white' sx={{ position: 'fixed', top: 0, right: 0, padding: 2, '&:hover': { cursor: 'pointer' } }} />
+            <DarkMode fontSize='large' htmlColor='white' sx={{ position: 'fixed', top: 0, left: 0, padding: 2, '&:hover': { cursor: 'pointer' } }} />
+            <DarkMode fontSize='large' htmlColor='white' sx={{ position: 'fixed', bottom: 0, left: 0, padding: 2, '&:hover': { cursor: 'pointer' } }} />
+            <DarkMode fontSize='large' htmlColor='white' sx={{ position: 'fixed', bottom: 0, right: 0, padding: 2, '&:hover': { cursor: 'pointer' } }} />
           </>
         }
       </div>
         <Routes>
           <Route path="/" element={<LandingV2 isLightMode={isLightMode} textColor={textColor}/>} />
-          <Route exact path="/about" element={<About />} />
+          <Route exact path="/about" element={<About isLightMode={isLightMode} textColor={textColor}/>} />
           <Route exact path="/projects" element={<Projects />} />
         </Routes>
       </header>

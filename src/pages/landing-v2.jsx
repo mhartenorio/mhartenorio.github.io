@@ -14,30 +14,18 @@ import image4 from '../images/Mhar4.png';
 import image5 from '../images/Mhar5.JPG';
 import image6 from '../images/Mhar6.JPG';
 import image7 from '../images/Mhar7.png';
-
-
-const GREEN = '#B0EE00'
-const ORANGE = '#EE4700'
-const YELLOW = '#FFC700'
-const BLUE = '#0043EE'
-const PINK = '#FF0099'
-
-const FONT_SIZE = {
-  xs: '42px',
-  sm: '60px',
-  md: '72px'
-}
-
-const IMAGE_SIZE = {
-  xs: '50px',
-  sm: '68px',
-  md: '80px'
-}
+import {
+  GREEN,
+  ORANGE,
+  YELLOW,
+  BLUE,
+  PINK,
+  FONT_SIZE,
+  FONT_FAMILY,
+  IMAGE_SIZE
+} from '../constants/constants'
 
 const IMAGES_SLIDESHOW = [image1, image2, image3, image4, image5, image6, image7]
-
-// const FONT_FAMILY = "'Overpass Mono', monospace"
-const FONT_FAMILY = 'Petrona'
 
 const LandingV2 = ({ isLightMode, textColor }) => {
   // const [waveClassName, setWaveClassName] = useState('wave');
@@ -78,7 +66,7 @@ const LandingV2 = ({ isLightMode, textColor }) => {
           gradientColor={isLightMode ? [255, 255, 255] : [30, 30, 30]}
         // gradientColor={[255, 252, 243]}
         >
-          <Typography sx={{ fontSize: '24px', fontWeight: 500, color: textColor, fontFamily: 'inherit' }}>
+          <Typography sx={{ fontSize: '24px', fontWeight: 600, color: textColor, fontFamily: "'Inter', sans-serif" }}>
             {/* Hello! 👋 My name is Mhar Tenorio. 👨‍💻 I am a senior at Stanford University 🌲 studying a combination of Computer Science and Art.  */}
             CS + Art @ Stanford • Class of '24 • Frontend Engineer • Previously Squarespace and Purposer •&nbsp;
           </Typography>
@@ -175,7 +163,7 @@ const LandingV2 = ({ isLightMode, textColor }) => {
           </Stack>
           <Stack direction='row' columnGap={2}>
             <div style={{ width: '100%', height: '85%', background: PINK, borderRadius: 200 }} />
-            <Link to='/'>
+            <Link to='/about'>
               <Typography className='tab' sx={{
                 fontFamily: FONT_FAMILY,
                 whiteSpace: 'nowrap',
