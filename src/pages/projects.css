@@ -66,6 +66,10 @@
     border: 5px solid black;
 }
 
+.projectImage:hover {
+  outline: '8px solid black'
+}
+
 .projectText {
     width: 100%;
     height: 10vh;

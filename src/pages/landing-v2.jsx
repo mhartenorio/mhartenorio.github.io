@@ -27,6 +27,12 @@ import {
 
 const IMAGES_SLIDESHOW = [image1, image2, image3, image4, image5, image6, image7]
 
+const MQ_FONT_SIZE = {
+  xs: '20px',
+  sm: '20px',
+  md: '24px'
+}
+
 const LandingV2 = ({ isLightMode, textColor }) => {
   // const [waveClassName, setWaveClassName] = useState('wave');
   const [waveHover, setWaveHover] = useState(false);
@@ -66,7 +72,7 @@ const LandingV2 = ({ isLightMode, textColor }) => {
           gradientColor={isLightMode ? [255, 255, 255] : [30, 30, 30]}
         // gradientColor={[255, 252, 243]}
         >
-          <Typography sx={{ fontSize: '24px', fontWeight: 600, color: textColor, fontFamily: "'Inter', sans-serif" }}>
+          <Typography sx={{ fontSize: MQ_FONT_SIZE, fontWeight: 600, color: textColor, fontFamily: "'Inter', sans-serif" }}>
             {/* Hello! 👋 My name is Mhar Tenorio. 👨‍💻 I am a senior at Stanford University 🌲 studying a combination of Computer Science and Art.  */}
             CS + Art @ Stanford • Class of '24 • Frontend Engineer • Previously Squarespace and Purposer •&nbsp;
           </Typography>
@@ -96,6 +102,7 @@ const LandingV2 = ({ isLightMode, textColor }) => {
           </Stack>
           <Stack direction='row' columnGap={2}>
             <Typography
+              // variant='h1'
               sx={{
                 fontFamily: FONT_FAMILY,
                 whiteSpace: 'nowrap',
@@ -145,7 +152,7 @@ const LandingV2 = ({ isLightMode, textColor }) => {
             </Typography>
           </Stack>
           <Stack direction='row' columnGap={2}>
-            <Link to='/'>
+            <Link to='/projects'>
               <Typography className='tab' sx={{
                 fontFamily: FONT_FAMILY,
                 whiteSpace: 'nowrap',

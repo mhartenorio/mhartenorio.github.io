@@ -52,7 +52,7 @@ function App() {
         <Routes>
           <Route path="/" element={<LandingV2 isLightMode={isLightMode} textColor={textColor}/>} />
           <Route exact path="/about" element={<About isLightMode={isLightMode} textColor={textColor}/>} />
-          <Route exact path="/projects" element={<Projects />} />
+          <Route exact path="/projects" element={<Projects isLightMode={isLightMode} textColor={textColor}/>} />
         </Routes>
       </header>
     </div>
