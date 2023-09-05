@@ -1,5 +1,5 @@
 import React from 'react';
-import './about.css';
+import './projects.css';
 import Grid from '@mui/material/Grid';
 import mharImage from '../images/Mhar.png';
 import mharImage2 from '../images/Mhar7.png';
@@ -11,6 +11,7 @@ import {
   ORANGE,
   YELLOW,
   BLUE,
+  BLACK,
   PINK,
   FONT_SIZE,
   IMAGE_SIZE,
@@ -22,7 +23,7 @@ import PlayCircleIcon from '@mui/icons-material/PlayCircle';
 
 import pingImage from '../images/tech-header.png';
 import photoAppImage from '../images/photo-app.png';
-import cs448bProjectImage from '../images/cs448b.png';
+import cs448bProjectImage from '../images/cs448b-transparent.png';
 import spotifyImage from '../images/spotify-header.png';
 import bospiesImage from '../images/bospies.png';
 
@@ -38,7 +39,7 @@ const ProjectCard = ({ isLightMode, textColor, projectImage, title, description,
   return (
     <Grid container mt={6} columnSpacing={4}>
       <Grid item xs={12} md={7}>
-        <img src={projectImage} className='projectImage' style={{ width: '100%', height: '100%', objectFit: 'cover' }}></img>
+        <img src={projectImage} className='backgroundChange' style={{ width: '100%', height: '100%', objectFit: 'cover' }}></img>
       </Grid>
       <Grid item xs={12} md={5} sx={{mt: {xs: 2, md: 0}}}>
         <OutlinedChip text={language} isLightMode={isLightMode} textColor={textColor} />
@@ -98,22 +99,18 @@ const Projects = ({ isLightMode, textColor }) => {
       <Stack direction='column'>
         <OutlinedChip text='Javascript' isLightMode={isLightMode} textColor={textColor} />
         <Typography sx={{ color: textColor, textAlign: 'left', fontFamily: "Petrona", fontSize: '36px', fontStyle: 'italic' }}>Bay Area Food Finder</Typography>
-        <img src={cs448bProjectImage} className='projectImage'></img>
-        {/* <Stack direction='row' columnGap={2} mt={2}>
-          <a href="https://mhartenorio.github.io/sf-restaurants-js/" target="_blank">
-            <Box sx={{ cursor: 'pointer', background: textColor, borderRadius: 200, width: 'fit-content', padding: '4px 16px' }}>
-              <Typography sx={{ color: isLightMode ? 'white' : 'black', textAlign: 'left', fontFamily: "'Inter', sans-serif", fontWeight: 600, fontSize: '14px' }}>Demo</Typography>
-            </Box>
-          </a>
-          <a href="https://github.com/mhartenorio/sf-restaurants-js" target="_blank">
-            <GitHubIcon className='tab' fontSize='large' htmlColor={textColor} />
-          </a>
-        </Stack> */}
-        {/* <PlayCircleIcon className='tab' fontSize='large' htmlColor={textColor} /> */}
+        {/* <Box width='100%' sx={{backgroundColor: 'red'}}>
+        <img src={cs448bProjectImage} className='projectImage' style={{position: 'absolute'}}></img>
+        </Box> */}
+        <Box 
+          component='img'
+          src={cs448bProjectImage}
+          sx={{background: 'black'}}
+          className='backgroundChange'
+        />
         <Typography sx={{ fontFamily: "'Inter', sans-serif", textAlign: 'left', mt: 2, color: textColor }}>
           Using d3.js and a Yelp dataset, I implemented an interactive visualization software that shows all coffee shops, cafes, and bubble tea shops in a map of the Bay Area. This visualization will show shops that lie in the intersection of the two circles and satisfies the price, rating, and search constraints.
         </Typography>
-
         <Stack direction='row' columnGap={1} rowGap={1} mt={1}>
           <a href="https://mhartenorio.github.io/sf-restaurants-js/" target="_blank">
             <PlayCircleIcon className='tab' fontSize='large' htmlColor={textColor} />

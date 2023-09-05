@@ -3,6 +3,7 @@ const ORANGE = '#EE4700'
 const YELLOW = '#FFC700'
 const BLUE = '#0043EE'
 const PINK = '#FF0099'
+const BLACK = '#1E1E1E';
 
 // const FONT_FAMILY = "'Overpass Mono', monospace"
 const FONT_FAMILY = 'Petrona'
@@ -25,6 +26,7 @@ export {
   YELLOW,
   BLUE,
   PINK,
+  BLACK,
   FONT_SIZE,
   FONT_FAMILY,
   IMAGE_SIZE

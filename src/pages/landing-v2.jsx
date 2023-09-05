@@ -41,16 +41,16 @@ const LandingV2 = ({ isLightMode, textColor }) => {
 
   // useEffect(() => {
   //   if (!showMhar) return;
-    // const intervalId = setInterval(() => {
-    //   console.log(currentIndex)
-    //   if (currentIndex === IMAGES_SLIDESHOW.length - 1) {
-    //     setCurrentIndex(0);
-    //   }
-    //   else {
-    //     setCurrentIndex(currentIndex + 1);
-    //   }
-    //   return () => clearInterval(intervalId);
-    // }, 1000)
+  // const intervalId = setInterval(() => {
+  //   console.log(currentIndex)
+  //   if (currentIndex === IMAGES_SLIDESHOW.length - 1) {
+  //     setCurrentIndex(0);
+  //   }
+  //   else {
+  //     setCurrentIndex(currentIndex + 1);
+  //   }
+  //   return () => clearInterval(intervalId);
+  // }, 1000)
   // }, [showMhar])
 
   return (
@@ -72,7 +72,7 @@ const LandingV2 = ({ isLightMode, textColor }) => {
           gradientColor={isLightMode ? [255, 255, 255] : [30, 30, 30]}
         // gradientColor={[255, 252, 243]}
         >
-          <Typography sx={{ fontSize: MQ_FONT_SIZE, fontWeight: 600, color: textColor, fontFamily: "'Inter', sans-serif" }}>
+          <Typography variant='h1' sx={{ fontSize: MQ_FONT_SIZE, fontWeight: 600, color: textColor, fontFamily: "'Inter', sans-serif" }}>
             {/* Hello! 👋 My name is Mhar Tenorio. 👨‍💻 I am a senior at Stanford University 🌲 studying a combination of Computer Science and Art.  */}
             CS + Art @ Stanford • Class of '24 • Frontend Engineer • Previously Squarespace and Purposer •&nbsp;
           </Typography>
@@ -102,7 +102,7 @@ const LandingV2 = ({ isLightMode, textColor }) => {
           </Stack>
           <Stack direction='row' columnGap={2}>
             <Typography
-              // variant='h1'
+              variant='h1'
               sx={{
                 fontFamily: FONT_FAMILY,
                 whiteSpace: 'nowrap',
@@ -117,7 +117,7 @@ const LandingV2 = ({ isLightMode, textColor }) => {
               onMouseEnter={() => setShowMhar(true)}
               onMouseLeave={() => setShowMhar(false)}
             >
-              Mhar&nbsp;
+              M<span style={{ fontFamily: "'Scrouble Outline', sans-serif" }}>h</span>ar&nbsp;
               {!showMhar ? (
                 <Box
                   component="img"
@@ -132,24 +132,26 @@ const LandingV2 = ({ isLightMode, textColor }) => {
                 // />
                 <span>👨‍💻</span>
               )}
-              &nbsp;Tenorio
+              &nbsp;T<span style={{ fontFamily: "'Scrouble Outline', sans-serif" }}>e</span>no<span style={{ fontFamily: "'Scrouble Outline', sans-serif" }}>r</span>io
             </Typography>
             <div style={{ width: '100%', height: '85%', background: ORANGE, borderRadius: 200 }} />
           </Stack>
           <Stack direction='row' columnGap={2}>
             <div style={{ width: '100%', height: '85%', background: YELLOW, borderRadius: 200 }} />
-            <Typography className='tab' sx={{
-              fontFamily: FONT_FAMILY,
-              whiteSpace: 'nowrap',
-              alignItems: 'center',
-              height: '100%',
-              fontSize: FONT_SIZE,
-              fontWeight: 300,
-              letterSpacing: -2,
-              color: textColor
-            }}>
-              Experience 💻
-            </Typography>
+            <Link to='/experience'>
+              <Typography className='tab' sx={{
+                fontFamily: FONT_FAMILY,
+                whiteSpace: 'nowrap',
+                alignItems: 'center',
+                height: '100%',
+                fontSize: FONT_SIZE,
+                fontWeight: 300,
+                letterSpacing: -2,
+                color: textColor
+              }}>
+                Experience 💻
+              </Typography>
+            </Link>
           </Stack>
           <Stack direction='row' columnGap={2}>
             <Link to='/projects'>

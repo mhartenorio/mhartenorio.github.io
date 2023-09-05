@@ -1,5 +1,7 @@
 import React from 'react';
 import './about.css';
+import './projects.css';
+
 import Grid from '@mui/material/Grid';
 import mharImage from '../images/Mhar.png';
 import mharImage2 from '../images/Mhar7.png';
@@ -106,33 +108,35 @@ const About = ({ isLightMode, textColor }) => {
       </Stack>
       <Stack direction='row' columnGap={2}>
         <Box
-          sx={{ width: '220px', height: '220px', objectFit: 'cover', '&:hover': { outline: `8px solid ${GREEN}` } }}
+          className='backgroundChange'
+          sx={{ width: '220px', height: '220px', objectFit: 'cover',  }}
         >
-          <img src={mharImage} style={{width: '220px', height: '220px', objectFit: 'cover', backgroundColor: GREEN}}/>
+          <img src={mharImage} style={{ width: '220px', height: '220px', objectFit: 'cover', backgroundColor: GREEN }} />
         </Box>
         <Box
-          sx={{ width: '220px', height: '220px', objectFit: 'cover', '&:hover': { outline: `8px solid ${GREEN}` } }}
+          className='backgroundChange'
+          sx={{ width: '220px', height: '220px', objectFit: 'cover',  }}
         >
-          <img src={mharImage2} style={{width: '220px', height: '220px', objectFit: 'cover', backgroundColor: GREEN}}/>
+          <img src={mharImage2} style={{ width: '220px', height: '220px', objectFit: 'cover', backgroundColor: GREEN }} />
         </Box>
       </Stack>
-      <br/>
-      <Stack direction='column' rowGap={2} sx={{color: textColor}}>
-      <Typography textAlign='left' sx={{fontFamily: "'Inter', sans-serif", fontSize: '18px'}}>
-        Hello there! I am <b>Mhar</b>. I'm a senior and I'm currently studying Computer Science with a concentration in Human-Computer Interaction and Artificial Intelligence, and Art Practice at Stanford University.
-      </Typography>
-      <Typography textAlign='left' sx={{fontFamily: "'Inter', sans-serif", fontSize: '18px'}}>
-        I am interested in combining my skills as a human-centered designer and as a full-stack software developer to build websites and applications centered around social good and positive impact. 
-        I was most recently a Software Engineer Intern for the frontend team at <a href='https://squarespace.com' target='_blank' style={{display: 'inline-block', fontWeight: 'bold', color: textColor}}>Squarespace</a>, 
-        a website building tool used by over four million users worldwide. Before that, I was an intern for an e-commerce start-up called <a href='https://purposer.com' target='_blank' style={{display: 'inline-block', fontWeight: 'bold', color: textColor}}>Purposer</a>, 
-        which is centered around purposeful spending and ethical consumption and launched winter of 2022.      
-      </Typography>
-      <Typography textAlign='left' sx={{fontFamily: "'Inter', sans-serif", fontSize: '18px'}}>
-        As an artist, I love exploring first-generation immigrant identities, as someone who moved to the United States in 2015. I do mostly digital-based work that deal with time, memory, and ideas of home. See my art and design work <a href='https://mhar.squarespace.com' target='_blank' style={{display: 'inline-block', color: textColor}}>here!</a>
-      </Typography>
-      <Typography textAlign='left' sx={{fontFamily: "'Inter', sans-serif", fontSize: '18px'}}>
-      Outside of academics, I am invested in pop culture and listening to music! I geek over really cool graphic design or UI/UX design. I like dancing in my room and ranking things I like. 
-      </Typography>
+      <br />
+      <Stack direction='column' rowGap={2} sx={{ color: textColor }}>
+        <Typography textAlign='left' sx={{ fontFamily: "'Inter', sans-serif", fontSize: '18px' }}>
+          Hello there! I am <b>Mhar</b>. I'm a senior and I'm currently studying Computer Science with a concentration in Human-Computer Interaction and Artificial Intelligence, and Art Practice at Stanford University.
+        </Typography>
+        <Typography textAlign='left' sx={{ fontFamily: "'Inter', sans-serif", fontSize: '18px' }}>
+          I am interested in combining my skills as a human-centered designer and as a full-stack software developer to build websites and applications centered around social good and positive impact.
+          I was most recently a Software Engineer Intern for the frontend team at <a href='https://squarespace.com' target='_blank' style={{ display: 'inline-block', fontWeight: 'bold', color: textColor }}>Squarespace</a>,
+          a website building tool used by over four million users worldwide. Before that, I was an intern for an e-commerce start-up called <a href='https://purposer.com' target='_blank' style={{ display: 'inline-block', fontWeight: 'bold', color: textColor }}>Purposer</a>,
+          which is centered around purposeful spending and ethical consumption and launched winter of 2022.
+        </Typography>
+        <Typography textAlign='left' sx={{ fontFamily: "'Inter', sans-serif", fontSize: '18px' }}>
+          As an artist, I love exploring first-generation immigrant identities, as someone who moved to the United States in 2015. I do mostly digital-based work that deal with time, memory, and ideas of home. <a href='https://mhar.squarespace.com' target='_blank' style={{ display: 'inline-block', fontWeight: 'bold', color: textColor }}>See my art and design work!</a>
+        </Typography>
+        <Typography textAlign='left' sx={{ fontFamily: "'Inter', sans-serif", fontSize: '18px' }}>
+          Outside of academics, I am invested in pop culture and listening to music! I geek over really cool graphic design or UI/UX design. I like dancing in my room and ranking things I like. <a href='https://open.spotify.com/user/mhartenorio?si=b4c1e8fe274f464d&nd=1' target='_blank' style={{ display: 'inline-block', fontWeight: 'bold', color: textColor }}>See what I'm listening to!</a>
+        </Typography>
       </Stack>
     </Container>
 
