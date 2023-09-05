@@ -132,10 +132,10 @@ const About = ({ isLightMode, textColor }) => {
           which is centered around purposeful spending and ethical consumption and launched winter of 2022.
         </Typography>
         <Typography textAlign='left' sx={{ fontFamily: "'Inter', sans-serif", fontSize: '18px' }}>
-          As an artist, I love exploring first-generation immigrant identities, as someone who moved to the United States in 2015. I do mostly digital-based work that deal with time, memory, and ideas of home. <a href='https://mhar.squarespace.com' target='_blank' style={{ display: 'inline-block', fontWeight: 'bold', color: textColor }}>See my art and design work!</a>
+          As an artist, I love exploring first-generation immigrant identities, as someone who moved to the United States in 2015. I do mostly digital-based work that deal with time, memory, and ideas of home. <a href='https://mhar.squarespace.com' target='_blank' style={{ display: 'inline', fontWeight: 'bold', color: textColor }}>See my art and design work!</a>
         </Typography>
         <Typography textAlign='left' sx={{ fontFamily: "'Inter', sans-serif", fontSize: '18px' }}>
-          Outside of academics, I am invested in pop culture and listening to music! I geek over really cool graphic design or UI/UX design. I like dancing in my room and ranking things I like. <a href='https://open.spotify.com/user/mhartenorio?si=b4c1e8fe274f464d&nd=1' target='_blank' style={{ display: 'inline-block', fontWeight: 'bold', color: textColor }}>See what I'm listening to!</a>
+          Outside of academics, I am invested in pop culture and listening to music! I geek over really cool graphic design or UI/UX design. I like dancing in my room and ranking things I like. <a href='https://open.spotify.com/user/mhartenorio?si=b4c1e8fe274f464d&nd=1' target='_blank' style={{ display: 'inline', fontWeight: 'bold', color: textColor }}>See what I'm listening to!</a>
         </Typography>
       </Stack>
     </Container>

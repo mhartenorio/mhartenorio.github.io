@@ -1,11 +1,8 @@
 import { Box, Container, Stack, Typography } from '@mui/material';
 import React from 'react';
-import Header from '../components/header';
 import HeaderV3 from '../components/header3';
 import Marquee from "react-fast-marquee";
-import { DarkMode, LightMode } from '@mui/icons-material';
 import { useState } from 'react';
-import { useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import image1 from '../images/Mhar.png';
 import image2 from '../images/Mhar2.JPG';
@@ -14,6 +11,7 @@ import image4 from '../images/Mhar4.png';
 import image5 from '../images/Mhar5.JPG';
 import image6 from '../images/Mhar6.JPG';
 import image7 from '../images/Mhar7.png';
+import gif from '../images/Mhar-GIF.gif';
 import {
   GREEN,
   ORANGE,
@@ -34,24 +32,8 @@ const MQ_FONT_SIZE = {
 }
 
 const LandingV2 = ({ isLightMode, textColor }) => {
-  // const [waveClassName, setWaveClassName] = useState('wave');
   const [waveHover, setWaveHover] = useState(false);
   const [showMhar, setShowMhar] = useState(false);
-  const [currentIndex, setCurrentIndex] = useState(0);
-
-  // useEffect(() => {
-  //   if (!showMhar) return;
-  // const intervalId = setInterval(() => {
-  //   console.log(currentIndex)
-  //   if (currentIndex === IMAGES_SLIDESHOW.length - 1) {
-  //     setCurrentIndex(0);
-  //   }
-  //   else {
-  //     setCurrentIndex(currentIndex + 1);
-  //   }
-  //   return () => clearInterval(intervalId);
-  // }, 1000)
-  // }, [showMhar])
 
   return (
     <>
@@ -73,7 +55,6 @@ const LandingV2 = ({ isLightMode, textColor }) => {
         // gradientColor={[255, 252, 243]}
         >
           <Typography variant='h1' sx={{ fontSize: MQ_FONT_SIZE, fontWeight: 600, color: textColor, fontFamily: "'Inter', sans-serif" }}>
-            {/* Hello! 👋 My name is Mhar Tenorio. 👨‍💻 I am a senior at Stanford University 🌲 studying a combination of Computer Science and Art.  */}
             CS + Art @ Stanford • Class of '24 • Frontend Engineer • Previously Squarespace and Purposer •&nbsp;
           </Typography>
         </Marquee>
@@ -90,10 +71,7 @@ const LandingV2 = ({ isLightMode, textColor }) => {
                 fontWeight: 300,
                 letterSpacing: -2,
                 color: textColor,
-                // fontStyle: 'italic',
               }}
-              // onMouseEnter={() => setWaveClassName('')}
-              // onMouseLeave={() => setWaveClassName('wave')}
               onMouseEnter={() => setWaveHover(true)}
               onMouseLeave={() => setWaveHover(false)}
             >
@@ -109,10 +87,9 @@ const LandingV2 = ({ isLightMode, textColor }) => {
                 alignItems: 'center',
                 height: '100%',
                 fontSize: FONT_SIZE,
-                // fontWeight: 600,
                 letterSpacing: -2,
                 color: textColor,
-                alignItems: 'center'
+                alignItems: 'center',
               }}
               onMouseEnter={() => setShowMhar(true)}
               onMouseLeave={() => setShowMhar(false)}
@@ -125,12 +102,11 @@ const LandingV2 = ({ isLightMode, textColor }) => {
                   src={image1}
                 />
               ) : (
-                // <Box
-                //   component="img"
-                //   sx={{ width: IMAGE_SIZE, height: IMAGE_SIZE, display: 'inline-block', mb: -1, objectFit: 'cover' }}
-                //   src={image1}
-                // />
-                <span>👨‍💻</span>
+                <Box
+                  component="img"
+                  sx={{ width: IMAGE_SIZE, height: IMAGE_SIZE, display: 'inline-block', mb: -1, objectFit: 'cover', outline: '2px solid black' }}
+                  src={gif}
+                />
               )}
               &nbsp;T<span style={{ fontFamily: "'Scrouble Outline', sans-serif" }}>e</span>no<span style={{ fontFamily: "'Scrouble Outline', sans-serif" }}>r</span>io
             </Typography>
