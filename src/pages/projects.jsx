@@ -75,11 +75,11 @@ const Projects = ({ isLightMode, textColor }) => {
       },
       padding: '72px 0px'
     }}>
-      <Box sx={{ cursor: 'pointer', background: BLUE, borderRadius: 200, width: 'fit-content', padding: '4px 16px' }}>
-        <Link to="/">
+      <Link to="/">
+        <Box sx={{ cursor: 'pointer', background: BLUE, borderRadius: 200, width: 'fit-content', padding: '4px 16px' }}>
           <Typography sx={{ color: 'white', textAlign: 'left', fontFamily: "'Inter', sans-serif", fontWeight: 600, fontSize: '18px' }}>← Home</Typography>
-        </Link>
-      </Box>
+        </Box>
+      </Link>
       <Stack direction='row' columnGap={2} alignItems='center' justifyContent='space-between' height='100%' mb={1}>
         {/* <Box sx={{ cursor: 'pointer', width: '100%', height: FONT_SIZE, background: PINK, borderRadius: 200 }}/> */}
         <Typography className='tab' sx={{

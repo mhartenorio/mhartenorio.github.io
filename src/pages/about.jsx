@@ -86,11 +86,11 @@ const About = ({ isLightMode, textColor }) => {
       },
       padding: '72px 0px'
     }}>
-      <Box sx={{ cursor: 'pointer', background: PINK, borderRadius: 200, width: 'fit-content', padding: '4px 16px' }}>
-        <Link to="/">
-          <Typography sx={{ color: textColor, textAlign: 'left', fontFamily: "'Inter', sans-serif", fontWeight: 600, fontSize: '18px' }}>← Home</Typography>
-        </Link>
-      </Box>
+      <Link to="/">
+        <Box sx={{ cursor: 'pointer', background: PINK, borderRadius: 200, width: 'fit-content', padding: '4px 16px' }}>
+          <Typography sx={{ color: 'black', textAlign: 'left', fontFamily: "'Inter', sans-serif", fontWeight: 600, fontSize: '18px' }}>← Home</Typography>
+        </Box>
+      </Link>
       <Stack direction='row' columnGap={2} alignItems='center' justifyContent='space-between' height='100%'>
         {/* <Box sx={{ cursor: 'pointer', width: '100%', height: FONT_SIZE, background: PINK, borderRadius: 200 }}/> */}
         <Typography className='tab' sx={{

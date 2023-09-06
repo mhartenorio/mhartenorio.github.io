@@ -1,5 +1,5 @@
 .backgroundChange:hover {
-  outline: 12px solid;
+  outline: 8px solid;
   animation: background-change 2s infinite;
   /* cursor: pointer; */
 }
