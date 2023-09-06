@@ -267,6 +267,13 @@ const Experience = ({ isLightMode, textColor }) => {
       <Typography sx={{ color: textColor, fontFamily: "'Inter', sans-serif", textAlign: 'left' }}>
         <b>Tools: </b> Git, GitHub, Figma, Adobe Photoshop, Adobe InDesign, Adobe XD, Blender
       </Typography>
+      <br/>
+
+      <Typography sx={{ textTransform: 'uppercase', fontFamily: "'Inter', sans-serif", fontWeight: 600, textAlign: 'left', color: textColor }}>Relevant Coursework</Typography>
+      <Divider sx={{ mt: 1, mb: 3, background: isLightMode ? '#F0F0F0' : 'white' }} />
+      <Typography sx={{ color: textColor, fontFamily: "'Inter', sans-serif", textAlign: 'left' }}>
+      Introduction to Human Computer Interaction, Web Applications, Cross-Platform Mobile Development, Social Computing, Data Visualization, Design and Analysis of Algorithms, Computer Organization and Systems, Introduction to Probability for Computer Scientists, Languages to Information, Modern Algorithmic Toolbox, Operating System Principles, Mathematical Foundations of Computing, Data as Material, Creativity in the Age of Facebook
+      </Typography>
 
       <br/>
       <br/>
