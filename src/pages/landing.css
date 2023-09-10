@@ -121,15 +121,6 @@
     }
 }
 
-@-webkit-keyframes landingArrow {
-    from {
-      transform: translateY(0px);
-    }
-    to {
-      transform: translateY(-10px);
-    }
-}
-
 .blob {
     position: absolute;
     top: 0px;

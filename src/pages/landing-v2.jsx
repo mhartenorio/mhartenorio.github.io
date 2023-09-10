@@ -75,7 +75,7 @@ const LandingV2 = ({ isLightMode, textColor }) => {
               onMouseEnter={() => setWaveHover(true)}
               onMouseLeave={() => setWaveHover(false)}
             >
-              Hello! <span class={'wave'}>{waveHover ? '🤝' : '👋'}</span> I'm
+              Hello! <span className={'wave'}>{waveHover ? '🤝' : '👋'}</span> I'm
             </Typography>
           </Stack>
           <Stack direction='row' columnGap={2}>

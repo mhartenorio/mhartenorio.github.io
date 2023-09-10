@@ -71,13 +71,13 @@
     margin-right: 0;
 } */
 
-.projectImage {
-    /* width: 100%;
+/* .projectImage {
+    width: 100%;
     height: auto;
     box-shadow: 8px 10px 0px 10px;
     border-radius: 36px;
-    border: 5px solid black; */
-}
+    border: 5px solid black;
+} */
 
 .projectImage:hover {
   outline: '8px solid black'

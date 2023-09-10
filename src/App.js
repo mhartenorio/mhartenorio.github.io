@@ -5,8 +5,9 @@ import Landing from './pages/landing';
 import Projects from './pages/projects';
 import About from './pages/about';
 import Experience from './pages/experience';
+import Design from './pages/design.tsx';
 
-import { HashRouter, Routes, Route, Switch, Link } from "react-router-dom";
+import { HashRouter, Routes, Route, Switch, Link, Navigate } from "react-router-dom";
 import LandingV2 from './pages/landing-v2';
 import { useEffect, useState } from 'react';
 import { DarkMode, LightMode } from '@mui/icons-material';
@@ -56,6 +57,7 @@ function App() {
           <Route exact path="/about" element={<About isLightMode={isLightMode} textColor={textColor}/>} />
           <Route exact path="/projects" element={<Projects isLightMode={isLightMode} textColor={textColor}/>} />
           <Route exact path="/experience" element={<Experience isLightMode={isLightMode} textColor={textColor}/>} />
+          <Route exact path="/design" element={<Design/>} />
         </Routes>
       <Typography variant='caption' padding={2} sx={{textTransform: 'uppercase', bottom: 0, color: textColor}}>
         Designed and developed by me :D
