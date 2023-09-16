@@ -1,7 +1,7 @@
 {
   "files": {
     "main.css": "/static/css/main.256d8a43.css",
-    "main.js": "/static/js/main.67903660.js",
+    "main.js": "/static/js/main.d794beba.js",
     "static/js/787.dd4029b4.chunk.js": "/static/js/787.dd4029b4.chunk.js",
     "static/media/Mhar2.JPG": "/static/media/Mhar2.34b07e4dc1b86e7aa42e.JPG",
     "static/media/Mhar-GIF.gif": "/static/media/Mhar-GIF.fd52008e5b8657c6fd08.gif",
@@ -32,11 +32,11 @@
     "static/media/gradient.svg": "/static/media/gradient.dd7dc6588854de569811a3390028dbec.svg",
     "static/media/wave1.svg": "/static/media/wave1.d382869570d7fc0053f9fccdd64e271d.svg",
     "main.256d8a43.css.map": "/static/css/main.256d8a43.css.map",
-    "main.67903660.js.map": "/static/js/main.67903660.js.map",
+    "main.d794beba.js.map": "/static/js/main.d794beba.js.map",
     "787.dd4029b4.chunk.js.map": "/static/js/787.dd4029b4.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.256d8a43.css",
-    "static/js/main.67903660.js"
+    "static/js/main.d794beba.js"
   ]
 }
