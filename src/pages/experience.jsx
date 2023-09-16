@@ -113,13 +113,13 @@ const Experience = ({ isLightMode, textColor }) => {
       </Stack>
       <Box sx={{ mt: 2, width: { sm: '50vw', md: '35vw' }, color: textColor }}>
         <Typography textAlign='left'>
-          • Join the frontend team to create website building tools used by over 4 million users worldwide.
+          • Joined the frontend team to create website building tools used by over 4 million users worldwide.
         </Typography>
         <Typography textAlign='left'>
-          • Take leadership of the implementation and shipment of a feature to production that is used at least 590,000 times every month from the bottom up, utilizing TypeScript and an internal component library.
+          • Took leadership of the implementation and shipment of a feature to production that is used at least 590,000 times every month from the bottom up, utilizing TypeScript and an internal component library.
         </Typography>
         <Typography textAlign='left'>
-          • Collaborate cross-functionally with product designers, managers, and test engineers to improve user experience by reducing the time to complete a task by almost 50%.
+          • Collaborated cross-functionally with product designers, managers, and test engineers to improve user experience by reducing the time to complete a task by almost 50%.
         </Typography>
       </Box>
       <br />
@@ -148,13 +148,13 @@ const Experience = ({ isLightMode, textColor }) => {
             </Stack>
             <Container sx={{ mt: 2, width: { sm: '50vw', md: '35vw' }, ml: 0, pl: 0, color: textColor }} disableGutters>
               <Typography textAlign='left' sx={{ mr: 0, paddingRight: 0 }}>
-                • Develop in an e-commerce start-up based around purposeful spending that benefit different social movements.
+                • Developed in an e-commerce start-up based around purposeful spending that benefit different social movements.
               </Typography>
               <Typography textAlign='left'>
-                • Contribute in full-stack development to kickstart the product launch in late 2022, with about 700+ seller sign-ups.
+                • Contributed in full-stack development to kickstart the product launch in late 2022, with about 700+ seller sign-ups.
               </Typography>
               <Typography textAlign='left'>
-                • Build 50+ interfaces, components, and data visualizations to create human-centered user interactions from scratch using multiple React libraries.
+                • Built 50+ interfaces, components, and data visualizations to create human-centered user interactions from scratch using multiple React libraries.
               </Typography>
             </Container>
           </Container>
@@ -183,10 +183,10 @@ const Experience = ({ isLightMode, textColor }) => {
       </Stack>
       <Box sx={{ mt: 2, width: { sm: '50vw', md: '35vw' }, color: textColor }}>
         <Typography textAlign='left'>
-          • Spearhead the visual, graphic, and layout design of the magazine distributed to 2,000+ students and staff.
+          • Spearheaded the visual, graphic, and layout design of the magazine distributed to 2,000+ students and staff.
         </Typography>
         <Typography textAlign='left'>
-          • Satisfy writer and editor needs in finding and designing graphics to accompany published articles.
+          • Satisfied writer and editor needs in finding and designing graphics to accompany published articles.
         </Typography>
       </Box>
       {/* <Container sx={{mt: 2}} disableGutters>
@@ -227,7 +227,7 @@ const Experience = ({ isLightMode, textColor }) => {
                 • Designed high-visibility promotional posts, merchandise, posters for the museum.
               </Typography>
               <Typography textAlign='left' sx={{ mr: 0, paddingRight: 0 }}>
-                • Help in holding events increasing visibility and accessibility to the art scene.
+                • Helped in holding events increasing visibility and accessibility to the art scene.
               </Typography>
             </Container>
           </Container>

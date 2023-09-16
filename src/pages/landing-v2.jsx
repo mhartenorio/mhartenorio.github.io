@@ -31,6 +31,9 @@ const MQ_FONT_SIZE = {
   md: '24px'
 }
 
+// const STYLISH_FONT = "'Scrouble Outline', sans-serif" ;
+const STYLISH_FONT = FONT_FAMILY;
+
 const LandingV2 = ({ isLightMode, textColor }) => {
   const [waveHover, setWaveHover] = useState(false);
   const [showMhar, setShowMhar] = useState(false);
@@ -94,7 +97,7 @@ const LandingV2 = ({ isLightMode, textColor }) => {
               onMouseEnter={() => setShowMhar(true)}
               onMouseLeave={() => setShowMhar(false)}
             >
-              M<span style={{ fontFamily: "'Scrouble Outline', sans-serif" }}>h</span>ar&nbsp;
+              M<span style={{ fontFamily: STYLISH_FONT }}>h</span>ar&nbsp;
               {!showMhar ? (
                 <Box
                   component="img"
@@ -108,7 +111,7 @@ const LandingV2 = ({ isLightMode, textColor }) => {
                   src={gif}
                 />
               )}
-              &nbsp;T<span style={{ fontFamily: "'Scrouble Outline', sans-serif" }}>e</span>no<span style={{ fontFamily: "'Scrouble Outline', sans-serif" }}>r</span>io
+              &nbsp;T<span style={{ fontFamily: STYLISH_FONT }}>e</span>no<span style={{ fontFamily: STYLISH_FONT }}>r</span>io
             </Typography>
             <div style={{ width: '100%', height: '85%', background: ORANGE, borderRadius: 200 }} />
           </Stack>
