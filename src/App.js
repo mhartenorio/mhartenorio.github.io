@@ -12,6 +12,7 @@ import LandingV2 from './pages/landing-v2';
 import { useEffect, useState } from 'react';
 import { DarkMode, LightMode } from '@mui/icons-material';
 import { Typography } from '@mui/material';
+import LandingV3 from './pages/landing-v3';
 
 
 
@@ -38,22 +39,23 @@ function App() {
       >
         {isLightMode ?
           <>
-            <LightMode fontSize='large' sx={{ position: 'fixed', top: 0, right: 0, padding: 2, '&:hover': { cursor: 'pointer' } }} />
-            <LightMode fontSize='large' sx={{ position: 'fixed', top: 0, left: 0, padding: 2, '&:hover': { cursor: 'pointer' } }} />
-            <LightMode fontSize='large' sx={{ position: 'fixed', bottom: 0, left: 0, padding: 2, '&:hover': { cursor: 'pointer' } }} />
-            <LightMode fontSize='large' sx={{ position: 'fixed', bottom: 0, right: 0, padding: 2, '&:hover': { cursor: 'pointer' } }} />
+            <LightMode fontSize='large' sx={{ position: 'fixed', top: 0, right: 0, padding: 2, '&:hover': { cursor: 'pointer' }, zIndex: 99999 }} />
+            {/* <LightMode fontSize='large' sx={{ position: 'fixed', top: 0, left: 0, padding: 2, '&:hover': { cursor: 'pointer' }, zIndex: 99999 }} /> */}
+            {/* <LightMode fontSize='large' sx={{ position: 'fixed', bottom: 0, left: 0, padding: 2, '&:hover': { cursor: 'pointer' }, zIndex: 99999 }} /> */}
+            {/* <LightMode fontSize='large' sx={{ position: 'fixed', bottom: 16, right: 0, padding: 2, '&:hover': { cursor: 'pointer' }, zIndex: 99999}} /> */}
           </>
           :
           <>
-            <DarkMode fontSize='large' htmlColor='white' sx={{ position: 'fixed', top: 0, right: 0, padding: 2, '&:hover': { cursor: 'pointer' } }} />
-            <DarkMode fontSize='large' htmlColor='white' sx={{ position: 'fixed', top: 0, left: 0, padding: 2, '&:hover': { cursor: 'pointer' } }} />
-            <DarkMode fontSize='large' htmlColor='white' sx={{ position: 'fixed', bottom: 0, left: 0, padding: 2, '&:hover': { cursor: 'pointer' } }} />
-            <DarkMode fontSize='large' htmlColor='white' sx={{ position: 'fixed', bottom: 0, right: 0, padding: 2, '&:hover': { cursor: 'pointer' } }} />
+            <DarkMode fontSize='large' htmlColor='white' sx={{ position: 'fixed', top: 0, right: 0, padding: 2, '&:hover': { cursor: 'pointer' }, zIndex: 99999 }} />
+            {/* <DarkMode fontSize='large' htmlColor='white' sx={{ position: 'fixed', top: 0, left: 0, padding: 2, '&:hover': { cursor: 'pointer' }, zIndex: 99999 }} /> */}
+            {/* <DarkMode fontSize='large' htmlColor='white' sx={{ position: 'fixed', bottom: 0, left: 0, padding: 2, '&:hover': { cursor: 'pointer' }, zIndex: 99999 }} /> */}
+            {/* <DarkMode fontSize='large' htmlColor='white' sx={{ position: 'fixed', bottom: 16, right: 0, padding: 2, '&:hover': { cursor: 'pointer' }, zIndex: 99999 }} /> */}
           </>
         }
       </div>
         <Routes>
-          <Route path="/" element={<LandingV2 isLightMode={isLightMode} textColor={textColor}/>} />
+          <Route path="/" element={<LandingV3 isLightMode={isLightMode} textColor={textColor}/>} />
+          {/* <Route path="/" element={<Landing/>} /> */}
           <Route exact path="/about" element={<About isLightMode={isLightMode} textColor={textColor}/>} />
           <Route exact path="/projects" element={<Projects isLightMode={isLightMode} textColor={textColor}/>} />
           <Route exact path="/experience" element={<Experience isLightMode={isLightMode} textColor={textColor}/>} />

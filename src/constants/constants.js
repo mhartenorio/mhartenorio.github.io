@@ -14,11 +14,24 @@ const FONT_SIZE = {
   md: '72px'
 }
 
+const FONT_SIZE_V3 = {
+    xs: '42px',
+    sm: '60px',
+    md: '90px'
+}
+
 const IMAGE_SIZE = {
   xs: '50px',
   sm: '68px',
   md: '80px'
 }
+
+const IMAGE_SIZE_V3 = {
+    xs: '64px',
+    sm: '90px',
+    md: '120px',
+    lg: '200px'
+  }
 
 export {
   GREEN,
@@ -29,5 +42,7 @@ export {
   BLACK,
   FONT_SIZE,
   FONT_FAMILY,
-  IMAGE_SIZE
+  IMAGE_SIZE,
+  FONT_SIZE_V3,
+  IMAGE_SIZE_V3
 }

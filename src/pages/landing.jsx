@@ -117,15 +117,15 @@ const Landing = () => {
           {/* <div className='landingArrow'>Selected Works ↓</div> */}
         </div>
       </div>
-      <div ref={projectsRef}></div>
-      <Projects />
+      {/* <div ref={projectsRef}></div> */}
+      {/* <Projects /> */}
 
-      <div className='projectsTitle'>
+      {/* <div className='projectsTitle'>
         <a href="mailto:mhar@stanford.edu" className='letsChat'>
           📬 Let's chat! 📬
         </a>
-      </div>
-      <div className='footer'>Made by Mhar Tenorio &nbsp;|&nbsp; 2023</div>
+      </div> */}
+      {/* <div className='footer'>Made by Mhar Tenorio &nbsp;|&nbsp; 2023</div> */}
     </div>
   );
 }

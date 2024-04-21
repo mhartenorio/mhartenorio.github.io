@@ -34,9 +34,12 @@
    
     width: min(240px, 32vw);
     height: auto;
+
+    left: 50%;
+    transform: translateX(-50%);
     /* Magic! */
     /* max-width: 28vw; */
-    /* justify-content: center; */
+    justify-content: center;
     border-radius: 50%;
     /* box-shadow: 10px 12px 0px 0.5vw; */
     z-index: 1;

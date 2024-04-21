@@ -1,0 +1,162 @@
+.butterfly {
+    position: fixed;
+    font-size: 2rem;
+    animation: fly2 10s infinite;
+    animation-timing-function: linear;
+}
+
+.butterfly-sparkle {
+    position: fixed;
+    font-size: 2rem;
+    margin-top: 20px;
+    margin-right: -30px;
+    animation: fly2 10s infinite;
+    animation-timing-function: linear;
+}
+
+.butterfly:hover .butterfly:after {
+    content: 'YAY';
+}
+
+.fairy {
+    position: fixed;
+    font-size: 2rem;
+    animation: fly3 10s infinite;
+    animation-timing-function: linear;
+    z-index: 90;
+}
+
+.fairy-sparkle {
+    position: fixed;
+    font-size: 2rem;
+    margin-top: 20px;
+    margin-right: -30px;
+    animation: fly3 10s infinite;
+    animation-timing-function: linear;
+    z-index: 90;
+}
+
+.bee {
+    position: fixed;
+    font-size: 2rem;
+    animation: fly 10s infinite;
+    animation-timing-function: linear;
+}
+
+.bee-sparkle {
+    position: fixed;
+    font-size: 2rem;
+    margin-top: 20px;
+    margin-right: -30px;
+    animation: fly 10s infinite;
+    animation-timing-function: linear;
+}
+
+
+.butterfly3 {
+    position: fixed;
+    font-size: 2rem;
+    animation: fly 10s infinite;
+}
+
+.butterfly4 {
+    position: fixed;
+    font-size: 2rem;
+    animation: fly 5s infinite;
+}
+
+@keyframes fly {
+    0% {
+        right: 5%;
+        top: 95%;
+    }
+
+    20% {
+        right: 25%;
+        top: 65%;
+    }
+
+    40% {
+        right: 40%;
+        top: 50%;
+    }
+
+    60% {
+        right: 55%;
+        top: 30%;
+    }
+
+    80% {
+        right: 75%;
+        top: 20%;
+    }
+
+    100% {
+        right: 100%;
+        top: 0;
+    }
+}
+
+@keyframes fly2 {
+    0% {
+        right: 5%;
+        top: 95%;
+    }
+
+    20% {
+        right: 12%;
+        top: 65%;
+    }
+
+    40% {
+        right: 20%;
+        top: 50%;
+    }
+
+    60% {
+        right: 28%;
+        top: 30%;
+    }
+
+    80% {
+        right: 36%;
+        top: 16%;
+    }
+
+    100% {
+        right: 40%;
+        top: -40px;
+    }
+}
+
+@keyframes fly3 {
+    0% {
+        right: 5%;
+        top: 95%;
+    }
+
+    20% {
+        right: 25%;
+        top: 80%;
+    }
+
+    40% {
+        right: 40%;
+        top: 65%;
+    }
+
+    60% {
+        right: 55%;
+        top: 53%;
+    }
+
+    80% {
+        right: 75%;
+        top: 44%;
+    }
+
+    100% {
+        right: 100%;
+        top: 40%;
+    }
+}

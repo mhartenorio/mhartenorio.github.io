@@ -61,6 +61,7 @@
 .landingHeadline {
     font-size: min(400%, 9vw);
     font-family: 'Oi';
+    text-align: center;
 }
 
 .landingHeadlineMyName {
@@ -79,6 +80,7 @@
 
 .landingSecondLine {
     margin-top: max(-7%, -12vh);
+    text-align: center;
 }
 
 .landingSubheading {
@@ -189,3 +191,46 @@ z-index: 0;
    60% { transform: rotate( 0.0deg) }  /* Reset for the last half to pause */
   100% { transform: rotate( 0.0deg) }
 }
+
+
+
+
+ 
+  
+  /* .butterfly::after {
+    content: '';
+    display: block;
+    
+    animation: yAxis 2.5s infinite cubic-bezier(0.3, 0.27, 0.07, 1.64);
+  } */
+  
+  @keyframes yAxis {
+    50% {
+      animation-timing-function: cubic-bezier(0.02, 0.01, 0.21, 1);
+      transform: translateY(-100vh);
+    }
+  }
+  
+  @keyframes xAxis {
+    50% {
+      animation-timing-function: cubic-bezier(0.5, 2, 0.5, -2);
+      transform: translateX(100vw);
+    }
+  }
+
+  /* .butterfly {
+    animation:
+      x 2s linear infinite alternate,
+      y 2s infinite cubic-bezier(0.5,700,0.5,-700) alternate;
+  }
+  
+  @keyframes x {
+     to {
+       left:300px;
+     }
+  }
+  @keyframes y {
+     to {
+       top:199.5px;
+     }
+  } */

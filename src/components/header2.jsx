@@ -19,11 +19,13 @@ const Header2 = ({ goToProjects }) => {
   return (
     <Grid container rowSpacing={2} alignItems="center" justifyContent="center" style={{ padding: "8px", marginTop: "4px" }}>
       <Grid item xs={12} sm={12} md={2}>
-        <a onClick={goToProjects}>
+        {/* <a onClick={goToProjects}> */}
+        <Link to="/projects">
           <div className='textButton'>
             Projects
           </div>
-        </a>
+        </Link>
+        {/* </a> */}
       </Grid>
       <Grid item xs={12} sm={12} md={2} >
         <Link to="/about">
