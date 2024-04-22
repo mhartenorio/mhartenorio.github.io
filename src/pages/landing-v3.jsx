@@ -75,12 +75,12 @@ const LandingV3 = ({ isLightMode, textColor }) => {
 
     return (
         <div style={{overflow: 'auto'}}>
-            <div class='butterfly'>🦋</div>
-            <div class='butterfly-sparkle'>🐛</div>
-            <div class='bee'>🐝</div>
-            <div class='bee-sparkle'>🍯</div>
-            <div class='fairy'>🧚‍♀️</div>
-            <div class='fairy-sparkle'>✨</div>
+            <div className='butterfly'>🦋</div>
+            <div className='butterfly-sparkle'>🐛</div>
+            <div className='bee'>🐝</div>
+            <div className='bee-sparkle'>🍯</div>
+            <div className='fairy'>🧚‍♀️</div>
+            <div className='fairy-sparkle'>✨</div>
 
             {/* <div class="dot"></div> */}
             <Stack direction={{ xs: 'column-reverse', md: 'column' }} justifyContent={{ xs: 'center', md: 'space-between' }}
@@ -109,14 +109,13 @@ const LandingV3 = ({ isLightMode, textColor }) => {
                         <Stack direction={{ xs: 'row', md: 'row' }} rowGap={2} columnGap={2}>
                             {BUTTONS.map((buttonInfo, i) => {
                                 return (
-                                    <Link to={buttonInfo.link}>
+                                    <Link to={buttonInfo.link} key={i}>
                                     <Stack
                                         direction="row"
                                         columnGap={2}
                                         alignItems="center"
                                         onMouseEnter={() => setButtonTitleHover(buttonInfo.title)}
                                         onMouseLeave={() => setButtonTitleHover(null)}
-                                        key={i}
                                         sx={{ cursor: 'pointer' }}
                                     >
                                         <Box
