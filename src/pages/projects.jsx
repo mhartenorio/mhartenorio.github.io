@@ -26,6 +26,8 @@ import photoAppImage from '../images/photo-app.png';
 import cs448bProjectImage from '../images/cs448b-transparent.png';
 import spotifyImage from '../images/spotify-header.png';
 import bospiesImage from '../images/bospies.png';
+import nutritionSpotify from '../images/nutrition-facts-header-wider.png';
+
 
 const OutlinedChip = ({ text, isLightMode, textColor }) => {
   return (
@@ -123,6 +125,26 @@ const Projects = ({ isLightMode, textColor }) => {
       <ProjectCard
         isLightMode={isLightMode}
         textColor={textColor}
+        title={'My Music Diet'}
+        projectImage={nutritionSpotify}
+        description="Inspired by Receiptify, this app generates an image of the user's Top Tracks and Top Artists based on their Spotify listening activity in the style of a Nutrition Facts label."
+        demoLink={'https://mymusicdiet.netlify.app'}
+        githubLink='https://github.com/mhartenorio/spotify-nutrition-facts'
+        language='React'
+      /> 
+      {/* <ProjectCard
+        isLightMode={isLightMode}
+        textColor={textColor}
+        title={'Bay Area Food Finder'}
+        projectImage={cs448bProjectImage}
+        description='Using d3.js and a Yelp dataset, I implemented an interactive visualization software that shows all coffee shops, cafes, and bubble tea shops in a map of the Bay Area. This visualization will show shops that lie in the intersection of the two circles and satisfies the price, rating, and search constraints.'
+        demoLink={'https://mhartenorio.github.io/sf-restaurants-js/'}
+        githubLink='https://github.com/mhartenorio/sf-restaurants-js'
+        language='React'
+      /> */}
+      <ProjectCard
+        isLightMode={isLightMode}
+        textColor={textColor}
         title={'BOSPies'}
         projectImage={bospiesImage}
         description='Our team created a social computing system where Stanford students who are interested in study abroad and students who have previously done the program can connect.'
@@ -140,7 +162,7 @@ const Projects = ({ isLightMode, textColor }) => {
         githubLink='https://github.com/mhartenorio/Ping'
         language='React Native'
       />
-      <ProjectCard
+      {/* <ProjectCard
         isLightMode={isLightMode}
         textColor={textColor}
         title={'Photo Sharing'}
@@ -149,8 +171,8 @@ const Projects = ({ isLightMode, textColor }) => {
         demoLink={'https://youtu.be/zruWuQmHWa8'}
         // githubLink='https://github.com/mhartenorio/Ping'
         language='Full MERN Stack'
-      />
-      <ProjectCard
+      /> */}
+      {/* <ProjectCard
         isLightMode={isLightMode}
         textColor={textColor}
         title={'Spotify Top Tracks'}
@@ -159,7 +181,7 @@ const Projects = ({ isLightMode, textColor }) => {
         // demoLink={'https://youtu.be/zruWuQmHWa8'}
         githubLink='https://github.com/mhartenorio/Spotify-Top-Tracks'
         language='React Native'
-      />
+      /> */}
     </Container>
   )
 }
