@@ -21,8 +21,8 @@ function App() {
   const [isLightMode, setIsLightMode] = useState(true);
   const [showSettings, setShowSettings] = useState(false);
   const [textColor, setTextColor] = useState('black');
-  const [siteVersion, setSiteVersion] = useState('2024');
-  const [siteToRender, setSiteToRender] = useState(<LandingV3 isLightMode={isLightMode} textColor={textColor}/>);
+  const [siteVersion, setSiteVersion] = useState('2023');
+  const [siteToRender, setSiteToRender] = useState(<LandingV2 isLightMode={isLightMode} textColor={textColor}/>);
 
   useEffect(() => {
     switch (siteVersion) {
