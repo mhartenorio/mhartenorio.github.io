@@ -1,7 +1,7 @@
 {
   "files": {
     "main.css": "/static/css/main.3dc052b5.css",
-    "main.js": "/static/js/main.e8c86a5e.js",
+    "main.js": "/static/js/main.0e2d8989.js",
     "static/js/787.dd4029b4.chunk.js": "/static/js/787.dd4029b4.chunk.js",
     "static/media/Mhar2.JPG": "/static/media/Mhar2.34b07e4dc1b86e7aa42e.JPG",
     "static/media/Mhar-GIF.gif": "/static/media/Mhar-GIF.fd52008e5b8657c6fd08.gif",
@@ -10,6 +10,7 @@
     "static/media/cs448b-transparent.png": "/static/media/cs448b-transparent.be617be977a08aa7f782.png",
     "static/media/Mhar3.png": "/static/media/Mhar3.12b3a6f6995cb98de2bc.png",
     "static/media/bospies.png": "/static/media/bospies.69bb24e405afb77d8148.png",
+    "static/media/nutrition-facts-header-wider.png": "/static/media/nutrition-facts-header-wider.b817488a99b36d32a298.png",
     "static/media/Mhar6.JPG": "/static/media/Mhar6.c255d76a61f783d2b489.JPG",
     "static/media/Mhar5.JPG": "/static/media/Mhar5.2dc5fdc48ef56fc63566.JPG",
     "static/media/Mhar.png": "/static/media/Mhar.6d405045d7f41fee8c7c.png",
@@ -32,11 +33,11 @@
     "static/media/gradient.svg": "/static/media/gradient.dd7dc6588854de569811a3390028dbec.svg",
     "static/media/wave1.svg": "/static/media/wave1.d382869570d7fc0053f9fccdd64e271d.svg",
     "main.3dc052b5.css.map": "/static/css/main.3dc052b5.css.map",
-    "main.e8c86a5e.js.map": "/static/js/main.e8c86a5e.js.map",
+    "main.0e2d8989.js.map": "/static/js/main.0e2d8989.js.map",
     "787.dd4029b4.chunk.js.map": "/static/js/787.dd4029b4.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.3dc052b5.css",
-    "static/js/main.e8c86a5e.js"
+    "static/js/main.0e2d8989.js"
   ]
 }
