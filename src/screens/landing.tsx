@@ -1,4 +1,5 @@
-import React, { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
+import text from '../assets/text-outlined.svg';
 import './landing.css';
 
 const CAPTIONS = [
@@ -25,11 +26,13 @@ export const Landing = () => {
     <div className="hero">
       {/* <div className="text-container">
         <h1 className="text-outline">TECH + ART</h1>
-        <h1 className="text-script">TECH + ART</h1>
       </div> */}
 
       <div className="image-section">
-        <div className="halftone-bg"/>
+        <div className="top-attached-image-container">
+          <img src={text} className="top-attached-image" />
+        </div>
+        <div className="halftone-bg" />
         <div className="subtitle">
           [ {CAPTIONS[index]} ]
         </div>

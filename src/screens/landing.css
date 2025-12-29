@@ -4,8 +4,8 @@
 }
 
 .text-container {
-  position: relative;
-  height: 200px;
+  /* position: absolute; */
+  /* height: 200px; */
   display: flex;
   justify-content: center;
   align-items: center;
@@ -35,9 +35,9 @@
   bottom: 0;
   left: 0;
   width: 100vw;
-  height: 60vh;
+  height: 55vh;
   background-color: transparent;
-  overflow: hidden;
+  /* overflow: hidden; */
   z-index: 0;
   bottom: 0;
 }
@@ -61,4 +61,23 @@
   font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
   font-size: 16px;
   transition: opacity 0.2s ease-in-out;
+}
+
+.top-attached-image-container {
+  display: flex;
+  justify-content: center;
+  width: 100vw;
+}
+
+.top-attached-image {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  width: 90%;
+  height: auto; 
+  margin-inline: auto; 
+  transform: translateY(-75%);
+  z-index: -1; /* Keeps it above the halftone background */
+  pointer-events: none; /* Allows clicks to pass through to elements below */
 }
