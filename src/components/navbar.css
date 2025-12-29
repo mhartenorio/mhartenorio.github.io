@@ -1,0 +1,60 @@
+/* Container styling */
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  width: 100vw;
+  overflow: scroll;
+  border-bottom: 1px solid blue;
+  color: blue;
+  background-color: white;
+  font-size: 14px;
+}
+
+/* Base style for every "box" */
+.nav-item {
+  display: flex;
+  align-items: center;
+  padding: 15px 25px;
+  border-right: 1px solid blue;
+  white-space: nowrap;
+  cursor: pointer;
+  transition: background-color 0.2s;
+  font-family: 'BIZ UDMincho';
+  font-weight: 700;
+}
+
+.nav-item:hover {
+  background-color: rgba(0, 0, 255, 0.05);
+}
+
+/* Logo specific styling */
+.logo-cell {
+  font-weight: 900;
+  letter-spacing: -1px;
+  font-size: 1.1rem;
+  border-right: none;
+  font-family: 'Roboto', monospace;
+  text-transform: uppercase;
+}
+
+.nav-icon {
+  width: 24px;
+  height: 24px;
+  margin-right: 10px;
+}
+
+/* Menu list styling */
+.nav-menu {
+  display: flex;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.nav-menu .nav-item:first-child {
+  border-left: 1px solid blue;
+}
+
+.nav-menu .nav-item:last-child {
+  border-right: none;
+}
