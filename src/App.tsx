@@ -3,7 +3,7 @@ import { Landing } from './screens/landing'
 
 function App() {
   return (
-    <div style={{ display: "flex", flexDirection: "column", minHeight: "100vh" }}>
+    <div style={{ display: "flex", flexDirection: "column", minHeight: "100vh", backgroundColor: "white" }}>
       <Navbar />
       <Landing />
     </div>

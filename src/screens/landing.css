@@ -7,30 +7,9 @@
 }
 
 .text-container {
-  /* position: absolute; */
-  /* height: 200px; */
   display: flex;
   justify-content: center;
   align-items: center;
-}
-
-.text-outline {
-  position: absolute;
-  font-size: 8rem;
-  font-family: sans-serif;
-  font-weight: 900;
-  color: transparent;
-  -webkit-text-stroke: 1px black;
-  z-index: 1;
-}
-
-.text-script {
-  position: absolute;
-  font-size: 10rem;
-  font-family: 'Brush Script MT', cursive;
-  color: black;
-  z-index: 2;
-  margin-top: -20px;
 }
 
 .image-section {
@@ -40,9 +19,7 @@
   width: 100vw;
   height: 65vh;
   background-color: transparent;
-  /* overflow: hidden; */
   z-index: 0;
-  bottom: 0;
 }
 
 .halftone-bg {
@@ -50,6 +27,7 @@
   height: 100%;
   background-image: url('../assets/grass-3.png');
   background-size: cover;
+  background-position: bottom center;
 }
 
 .subtitle {
@@ -94,8 +72,8 @@
   height: auto; 
   margin-inline: auto; 
   transform: translateY(-10%);
-  z-index: -1; /* Keeps it above the halftone background */
-  pointer-events: none; /* Allows clicks to pass through to elements below */
+  z-index: -1; 
+  pointer-events: none; 
   /* filter: invert(9%) sepia(100%) saturate(6323%) hue-rotate(246deg) brightness(95%) contrast(141%); */
 }
 
@@ -118,8 +96,5 @@
 @media (max-width: 767px) {
   .top-attached-image {
     transform: translateY(20%);
-  }
-  .blob, .blob-2 {
-    /* display: none; */
   }
 }
