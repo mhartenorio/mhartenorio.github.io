@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import text from '../assets/text-outlined.svg';
+// import text from '../assets/text-outlined.svg';
 import blob from '../assets/blob-s.svg';
 import './landing.css';
 
