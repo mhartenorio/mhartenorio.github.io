@@ -99,8 +99,27 @@
   /* filter: invert(9%) sepia(100%) saturate(6323%) hue-rotate(246deg) brightness(95%) contrast(141%); */
 }
 
+.blob, .blob-2 {
+  position: absolute;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 999;
+  width: 15vw;
+}
+
+.blob {
+  left: 15%;
+}
+
+.blob-2 {
+  left: 85%;
+}
+
 @media (max-width: 767px) {
   .top-attached-image {
-    display: none;
+    transform: translateY(20%);
+  }
+  .blob, .blob-2 {
+    /* display: none; */
   }
 }

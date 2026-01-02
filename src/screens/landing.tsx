@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import text from '../assets/text-outlined.svg';
-
+import blob from '../assets/blob-s.svg';
 import './landing.css';
 
 const CAPTIONS = [
@@ -26,9 +26,12 @@ export const Landing = () => {
   return (
     <>
       <div className="hero">
+        <img src={blob} className="blob" />
+
         <div className="subtitle subtitle-position">
           [ {CAPTIONS[index]} ]
         </div>
+        <img src={blob} className="blob-2" />
 
       </div>
       <div className="image-section">
