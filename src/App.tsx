@@ -4,16 +4,12 @@ import linksData from './json/links.json';
 import resumeData from './json/resume.json';
 import type { TabId, TabInfo } from './types';
 import { MacWindow } from './components/MacWindow/MacWindow';
-import { MenuBar } from './components/MenuBar/MenuBar';
-import { Dock } from './components/Dock/Dock';
-import { AboutModal } from './components/AboutModal/AboutModal';
 import './App.css';
 
 function App() {
   const [activeTabId, setActiveTabId] = useState<TabId>('summary');
   const [theme, setTheme] = useState<'dark' | 'light'>('dark');
   const [isWindowOpen, setIsWindowOpen] = useState(true);
-  const [isAboutOpen, setIsAboutOpen] = useState(false);
 
   // Prepare tabs with formatted string and accurate byte sizes
   const tabs: TabInfo[] = useMemo(() => {
@@ -53,25 +49,8 @@ function App() {
     setTheme((prev) => (prev === 'dark' ? 'light' : 'dark'));
   };
 
-  const handleToggleWindow = () => {
-    setIsWindowOpen((prev) => !prev);
-  };
-
   return (
     <div className="macos-desktop" data-system-theme={theme}>
-      {/* Top Menu Bar */}
-      <MenuBar
-        activeTabId={activeTabId}
-        onSelectTab={(id) => {
-          setActiveTabId(id);
-          setIsWindowOpen(true);
-        }}
-        theme={theme}
-        onToggleTheme={handleToggleTheme}
-        onOpenAbout={() => setIsAboutOpen(true)}
-        isWindowOpen={isWindowOpen}
-        onReopenWindow={() => setIsWindowOpen(true)}
-      />
 
       {/* Main Desktop Area */}
       <main className="desktop-workspace">
@@ -99,20 +78,6 @@ function App() {
           </div>
         )}
       </main>
-
-      {/* macOS Dock */}
-      <Dock
-        isWindowOpen={isWindowOpen}
-        onToggleWindow={handleToggleWindow}
-        onOpenAbout={() => setIsAboutOpen(true)}
-      />
-
-      {/* About Modal */}
-      <AboutModal
-        isOpen={isAboutOpen}
-        onClose={() => setIsAboutOpen(false)}
-        theme={theme}
-      />
     </div>
   );
 }
