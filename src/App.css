@@ -74,8 +74,8 @@
   font-size: 12px;
 }
 
-@media (max-width: 600px) {
+@media (max-width: 768px) {
   .desktop-workspace {
-    padding: 34px 8px 16px;
+    padding: 38px 8px 46px;
   }
 }

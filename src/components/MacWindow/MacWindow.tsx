@@ -265,10 +265,6 @@ export const MacWindow: React.FC<MacWindowProps> = ({
           <span className="status-dot">·</span>
           <span>JSON</span>
         </div>
-        <div className="status-item status-lock">
-          <span className="lock-icon">🔒</span>
-          <span>Read-Only</span>
-        </div>
       </div>
     </div>
   );

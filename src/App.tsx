@@ -4,6 +4,7 @@ import linksData from './json/links.json';
 import resumeData from './json/resume.json';
 import type { TabId, TabInfo } from './types';
 import { MacWindow } from './components/MacWindow/MacWindow';
+import { DesktopCanvas } from './components/DesktopCanvas/DesktopCanvas';
 import './App.css';
 
 function App() {
@@ -50,6 +51,9 @@ function App() {
 
   return (
     <div className="macos-desktop" data-system-theme={theme}>
+      {/* Background Canvas: Blueprint Grid, Ghost Typography & Moodboard Stickers */}
+      <DesktopCanvas theme={theme} />
+
       {/* Main Desktop Area */}
       <main className="desktop-workspace">
         <MacWindow

@@ -1,0 +1,218 @@
+/* =========================================================
+   Desktop Background & Sticker Layers
+   ========================================================= */
+
+/* 1. Blueprint Grid Background Layer (Behind Mac Window) */
+.blueprint-grid-layer {
+  position: absolute;
+  inset: 0;
+  width: 100vw;
+  height: 100dvh;
+  overflow: hidden;
+  pointer-events: none;
+  z-index: 0;
+}
+
+/* Theme variables for the dot grid */
+.blueprint-grid-layer[data-theme='dark'] {
+  --grid-dot: rgba(60, 40, 20, 0.12);
+}
+
+.blueprint-grid-layer[data-theme='light'] {
+  --grid-dot: rgba(255, 255, 255, 0.1);
+}
+
+/* Blueprint Dot Grid */
+.blueprint-grid {
+  position: absolute;
+  inset: 0;
+  background-image: radial-gradient(circle, var(--grid-dot) 1.2px, transparent 1.2px);
+  background-size: 32px 32px;
+  background-position: center center;
+  opacity: 0.9;
+}
+
+/* 2. Floating Stickers Layer (Layered Above Desktop Workspace) */
+.desktop-stickers-layer {
+  position: absolute;
+  inset: 0;
+  width: 100vw;
+  height: 100dvh;
+  overflow: hidden;
+  pointer-events: none;
+  z-index: 15;
+}
+
+/* Dim stickers subtly when window is maximized */
+.macos-desktop:has(.macos-window.maximized) .desktop-stickers-layer {
+  opacity: 0.15;
+  pointer-events: none;
+}
+
+/* =========================================================
+   Draggable Sticker Base
+   ========================================================= */
+
+.desktop-sticker {
+  position: absolute;
+  user-select: none;
+  -webkit-user-select: none;
+  cursor: grab;
+  touch-action: none;
+  --drag-x: 0px;
+  --drag-y: 0px;
+  transform: translate3d(var(--drag-x), var(--drag-y), 0) var(--sticker-rot, rotate(0deg));
+  transition: transform 0.22s cubic-bezier(0.175, 0.885, 0.32, 1.275),
+              box-shadow 0.22s ease;
+  z-index: 15;
+  pointer-events: auto;
+}
+
+.desktop-sticker:active,
+.desktop-sticker.is-dragging {
+  cursor: grabbing;
+  z-index: 50 !important;
+  transition: none !important;
+}
+
+/* =========================================================
+   Yellow Post-it Note (Bottom-Right Corner)
+   ========================================================= */
+
+.sticky-note {
+  bottom: 40px;
+  right: 40px;
+  width: 195px;
+  background: linear-gradient(145deg, #fef9c3, #fef08a);
+  color: #713f12;
+  padding: 14px 14px 12px;
+  border-radius: 3px;
+  box-shadow: 0 12px 24px -6px rgba(0, 0, 0, 0.22),
+              0 2px 4px rgba(0, 0, 0, 0.1);
+  --sticker-rot: rotate(2.5deg);
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+}
+
+.sticky-note:hover:not(.is-dragging) {
+  transform: translate3d(var(--drag-x), var(--drag-y), 0) rotate(0.5deg) scale(1.05) translateY(-5px);
+  box-shadow: 0 20px 32px -8px rgba(0, 0, 0, 0.28),
+              0 6px 12px rgba(0, 0, 0, 0.12);
+}
+
+/* Authentic Japanese Washi Tape: Vibrant Purple with Warm Gold / Honey Accent */
+.sticky-tape {
+  position: absolute;
+  top: -12px;
+  left: 50%;
+  transform: translateX(-50%) rotate(-1.5deg);
+  width: 78px;
+  height: 24px;
+  /* Rich vibrant purple base */
+  background-color: rgba(124, 58, 237, 0.88);
+  /* Warm gold/honey micro-grid that harmonizes with the yellow Post-it paper */
+  background-image: 
+    linear-gradient(rgba(254, 240, 138, 0.65) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(254, 240, 138, 0.65) 1px, transparent 1px),
+    linear-gradient(135deg, rgba(255, 255, 255, 0.16) 0%, transparent 60%);
+  background-size: 7px 7px, 7px 7px, 100% 100%;
+  backdrop-filter: blur(2px);
+  -webkit-backdrop-filter: blur(2px);
+  /* Hand-torn deckle / jagged serrated ends on left and right */
+  clip-path: polygon(
+    0% 0%, 
+    100% 0%, 
+    96% 18%, 100% 36%, 95% 54%, 100% 72%, 96% 90%, 100% 100%, 
+    0% 100%, 
+    4% 88%, 0% 70%, 5% 52%, 0% 34%, 4% 16%
+  );
+  box-shadow: 0 2px 10px rgba(124, 58, 237, 0.32), 0 1px 3px rgba(0, 0, 0, 0.12);
+  opacity: 0.96;
+  transition: transform 0.2s ease;
+  pointer-events: none;
+}
+
+.sticky-content {
+  font-size: 11.5px;
+  line-height: 1.45;
+}
+
+.sticky-ascii-wrap {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 8px;
+}
+
+.sticky-ascii {
+  font-family: 'SF Mono', Menlo, Monaco, Consolas, 'Courier New', monospace;
+  font-size: 10.5px;
+  line-height: 1.15;
+  color: #713f12;
+  margin: 0;
+  padding: 0;
+  white-space: pre;
+  user-select: none;
+}
+
+.sticky-bio {
+  text-align: center;
+  margin: 0;
+  font-size: 11.5px;
+  font-weight: 500;
+  line-height: 1.4;
+  color: #713f12;
+}
+
+/* =========================================================
+   Responsive Adjustments (Tablet & Mobile)
+   ========================================================= */
+
+@media (max-width: 1200px) {
+  .sticky-note {
+    width: 175px;
+    right: 24px;
+    bottom: 30px;
+    left: auto;
+    top: auto;
+    font-size: 11px;
+  }
+}
+
+/* Mobile & Small Tablets */
+@media (max-width: 768px) {
+  .desktop-sticker {
+    display: block;
+  }
+
+  /* Yellow Note (Bottom-Right on Mobile) */
+  .sticky-note {
+    bottom: 12px;
+    right: 14px;
+    left: auto;
+    top: auto;
+    width: 148px;
+    padding: 8px 10px 8px;
+    border-radius: 3px;
+    box-shadow: 0 8px 16px -4px rgba(0, 0, 0, 0.25);
+    --sticker-rot: rotate(2deg);
+  }
+
+  .sticky-tape {
+    width: 58px;
+    height: 18px;
+    top: -9px;
+  }
+
+  .sticky-content {
+    font-size: 10px;
+    line-height: 1.35;
+  }
+
+  .sticky-ascii {
+    font-size: 8.5px;
+    line-height: 1.15;
+  }
+
+  .sticky-bio {
+    font-size: 10px;
+  }
+}
