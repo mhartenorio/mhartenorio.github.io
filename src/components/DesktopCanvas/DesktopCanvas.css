@@ -13,23 +13,24 @@
   z-index: 0;
 }
 
-/* Theme variables for the dot grid */
-.blueprint-grid-layer[data-theme='dark'] {
-  --grid-dot: rgba(60, 40, 20, 0.12);
-}
-
-.blueprint-grid-layer[data-theme='light'] {
-  --grid-dot: rgba(255, 255, 255, 0.1);
-}
-
-/* Blueprint Dot Grid */
+/* Blueprint Dashed Graphing Paper Grid */
 .blueprint-grid {
   position: absolute;
   inset: 0;
-  background-image: radial-gradient(circle, var(--grid-dot) 1.2px, transparent 1.2px);
-  background-size: 32px 32px;
+  background-size: 24px 24px;
   background-position: center center;
-  opacity: 0.9;
+  background-repeat: repeat;
+  opacity: 1;
+}
+
+/* Light theme (black desktop): white dashed graph paper */
+.blueprint-grid-layer[data-theme='light'] .blueprint-grid {
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24'%3E%3Cline x1='0' y1='0.5' x2='24' y2='0.5' stroke='rgba(255,255,255,0.22)' stroke-width='1' stroke-dasharray='3,3'/%3E%3Cline x1='0.5' y1='0' x2='0.5' y2='24' stroke='rgba(255,255,255,0.22)' stroke-width='1' stroke-dasharray='3,3'/%3E%3C/svg%3E");
+}
+
+/* Dark theme (antiquewhite desktop): dark graphite/sepia dashed graph paper */
+.blueprint-grid-layer[data-theme='dark'] .blueprint-grid {
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24'%3E%3Cline x1='0' y1='0.5' x2='24' y2='0.5' stroke='rgba(50,35,20,0.22)' stroke-width='1' stroke-dasharray='3,3'/%3E%3Cline x1='0.5' y1='0' x2='0.5' y2='24' stroke='rgba(50,35,20,0.22)' stroke-width='1' stroke-dasharray='3,3'/%3E%3C/svg%3E");
 }
 
 /* 2. Floating Stickers Layer (Layered Above Desktop Workspace) */
