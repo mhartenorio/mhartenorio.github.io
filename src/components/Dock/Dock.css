@@ -1,0 +1,147 @@
+.macos-dock {
+  position: fixed;
+  bottom: 12px;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 999;
+  user-select: none;
+}
+
+.dock-container {
+  display: flex;
+  align-items: flex-end;
+  gap: 10px;
+  padding: 8px 12px;
+  border-radius: 18px;
+  backdrop-filter: blur(30px);
+  -webkit-backdrop-filter: blur(30px);
+  transition: all 0.2s ease;
+}
+
+[data-system-theme='dark'] .dock-container {
+  background-color: rgba(30, 30, 35, 0.55);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  box-shadow: 0 16px 40px rgba(0, 0, 0, 0.45);
+}
+
+[data-system-theme='light'] .dock-container {
+  background-color: rgba(255, 255, 255, 0.55);
+  border: 1px solid rgba(0, 0, 0, 0.12);
+  box-shadow: 0 16px 40px rgba(0, 0, 0, 0.2);
+}
+
+.dock-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  position: relative;
+  background: transparent;
+  border: none;
+  padding: 0;
+  cursor: pointer;
+  text-decoration: none;
+  color: inherit;
+  transition: transform 0.18s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.dock-item:hover {
+  transform: translateY(-8px) scale(1.15);
+}
+
+.dock-icon {
+  width: 44px;
+  height: 44px;
+  border-radius: 11px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
+  transition: box-shadow 0.2s ease;
+}
+
+.dock-item:hover .dock-icon {
+  box-shadow: 0 12px 20px rgba(0, 0, 0, 0.3);
+}
+
+/* Icon specific designs */
+.json-icon {
+  background: linear-gradient(135deg, #2b3a4a, #1a232c);
+  border: 1px solid rgba(121, 184, 255, 0.3);
+  color: #79b8ff;
+}
+
+.dock-json-brackets {
+  font-family: monospace;
+  font-weight: 900;
+  font-size: 16px;
+  letter-spacing: -1px;
+}
+
+.github-icon {
+  background: linear-gradient(135deg, #333333, #181717);
+  color: #ffffff;
+}
+
+.linkedin-icon {
+  background: linear-gradient(135deg, #0077b5, #005582);
+  color: #ffffff;
+}
+
+.art-icon {
+  background: linear-gradient(135deg, #ff2d55, #ff9500);
+  color: #ffffff;
+}
+
+.info-icon {
+  background: linear-gradient(135deg, #5856d6, #3634a3);
+  color: #ffffff;
+  font-size: 20px;
+  font-weight: bold;
+}
+
+/* Tooltip label */
+.dock-label {
+  position: absolute;
+  top: -30px;
+  background-color: rgba(20, 20, 25, 0.85);
+  color: #ffffff;
+  font-family: -apple-system, BlinkMacSystemFont, 'SF Pro Text', sans-serif;
+  font-size: 11px;
+  font-weight: 500;
+  padding: 3px 8px;
+  border-radius: 5px;
+  white-space: nowrap;
+  pointer-events: none;
+  opacity: 0;
+  transform: translateY(4px);
+  transition: opacity 0.15s ease, transform 0.15s ease;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+}
+
+.dock-item:hover .dock-label {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Active running dot */
+.dock-dot {
+  width: 4px;
+  height: 4px;
+  border-radius: 50%;
+  background-color: currentColor;
+  margin-top: 4px;
+  opacity: 0.8;
+}
+
+.dock-divider {
+  width: 1px;
+  height: 36px;
+  background-color: rgba(128, 128, 128, 0.25);
+  margin: 0 4px 4px;
+}
+
+@media (max-width: 600px) {
+  .macos-dock {
+    display: none;
+  }
+}

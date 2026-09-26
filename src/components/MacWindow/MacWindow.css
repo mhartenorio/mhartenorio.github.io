@@ -1,0 +1,464 @@
+/* =========================================================
+   macOS Window Container & Themes
+   ========================================================= */
+
+.macos-window {
+  display: flex;
+  flex-direction: column;
+  width: 900px;
+  max-width: 92vw;
+  height: 640px;
+  max-height: 84vh;
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 25px 60px -10px rgba(0, 0, 0, 0.5), 0 0 0 1px rgba(255, 255, 255, 0.1);
+  transition: width 0.3s cubic-bezier(0.16, 1, 0.3, 1),
+              height 0.3s cubic-bezier(0.16, 1, 0.3, 1),
+              max-width 0.3s cubic-bezier(0.16, 1, 0.3, 1),
+              max-height 0.3s cubic-bezier(0.16, 1, 0.3, 1),
+              border-radius 0.2s ease,
+              box-shadow 0.2s ease;
+  font-family: -apple-system, BlinkMacSystemFont, 'SF Pro Text', 'SF Pro Display', 'Helvetica Neue', Arial, sans-serif;
+  position: relative;
+  z-index: 10;
+  backdrop-filter: blur(25px);
+}
+
+.macos-window.maximized {
+  width: 98vw;
+  max-width: 98vw;
+  height: 90vh;
+  max-height: 90vh;
+  border-radius: 8px;
+}
+
+/* Dark Theme Variables */
+.macos-window[data-theme='dark'] {
+  --window-bg: #1e1e1e;
+  --titlebar-bg: #2d2d30;
+  --titlebar-border: rgba(255, 255, 255, 0.08);
+  --tab-bg: transparent;
+  --tab-fg: #9da5b4;
+  --tab-active-bg: #1e1e1e;
+  --tab-active-fg: #ffffff;
+  --tab-hover-bg: rgba(255, 255, 255, 0.05);
+  --tab-border: rgba(255, 255, 255, 0.08);
+
+  --editor-bg: #1e1e1e;
+  --editor-fg: #d4d4d4;
+  --gutter-fg: #858585;
+  --line-hover-bg: rgba(255, 255, 255, 0.035);
+  --line-match-bg: rgba(255, 214, 0, 0.15);
+
+  --json-key-color: #9cdcfe;
+  --json-quote-color: #79b8ff;
+  --json-string-color: #ce9178;
+  --json-number-color: #b5cea8;
+  --json-boolean-color: #569cd6;
+  --json-null-color: #569cd6;
+  --json-punct-color: #8b949e;
+
+  --json-link-color: #4ec9b0;
+  --json-link-hover: #79ffe1;
+  --json-link-underline: rgba(78, 201, 176, 0.4);
+
+  --fold-icon-color: #8b949e;
+  --fold-icon-hover-bg: rgba(255, 255, 255, 0.1);
+  --fold-pill-bg: #2d2d30;
+  --fold-pill-border: #3e3e42;
+  --fold-pill-fg: #b0b0b0;
+  --fold-pill-hover-bg: #38383c;
+  --fold-pill-hover-border: #505055;
+  --fold-pill-hover-fg: #ffffff;
+
+  --statusbar-bg: #18181b;
+  --statusbar-fg: #9da5b4;
+  --statusbar-border: rgba(255, 255, 255, 0.08);
+
+  --btn-fg: #b0b8c4;
+  --btn-hover-bg: rgba(255, 255, 255, 0.08);
+  --btn-hover-fg: #ffffff;
+
+  --input-bg: #18181b;
+  --input-fg: #ffffff;
+  --input-border: #3e3e42;
+
+  --scrollbar-thumb: rgba(255, 255, 255, 0.15);
+  --scrollbar-thumb-hover: rgba(255, 255, 255, 0.28);
+}
+
+/* Light Theme Variables */
+.macos-window[data-theme='light'] {
+  --window-bg: #ffffff;
+  --titlebar-bg: #ebebeb;
+  --titlebar-border: rgba(0, 0, 0, 0.1);
+  --tab-bg: transparent;
+  --tab-fg: #5c6370;
+  --tab-active-bg: #ffffff;
+  --tab-active-fg: #1f2328;
+  --tab-hover-bg: rgba(0, 0, 0, 0.04);
+  --tab-border: rgba(0, 0, 0, 0.08);
+
+  --editor-bg: #ffffff;
+  --editor-fg: #24292f;
+  --gutter-fg: #8c959f;
+  --line-hover-bg: rgba(0, 0, 0, 0.025);
+  --line-match-bg: rgba(255, 235, 59, 0.35);
+
+  --json-key-color: #0550ae;
+  --json-quote-color: #0969da;
+  --json-string-color: #0a3069;
+  --json-number-color: #116329;
+  --json-boolean-color: #cf222e;
+  --json-null-color: #8250df;
+  --json-punct-color: #57606a;
+
+  --json-link-color: #0969da;
+  --json-link-hover: #0550ae;
+  --json-link-underline: rgba(9, 105, 218, 0.4);
+
+  --fold-icon-color: #6e7781;
+  --fold-icon-hover-bg: rgba(0, 0, 0, 0.08);
+  --fold-pill-bg: #f6f8fa;
+  --fold-pill-border: #d0d7de;
+  --fold-pill-fg: #57606a;
+  --fold-pill-hover-bg: #eaeef2;
+  --fold-pill-hover-border: #afb8c1;
+  --fold-pill-hover-fg: #1f2328;
+
+  --statusbar-bg: #f6f8fa;
+  --statusbar-fg: #57606a;
+  --statusbar-border: rgba(0, 0, 0, 0.08);
+
+  --btn-fg: #4a5568;
+  --btn-hover-bg: rgba(0, 0, 0, 0.06);
+  --btn-hover-fg: #1a202c;
+
+  --input-bg: #ffffff;
+  --input-fg: #1f2328;
+  --input-border: #d0d7de;
+
+  --scrollbar-thumb: rgba(0, 0, 0, 0.2);
+  --scrollbar-thumb-hover: rgba(0, 0, 0, 0.35);
+}
+
+/* =========================================================
+   Titlebar
+   ========================================================= */
+
+.macos-titlebar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 42px;
+  background-color: var(--titlebar-bg);
+  border-bottom: 1px solid var(--titlebar-border);
+  padding: 0 12px;
+  user-select: none;
+  flex-shrink: 0;
+  gap: 12px;
+}
+
+/* Traffic Lights */
+.traffic-lights {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  flex-shrink: 0;
+  padding: 0 4px;
+}
+
+.traffic-light {
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  border: 1px solid rgba(0, 0, 0, 0.15);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  padding: 0;
+  position: relative;
+  transition: transform 0.1s ease;
+}
+
+.traffic-light:hover {
+  transform: scale(1.05);
+}
+
+.traffic-light.close {
+  background-color: #ff5f56;
+  border-color: #e0443e;
+}
+
+.traffic-light.minimize {
+  background-color: #ffbd2e;
+  border-color: #dea123;
+}
+
+.traffic-light.maximize {
+  background-color: #27c93f;
+  border-color: #1aab29;
+}
+
+.traffic-icon {
+  font-size: 8px;
+  font-weight: 900;
+  color: rgba(0, 0, 0, 0.6);
+  opacity: 0;
+  transition: opacity 0.15s ease;
+  line-height: 1;
+}
+
+.traffic-lights:hover .traffic-icon {
+  opacity: 0.8;
+}
+
+/* =========================================================
+   Tabs
+   ========================================================= */
+
+.macos-tabbar {
+  display: flex;
+  align-items: center;
+  gap: 3px;
+  overflow-x: auto;
+  scrollbar-width: none;
+  flex: 1;
+  max-width: fit-content;
+  margin: 0 auto;
+}
+
+.macos-tabbar::-webkit-scrollbar {
+  display: none;
+}
+
+.macos-tab {
+  display: flex;
+  align-items: center;
+  gap: 7px;
+  padding: 6px 14px;
+  border-radius: 6px;
+  background-color: var(--tab-bg);
+  color: var(--tab-fg);
+  border: 1px solid transparent;
+  cursor: pointer;
+  font-size: 12.5px;
+  font-weight: 500;
+  transition: background-color 0.15s ease, color 0.15s ease, border-color 0.15s ease;
+  white-space: nowrap;
+}
+
+.macos-tab:hover {
+  background-color: var(--tab-hover-bg);
+  color: var(--btn-hover-fg);
+}
+
+.macos-tab.active {
+  background-color: var(--tab-active-bg);
+  color: var(--tab-active-fg);
+  border-color: var(--tab-border);
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.1);
+  font-weight: 600;
+}
+
+.tab-icon {
+  display: flex;
+  align-items: center;
+  color: #e3a83b;
+}
+
+.tab-title {
+  letter-spacing: -0.2px;
+}
+
+/* =========================================================
+   Header Actions (Search, Fold, Copy, Theme)
+   ========================================================= */
+
+.macos-actions {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  flex-shrink: 0;
+}
+
+.action-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 5px;
+  background: transparent;
+  border: 1px solid transparent;
+  color: var(--btn-fg);
+  padding: 5px 8px;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 12px;
+  font-weight: 500;
+  transition: background-color 0.15s ease, color 0.15s ease, border-color 0.15s ease;
+  height: 28px;
+}
+
+.action-btn:hover {
+  background-color: var(--btn-hover-bg);
+  color: var(--btn-hover-fg);
+  border-color: var(--tab-border);
+}
+
+.copy-btn.copied {
+  color: #27c93f;
+  background-color: rgba(39, 201, 63, 0.1);
+  border-color: rgba(39, 201, 63, 0.3);
+}
+
+.copy-label {
+  font-size: 11.5px;
+}
+
+/* Search input box */
+.search-input-wrapper {
+  display: flex;
+  align-items: center;
+  background-color: var(--input-bg);
+  border: 1px solid var(--input-border);
+  border-radius: 6px;
+  padding: 2px 8px;
+  height: 28px;
+  gap: 6px;
+  animation: fadeIn 0.15s ease;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: scale(0.96); }
+  to { opacity: 1; transform: scale(1); }
+}
+
+.search-icon {
+  color: var(--btn-fg);
+  opacity: 0.7;
+}
+
+.search-input {
+  background: transparent;
+  border: none;
+  outline: none;
+  font-size: 12px;
+  color: var(--input-fg);
+  width: 110px;
+  font-family: inherit;
+}
+
+.search-input::placeholder {
+  color: var(--btn-fg);
+  opacity: 0.6;
+}
+
+.match-badge {
+  font-size: 10px;
+  background-color: rgba(255, 214, 0, 0.2);
+  color: #ffd600;
+  padding: 1px 5px;
+  border-radius: 10px;
+  font-weight: 600;
+  white-space: nowrap;
+}
+
+.search-close-btn {
+  background: transparent;
+  border: none;
+  color: var(--btn-fg);
+  cursor: pointer;
+  padding: 0;
+  font-size: 11px;
+  opacity: 0.7;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.search-close-btn:hover {
+  opacity: 1;
+}
+
+/* =========================================================
+   Status Bar
+   ========================================================= */
+
+.macos-statusbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 26px;
+  background-color: var(--statusbar-bg);
+  border-top: 1px solid var(--statusbar-border);
+  padding: 0 14px;
+  font-size: 11px;
+  color: var(--statusbar-fg);
+  user-select: none;
+  flex-shrink: 0;
+}
+
+.status-item {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.status-badge {
+  font-family: 'SF Mono', Menlo, Monaco, Consolas, monospace;
+  opacity: 0.9;
+}
+
+.status-meta {
+  font-family: 'SF Mono', Menlo, Monaco, Consolas, monospace;
+  font-size: 10.5px;
+}
+
+.status-dot {
+  opacity: 0.5;
+}
+
+.status-lock {
+  gap: 4px;
+  font-weight: 500;
+}
+
+.lock-icon {
+  font-size: 10px;
+}
+
+/* =========================================================
+   Mobile responsiveness
+   ========================================================= */
+
+@media (max-width: 768px) {
+  .macos-window {
+    width: 95vw;
+    max-width: 95vw;
+    height: 82vh;
+    max-height: 82vh;
+  }
+
+  .macos-titlebar {
+    padding: 0 8px;
+    gap: 8px;
+  }
+
+  .copy-label {
+    display: none;
+  }
+
+  .macos-tab {
+    padding: 5px 8px;
+    font-size: 11px;
+  }
+
+  .tab-icon {
+    display: none;
+  }
+
+  .status-path {
+    display: none;
+  }
+}

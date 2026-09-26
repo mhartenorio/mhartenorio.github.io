@@ -1,0 +1,108 @@
+{
+  "basics": {
+    "name": "Mhar Tenorio",
+    "label": "Software Engineer (Front-End / Full-Stack)",
+    "email": "hi@mhartenorio.com",
+    "url": "https://mhartenorio.com"
+  },
+  "education": [
+    {
+      "institution": "Stanford University",
+      "studyType": "Master of Science (M.S.)",
+      "area": "Computer Science",
+      "specialization": "Artificial Intelligence",
+      "startDate": "2023-09",
+      "endDate": "2024-12",
+      "gpa": "3.95"
+    },
+    {
+      "institution": "Stanford University",
+      "studyType": "Bachelor of Science (B.S.)",
+      "area": "Computer Science",
+      "specialization": "Human-Computer Interaction & Information",
+      "minor": "Art Practice",
+      "startDate": "2020-09",
+      "endDate": "2024-06",
+      "gpa": "3.94"
+    }
+  ],
+  "work": [
+    {
+      "name": "Squarespace",
+      "position": "Software Engineer (Front-End)",
+      "startDate": "2025-01",
+      "endDate": null,
+      "highlights": [
+        "Re-architected core email applications into an Rspack-powered React microfrontend using Module Federation and automated localization pipelines, slashing CI/CD build times by 90% (from 30m to 3m) and standardizing cross-repo dependency consumption.",
+        "Spearheaded zero-to-one frontend development for a new email service offering and a complete platform redesign targeted to drive $1.5M in revenue and 157k subscribers; built end-to-end onboarding flows from scratch, wired REST APIs, and launched A/B experiments with Product, Design, and Analytics.",
+        "Engineered the next-generation link editor for the core website editing engine (serving 590,000+ monthly users) using TypeScript, partnering with UX designers and test engineers to cut visible user latency by over 50%.",
+        "Elevated developer experience by engineering local development resource overrides and MFE tooling, drastically reducing local environment setup overhead and enabling seamless multi-repository workflows.",
+        "Engineered critical system guardrails to triage and resolve 50% of customer-facing bugs with Customer Support; built client-side state gating and automated Cypress, Jest, and internal E2E testing pipelines.",
+        "Onboarded and mentored 3 software engineers, establishing comprehensive system architecture documentation, conducting thorough PR reviews, and presenting microfrontend best practices org-wide."
+      ]
+    },
+    {
+      "name": "Remitly (FinTech)",
+      "position": "Software Engineer (Front-End, Full-Stack)",
+      "startDate": "2024-06",
+      "endDate": "2024-09",
+      "highlights": [
+        "Enhanced incident management in an internal dashboard used by over 2,000 developers in 13 offices worldwide using TypeScript (React), GoLang, GraphQL, and Cypher in an agile Developer Experience team.",
+        "Implemented a cron job to integrate PagerDuty and Okta data with a React frontend and a Neo4J graph database, optimizing information retrieval and on-call paging processes using TypeScript and Node.js.",
+        "Drove end-to-end feature planning and design workflows, prototyping internal dashboard interfaces in Figma, authoring design documentation, and gathering stakeholder feedback."
+      ]
+    },
+    {
+      "name": "Purposer (E-Commerce Start-Up)",
+      "position": "Software Engineer (Front-End, Full-Stack)",
+      "startDate": "2022-09",
+      "endDate": "2023-06",
+      "highlights": [
+        "Designed and built many core user journeys for fast-paced e-commerce start-up using TypeScript (React) and MySQL, enabling the MVP launch in ~3 months, with a strong focus on human-centered user experiences.",
+        "Implemented core purchasing workflow, enabling users to view and checkout items, track their purchases, process refunds/returns, inventory management, sales throughput, and online storefronts using MaterialUI.",
+        "Designed and built seller dashboards for inventory management, sales throughput, and online storefronts using Figma, React Charts, and LeafletJS.",
+        "Contributed multiple framework-level React components such as buttons, pop-ups, and tables, allowing other engineering team members to reuse these components in their front-end."
+      ]
+    }
+  ],
+  "skills": [
+    {
+      "category": "Languages",
+      "keywords": [
+        "TypeScript",
+        "JavaScript",
+        "React",
+        "React Native",
+        "Angular",
+        "Python",
+        "SQL",
+        "Java",
+        "GraphQL",
+        "GoLang",
+        "Node.js",
+        "Cypher"
+      ]
+    },
+    {
+      "category": "Tools & Technologies",
+      "keywords": [
+        "Git",
+        "GitHub",
+        "Google Cloud Platform (GCP)",
+        "Figma",
+        "Claude Code",
+        "Cursor",
+        "GitHub Copilot",
+        "Rspack",
+        "Module Federation",
+        "Neo4J",
+        "MySQL",
+        "Cypress",
+        "Jest",
+        "MaterialUI",
+        "LeafletJS",
+        "React Charts"
+      ]
+    }
+  ]
+}

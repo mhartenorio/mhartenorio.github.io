@@ -1,0 +1,356 @@
+import React, { useState, useEffect, useMemo } from 'react';
+import type { TabId, TabInfo } from '../../types';
+import { JsonViewer } from '../JsonViewer/JsonViewer';
+import { buildJsonLines, searchJson } from '../../utils/jsonParser';
+import './MacWindow.css';
+
+interface MacWindowProps {
+  tabs: TabInfo[];
+  activeTabId: TabId;
+  onSelectTab: (id: TabId) => void;
+  theme: 'dark' | 'light';
+  onToggleTheme: () => void;
+  isMinimized: boolean;
+  onMinimize: () => void;
+  onClose: () => void;
+}
+
+export const MacWindow: React.FC<MacWindowProps> = ({
+  tabs,
+  activeTabId,
+  onSelectTab,
+  theme,
+  onToggleTheme,
+  isMinimized,
+  onMinimize,
+  onClose,
+}) => {
+  const [isMaximized, setIsMaximized] = useState(false);
+  const [searchQuery, setSearchQuery] = useState('');
+  const [isSearchOpen, setIsSearchOpen] = useState(false);
+  const [copied, setCopied] = useState(false);
+  const [foldedMap, setFoldedMap] = useState<Record<TabId, Set<string>>>({
+    summary: new Set<string>(),
+    links: new Set<string>(),
+    resume: new Set<string>(),
+  });
+
+  const activeTab = tabs.find((t) => t.id === activeTabId) || tabs[0];
+  const currentFolded = foldedMap[activeTabId] || new Set<string>();
+
+  // Derived match count via useMemo (no cascading effect setState)
+  const matchCount = useMemo(() => {
+    if (!searchQuery.trim()) return null;
+    const { lines } = buildJsonLines(activeTab.data);
+    return searchJson(lines, searchQuery).matchingLineIds.size;
+  }, [activeTab.data, searchQuery]);
+
+  // Keyboard shortcut listener
+  useEffect(() => {
+    const handleKeyDown = (e: KeyboardEvent) => {
+      // Cmd/Ctrl + F for search
+      if ((e.metaKey || e.ctrlKey) && e.key.toLowerCase() === 'f') {
+        e.preventDefault();
+        setIsSearchOpen(true);
+      }
+      // Esc to close search
+      if (e.key === 'Escape' && isSearchOpen) {
+        setIsSearchOpen(false);
+        setSearchQuery('');
+      }
+      // Cmd/Ctrl + 1, 2, 3 for tabs
+      if ((e.metaKey || e.ctrlKey) && ['1', '2', '3'].includes(e.key)) {
+        e.preventDefault();
+        const index = parseInt(e.key, 10) - 1;
+        if (tabs[index]) {
+          onSelectTab(tabs[index].id);
+        }
+      }
+    };
+
+    window.addEventListener('keydown', handleKeyDown);
+    return () => window.removeEventListener('keydown', handleKeyDown);
+  }, [isSearchOpen, tabs, onSelectTab]);
+
+  const handleSearchChange = (query: string) => {
+    setSearchQuery(query);
+    if (query.trim()) {
+      const { lines } = buildJsonLines(activeTab.data);
+      const { pathsToUnfold } = searchJson(lines, query);
+      if (pathsToUnfold.size > 0) {
+        setFoldedMap((prev) => {
+          const currentSet = new Set(prev[activeTabId] || []);
+          let changed = false;
+          pathsToUnfold.forEach((p) => {
+            if (currentSet.has(p)) {
+              currentSet.delete(p);
+              changed = true;
+            }
+          });
+          return changed ? { ...prev, [activeTabId]: currentSet } : prev;
+        });
+      }
+    }
+  };
+
+  const handleToggleFold = (path: string) => {
+    setFoldedMap((prev) => {
+      const currentSet = new Set(prev[activeTabId] || []);
+      if (currentSet.has(path)) {
+        currentSet.delete(path);
+      } else {
+        currentSet.add(path);
+      }
+      return { ...prev, [activeTabId]: currentSet };
+    });
+  };
+
+  const handleCollapseAll = () => {
+    const { allFoldablePaths } = buildJsonLines(activeTab.data);
+    setFoldedMap((prev) => ({
+      ...prev,
+      [activeTabId]: new Set(allFoldablePaths),
+    }));
+  };
+
+  const handleExpandAll = () => {
+    setFoldedMap((prev) => ({
+      ...prev,
+      [activeTabId]: new Set<string>(),
+    }));
+  };
+
+  const handleCopyJson = async () => {
+    try {
+      await navigator.clipboard.writeText(activeTab.rawString);
+      setCopied(true);
+      setTimeout(() => setCopied(false), 2000);
+    } catch {
+      // Fallback
+      const textArea = document.createElement('textarea');
+      textArea.value = activeTab.rawString;
+      document.body.appendChild(textArea);
+      textArea.select();
+      document.execCommand('copy');
+      document.body.removeChild(textArea);
+      setCopied(true);
+      setTimeout(() => setCopied(false), 2000);
+    }
+  };
+
+  const formatBytes = (bytes: number) => {
+    if (bytes < 1024) return `${bytes} B`;
+    return `${(bytes / 1024).toFixed(1)} KB`;
+  };
+
+  const isAllFolded = currentFolded.size > 0;
+
+  if (isMinimized) {
+    return null;
+  }
+
+  return (
+    <div
+      className={`macos-window ${isMaximized ? 'maximized' : ''}`}
+      data-theme={theme}
+      role="dialog"
+      aria-label={`JSON Viewer - ${activeTab.filename}`}
+    >
+      {/* Title Bar with Traffic Lights & Tabs */}
+      <div className="macos-titlebar">
+        {/* Traffic lights */}
+        <div className="traffic-lights">
+          <button
+            type="button"
+            className="traffic-light close"
+            onClick={onClose}
+            title="Close window"
+            aria-label="Close"
+          >
+            <span className="traffic-icon">✕</span>
+          </button>
+          <button
+            type="button"
+            className="traffic-light minimize"
+            onClick={onMinimize}
+            title="Minimize window"
+            aria-label="Minimize"
+          >
+            <span className="traffic-icon">−</span>
+          </button>
+          <button
+            type="button"
+            className="traffic-light maximize"
+            onClick={() => setIsMaximized((prev) => !prev)}
+            title={isMaximized ? 'Restore size' : 'Maximize window'}
+            aria-label="Maximize"
+          >
+            <span className="traffic-icon">{isMaximized ? '↘' : '+'}</span>
+          </button>
+        </div>
+
+        {/* Tab Bar */}
+        <div className="macos-tabbar" role="tablist">
+          {tabs.map((tab) => {
+            const isActive = tab.id === activeTabId;
+            return (
+              <button
+                key={tab.id}
+                role="tab"
+                aria-selected={isActive}
+                className={`macos-tab ${isActive ? 'active' : ''}`}
+                onClick={() => onSelectTab(tab.id)}
+              >
+                <span className="tab-icon">
+                  <svg viewBox="0 0 16 16" width="13" height="13" fill="currentColor">
+                    <path d="M14 4.5V14a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V2a2 2 0 0 1 2-2h5.5L14 4.5zm-3 0A1.5 1.5 0 0 1 9.5 3V1H4a1 1 0 0 0-1 1v12a1 1 0 0 0 1 1h8a1 1 0 0 0 1-1V4.5h-2z" />
+                    <text x="4.5" y="11.5" fontSize="7" fontWeight="bold" fontFamily="monospace" fill="currentColor">{'{ }'}</text>
+                  </svg>
+                </span>
+                <span className="tab-title">{tab.filename}</span>
+              </button>
+            );
+          })}
+        </div>
+
+        {/* Window Actions */}
+        <div className="macos-actions">
+          {/* Search Toggle / Box */}
+          {isSearchOpen ? (
+            <div className="search-input-wrapper">
+              <svg className="search-icon" viewBox="0 0 16 16" width="12" height="12" fill="currentColor">
+                <path d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001c.03.04.062.078.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1.007 1.007 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0z" />
+              </svg>
+              <input
+                type="text"
+                autoFocus
+                placeholder="Search..."
+                value={searchQuery}
+                onChange={(e) => handleSearchChange(e.target.value)}
+                className="search-input"
+              />
+              {matchCount !== null && searchQuery.trim() && (
+                <span className="match-badge">
+                  {matchCount} {matchCount === 1 ? 'match' : 'matches'}
+                </span>
+              )}
+              <button
+                type="button"
+                className="search-close-btn"
+                onClick={() => {
+                  setIsSearchOpen(false);
+                  setSearchQuery('');
+                }}
+                title="Clear search"
+              >
+                ✕
+              </button>
+            </div>
+          ) : (
+            <button
+              type="button"
+              className="action-btn"
+              onClick={() => setIsSearchOpen(true)}
+              title="Search JSON (Cmd+F)"
+              aria-label="Search"
+            >
+              <svg viewBox="0 0 16 16" width="13" height="13" fill="currentColor">
+                <path d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001c.03.04.062.078.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1.007 1.007 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0z" />
+              </svg>
+            </button>
+          )}
+
+          {/* Expand / Collapse All */}
+          <button
+            type="button"
+            className="action-btn"
+            onClick={isAllFolded ? handleExpandAll : handleCollapseAll}
+            title={isAllFolded ? 'Expand All' : 'Collapse All'}
+            aria-label={isAllFolded ? 'Expand All' : 'Collapse All'}
+          >
+            {isAllFolded ? (
+              <svg viewBox="0 0 16 16" width="13" height="13" fill="currentColor">
+                <path d="M1.5 1a.5.5 0 0 0-.5.5v4a.5.5 0 0 0 1 0V2h3.5a.5.5 0 0 0 0-1h-4zm13 0a.5.5 0 0 0-.5.5H10.5a.5.5 0 0 0 0 1H14v3.5a.5.5 0 0 0 1 0v-4a.5.5 0 0 0-.5-.5zm-13 14a.5.5 0 0 0 .5.5h4a.5.5 0 0 0 0-1H2v-3.5a.5.5 0 0 0-1 0v4zm14-.5a.5.5 0 0 0-.5-.5h-3.5a.5.5 0 0 0 0 1H14v3.5a.5.5 0 0 0 1 0v-4z" />
+              </svg>
+            ) : (
+              <svg viewBox="0 0 16 16" width="13" height="13" fill="currentColor">
+                <path d="M5.5 0a.5.5 0 0 1 .5.5v4A1.5 1.5 0 0 1 4.5 6h-4a.5.5 0 0 1 0-1h4a.5.5 0 0 0 .5-.5v-4a.5.5 0 0 1 .5-.5zm5 0a.5.5 0 0 1 .5.5v4a.5.5 0 0 0 .5.5h4a.5.5 0 0 1 0 1h-4A1.5 1.5 0 0 1 10 4.5v-4a.5.5 0 0 1 .5-.5zM0 10.5a.5.5 0 0 1 .5-.5h4A1.5 1.5 0 0 1 6 11.5v4a.5.5 0 0 1-1 0v-4a.5.5 0 0 0-.5-.5h-4a.5.5 0 0 1-.5-.5zm10 1a1.5 1.5 0 0 1 1.5-1.5h4a.5.5 0 0 1 0 1h-4a.5.5 0 0 0-.5.5v4a.5.5 0 0 1-1 0v-4z" />
+              </svg>
+            )}
+          </button>
+
+          {/* Copy Button */}
+          <button
+            type="button"
+            className={`action-btn copy-btn ${copied ? 'copied' : ''}`}
+            onClick={handleCopyJson}
+            title="Copy JSON to clipboard"
+            aria-label="Copy JSON"
+          >
+            {copied ? (
+              <>
+                <svg viewBox="0 0 16 16" width="13" height="13" fill="currentColor">
+                  <path d="M12.736 3.97a.733.733 0 0 1 1.047 0c.286.289.29.756.01 1.05L7.88 12.01a.733.733 0 0 1-1.065.02L3.217 8.384a.757.757 0 0 1 0-1.06.733.733 0 0 1 1.047 0l3.052 3.093 5.4-6.425a.247.247 0 0 1 .02-.022z" />
+                </svg>
+                <span className="copy-label">Copied!</span>
+              </>
+            ) : (
+              <>
+                <svg viewBox="0 0 16 16" width="13" height="13" fill="currentColor">
+                  <path d="M4 1.5H3a2 2 0 0 0-2 2V14a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V3.5a2 2 0 0 0-2-2h-1v1h1a1 1 0 0 1 1 1V14a1 1 0 0 1-1 1H3a1 1 0 0 1-1-1V3.5a1 1 0 0 1 1-1h1v-1z" />
+                  <path d="M9.5 1a.5.5 0 0 1 .5.5v1a.5.5 0 0 1-.5.5h-3a.5.5 0 0 1-.5-.5v-1a.5.5 0 0 1 .5-.5h3zm-3-1A1.5 1.5 0 0 0 5 1.5v1A1.5 1.5 0 0 0 6.5 4h3A1.5 1.5 0 0 0 11 2.5v-1A1.5 1.5 0 0 0 9.5 0h-3z" />
+                </svg>
+                <span className="copy-label">Copy</span>
+              </>
+            )}
+          </button>
+
+          {/* Theme Switcher */}
+          <button
+            type="button"
+            className="action-btn theme-btn"
+            onClick={onToggleTheme}
+            title={theme === 'dark' ? 'Switch to Light theme' : 'Switch to Dark theme'}
+            aria-label="Toggle theme"
+          >
+            {theme === 'dark' ? (
+              <svg viewBox="0 0 16 16" width="13" height="13" fill="currentColor">
+                <path d="M8 12a4 4 0 1 0 0-8 4 4 0 0 0 0 8zM8 0a.5.5 0 0 1 .5.5v2a.5.5 0 0 1-1 0v-2A.5.5 0 0 1 8 0zm0 13a.5.5 0 0 1 .5.5v2a.5.5 0 0 1-1 0v-2A.5.5 0 0 1 8 13zm8-5a.5.5 0 0 1-.5.5h-2a.5.5 0 0 1 0-1h2a.5.5 0 0 1 .5.5zM3 8a.5.5 0 0 1-.5.5h-2a.5.5 0 0 1 0-1h2A.5.5 0 0 1 3 8zm10.657-5.657a.5.5 0 0 1 0 .707l-1.414 1.415a.5.5 0 1 1-.707-.708l1.414-1.414a.5.5 0 0 1 .707 0zm-9.193 9.193a.5.5 0 0 1 0 .707L3.05 13.657a.5.5 0 0 1-.707-.707l1.414-1.414a.5.5 0 0 1 .707 0zm9.193 2.121a.5.5 0 0 1-.707 0l-1.414-1.414a.5.5 0 0 1 .707-.707l1.414 1.414a.5.5 0 0 1 0 .707zM4.464 4.465a.5.5 0 0 1-.707 0L2.343 3.05a.5.5 0 1 1 .707-.707l1.414 1.414a.5.5 0 0 1 0 .708z" />
+              </svg>
+            ) : (
+              <svg viewBox="0 0 16 16" width="13" height="13" fill="currentColor">
+                <path d="M6 .278a.768.768 0 0 1 .08.858 7.208 7.208 0 0 0-.878 3.46c0 4.021 3.278 7.277 7.318 7.277.527 0 1.04-.055 1.533-.16a.787.787 0 0 1 .81.316.733.733 0 0 1-.031.893A8.349 8.349 0 0 1 8.344 16C3.734 16 0 12.286 0 7.71 0 4.266 2.114 1.312 5.124.06A.752.752 0 0 1 6 .278z" />
+              </svg>
+            )}
+          </button>
+        </div>
+      </div>
+
+      {/* Window Body: JSON Viewer */}
+      <JsonViewer
+        data={activeTab.data}
+        foldedPaths={currentFolded}
+        onToggleFold={handleToggleFold}
+        searchQuery={searchQuery}
+      />
+
+      {/* macOS Status Bar */}
+      <div className="macos-statusbar">
+        <div className="status-item status-path">
+          <span className="status-badge">src/json/{activeTab.filename}</span>
+        </div>
+        <div className="status-item status-meta">
+          <span>{formatBytes(activeTab.sizeBytes)}</span>
+          <span className="status-dot">·</span>
+          <span>UTF-8</span>
+          <span className="status-dot">·</span>
+          <span>JSON</span>
+        </div>
+        <div className="status-item status-lock">
+          <span className="lock-icon">🔒</span>
+          <span>Read-Only</span>
+        </div>
+      </div>
+    </div>
+  );
+};

@@ -1,0 +1,24 @@
+{
+  "name": "Mhar Tenorio",
+  "age": 24,
+  "location": "New York, NY",
+  "currentRole": {
+    "jobTitle": "Software Engineer III",
+    "workplace": "Squarespace"
+  },
+  "education": [
+    {
+      "degree": "M.S. Computer Science",
+      "school": "Stanford University"
+    },
+    {
+      "degree": "B.S. Computer Science",
+      "school": "Stanford University"
+    },
+    {
+      "degree": "Art Practice Minor",
+      "school": "Stanford University"
+    }
+  ],
+  "interests": ["Frontend Development", "Software Engineering", "Graphic Design", "UI/UX Design"]
+}

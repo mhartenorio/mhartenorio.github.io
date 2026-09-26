@@ -1,0 +1,181 @@
+.about-backdrop {
+  position: fixed;
+  inset: 0;
+  background-color: rgba(0, 0, 0, 0.45);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 10000;
+  animation: fadeIn 0.15s ease-out;
+}
+
+.about-modal {
+  width: 330px;
+  border-radius: 14px;
+  overflow: hidden;
+  box-shadow: 0 24px 60px rgba(0, 0, 0, 0.45), 0 0 0 1px rgba(255, 255, 255, 0.15);
+  font-family: -apple-system, BlinkMacSystemFont, 'SF Pro Text', 'Helvetica Neue', Arial, sans-serif;
+  animation: scaleUp 0.18s cubic-bezier(0.16, 1, 0.3, 1);
+  backdrop-filter: blur(35px);
+  -webkit-backdrop-filter: blur(35px);
+}
+
+@keyframes scaleUp {
+  from { opacity: 0; transform: scale(0.92); }
+  to { opacity: 1; transform: scale(1); }
+}
+
+.about-modal[data-theme='dark'] {
+  background-color: rgba(40, 40, 48, 0.88);
+  color: #f5f5f7;
+  border: 1px solid rgba(255, 255, 255, 0.12);
+}
+
+.about-modal[data-theme='light'] {
+  background-color: rgba(246, 246, 248, 0.92);
+  color: #1d1d1f;
+  border: 1px solid rgba(0, 0, 0, 0.12);
+  box-shadow: 0 24px 60px rgba(0, 0, 0, 0.2), 0 0 0 1px rgba(0, 0, 0, 0.08);
+}
+
+.about-header {
+  padding: 10px 12px 0;
+  display: flex;
+  justify-content: flex-start;
+}
+
+.about-close-btn {
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  background-color: #ff5f56;
+  border: 1px solid #e0443e;
+  color: rgba(0, 0, 0, 0.7);
+  font-size: 8px;
+  font-weight: 900;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  padding: 0;
+  line-height: 1;
+}
+
+.about-body {
+  padding: 10px 24px 22px;
+  text-align: center;
+}
+
+.about-icon-wrapper {
+  margin: 4px auto 14px;
+}
+
+.about-avatar {
+  width: 72px;
+  height: 72px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, #007aff, #5856d6, #ff2d55);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto;
+  box-shadow: 0 6px 18px rgba(88, 86, 214, 0.35);
+}
+
+.avatar-text {
+  font-size: 24px;
+  font-weight: 700;
+  color: #ffffff;
+  letter-spacing: -1px;
+}
+
+.about-name {
+  margin: 0 0 4px;
+  font-size: 19px;
+  font-weight: 700;
+  letter-spacing: -0.3px;
+}
+
+.about-role {
+  margin: 0 0 2px;
+  font-size: 13px;
+  font-weight: 600;
+  opacity: 0.9;
+}
+
+.about-sub {
+  margin: 0 0 16px;
+  font-size: 12px;
+  opacity: 0.65;
+}
+
+.about-specs {
+  border-top: 1px solid rgba(128, 128, 128, 0.2);
+  border-bottom: 1px solid rgba(128, 128, 128, 0.2);
+  padding: 10px 0;
+  margin-bottom: 16px;
+}
+
+.spec-row {
+  display: flex;
+  justify-content: space-between;
+  font-size: 11.5px;
+  padding: 3px 0;
+}
+
+.spec-label {
+  opacity: 0.6;
+}
+
+.spec-value {
+  font-weight: 500;
+}
+
+.about-actions {
+  display: flex;
+  gap: 8px;
+  justify-content: center;
+}
+
+.about-action-btn {
+  flex: 1;
+  padding: 6px 0;
+  border-radius: 6px;
+  font-size: 12px;
+  font-weight: 500;
+  cursor: pointer;
+  text-decoration: none;
+  text-align: center;
+  transition: all 0.15s ease;
+  border: 1px solid transparent;
+}
+
+.about-action-btn.primary {
+  background-color: #007aff;
+  color: #ffffff;
+}
+
+.about-action-btn.primary:hover {
+  background-color: #0066d6;
+}
+
+.about-action-btn.secondary {
+  background-color: rgba(128, 128, 128, 0.15);
+  color: inherit;
+}
+
+.about-action-btn.secondary:hover {
+  background-color: rgba(128, 128, 128, 0.25);
+}
+
+.about-action-btn.default {
+  background-color: rgba(128, 128, 128, 0.15);
+  color: inherit;
+  border: none;
+}
+
+.about-action-btn.default:hover {
+  background-color: rgba(128, 128, 128, 0.25);
+}

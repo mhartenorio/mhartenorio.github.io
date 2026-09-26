@@ -1,0 +1,224 @@
+.json-viewer-container {
+  flex: 1;
+  overflow: auto;
+  font-family: 'SF Mono', Menlo, Monaco, Consolas, 'Liberation Mono', 'Courier New', monospace;
+  font-size: 13.5px;
+  line-height: 1.55;
+  background-color: var(--editor-bg);
+  color: var(--editor-fg);
+  user-select: text;
+  position: relative;
+  scrollbar-gutter: stable;
+}
+
+/* Custom sleek scrollbars matching macOS */
+.json-viewer-container::-webkit-scrollbar {
+  width: 10px;
+  height: 10px;
+}
+
+.json-viewer-container::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.json-viewer-container::-webkit-scrollbar-thumb {
+  background: var(--scrollbar-thumb);
+  border-radius: 5px;
+  border: 2px solid var(--editor-bg);
+}
+
+.json-viewer-container::-webkit-scrollbar-thumb:hover {
+  background: var(--scrollbar-thumb-hover);
+}
+
+.json-lines-list {
+  display: flex;
+  flex-direction: column;
+  padding: 10px 0;
+  min-width: fit-content;
+}
+
+.json-line {
+  display: flex;
+  align-items: baseline;
+  min-height: 22px;
+  transition: background-color 0.1s ease;
+}
+
+.json-line:hover {
+  background-color: var(--line-hover-bg);
+}
+
+.json-line.line-match {
+  background-color: var(--line-match-bg);
+}
+
+/* Gutter */
+.json-gutter {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  width: 58px;
+  flex-shrink: 0;
+  user-select: none;
+  color: var(--gutter-fg);
+  padding-right: 12px;
+}
+
+.json-line-num {
+  font-size: 12px;
+  opacity: 0.7;
+  text-align: right;
+  width: 28px;
+}
+
+.json-fold-btn-wrapper {
+  width: 16px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-left: 2px;
+}
+
+.json-fold-btn {
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  padding: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--fold-icon-color);
+  opacity: 0.6;
+  border-radius: 3px;
+  transition: transform 0.15s ease, opacity 0.15s ease, background-color 0.15s ease;
+  width: 14px;
+  height: 14px;
+}
+
+.json-fold-btn:hover {
+  opacity: 1;
+  background-color: var(--fold-icon-hover-bg);
+}
+
+.json-fold-btn.expanded {
+  transform: rotate(90deg);
+}
+
+.json-fold-btn.folded {
+  transform: rotate(0deg);
+}
+
+.json-fold-spacer {
+  width: 14px;
+  height: 14px;
+}
+
+/* Content */
+.json-code-content {
+  display: flex;
+  align-items: baseline;
+  flex-wrap: nowrap;
+  white-space: pre;
+  padding-right: 24px;
+}
+
+.json-key-wrapper {
+  display: inline-flex;
+}
+
+.json-key {
+  color: var(--json-key-color);
+  font-weight: 500;
+}
+
+.json-quote {
+  color: var(--json-quote-color);
+  opacity: 0.85;
+}
+
+.json-colon {
+  color: var(--json-punct-color);
+  margin-right: 4px;
+}
+
+.json-punct {
+  color: var(--json-punct-color);
+}
+
+.json-string {
+  color: var(--json-string-color);
+}
+
+.json-number {
+  color: var(--json-number-color);
+}
+
+.json-boolean {
+  color: var(--json-boolean-color);
+  font-weight: 600;
+}
+
+.json-null {
+  color: var(--json-null-color);
+  font-style: italic;
+  opacity: 0.9;
+}
+
+/* Fold preview pill */
+.json-fold-pill {
+  display: inline-flex;
+  align-items: center;
+  background-color: var(--fold-pill-bg);
+  border: 1px solid var(--fold-pill-border);
+  color: var(--fold-pill-fg);
+  padding: 0 6px;
+  border-radius: 4px;
+  font-size: 11.5px;
+  line-height: 17px;
+  cursor: pointer;
+  margin: 0 2px;
+  transition: background-color 0.15s ease, border-color 0.15s ease;
+}
+
+.json-fold-pill:hover {
+  background-color: var(--fold-pill-hover-bg);
+  border-color: var(--fold-pill-hover-border);
+  color: var(--fold-pill-hover-fg);
+}
+
+/* Clickable Link inside JSON */
+.json-link {
+  color: var(--json-link-color);
+  text-decoration: underline;
+  text-underline-offset: 3px;
+  text-decoration-thickness: 1px;
+  text-decoration-color: var(--json-link-underline);
+  display: inline-flex;
+  align-items: center;
+  gap: 3px;
+  cursor: pointer;
+  transition: color 0.15s ease, text-decoration-color 0.15s ease;
+}
+
+.json-link:hover {
+  color: var(--json-link-hover);
+  text-decoration-color: var(--json-link-hover);
+}
+
+.external-icon {
+  opacity: 0.7;
+}
+
+.json-link:hover .external-icon {
+  opacity: 1;
+}
+
+/* Search match */
+.search-highlight {
+  background-color: #ffd600;
+  color: #000;
+  border-radius: 2px;
+  padding: 0 2px;
+  font-weight: 600;
+}

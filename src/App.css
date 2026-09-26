@@ -1,0 +1,89 @@
+.macos-desktop {
+  width: 100vw;
+  height: 100dvh;
+  position: relative;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  box-sizing: border-box;
+  font-family: -apple-system, BlinkMacSystemFont, 'SF Pro Text', 'SF Pro Display', 'Helvetica Neue', Arial, sans-serif;
+  transition: background 0.4s ease;
+}
+
+/* Dark mode desktop wallpaper */
+.macos-desktop[data-system-theme='dark'] {
+  background:
+    radial-gradient(circle at 15% 20%, rgba(88, 86, 214, 0.4) 0%, transparent 45%),
+    radial-gradient(circle at 85% 75%, rgba(0, 122, 255, 0.3) 0%, transparent 45%),
+    radial-gradient(circle at 50% 50%, rgba(255, 45, 85, 0.15) 0%, transparent 55%),
+    linear-gradient(135deg, #0e1118 0%, #151824 50%, #090a10 100%);
+  color: #f5f5f7;
+}
+
+/* Light mode desktop wallpaper */
+.macos-desktop[data-system-theme='light'] {
+  background:
+    radial-gradient(circle at 20% 20%, rgba(200, 220, 255, 0.7) 0%, transparent 45%),
+    radial-gradient(circle at 80% 80%, rgba(255, 215, 230, 0.6) 0%, transparent 45%),
+    radial-gradient(circle at 50% 50%, rgba(230, 235, 245, 0.5) 0%, transparent 55%),
+    linear-gradient(135deg, #e8edf5 0%, #f4f6fa 50%, #e0e5ee 100%);
+  color: #1d1d1f;
+}
+
+/* Desktop workspace where window floats */
+.desktop-workspace {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 36px 16px 65px;
+  box-sizing: border-box;
+  position: relative;
+  z-index: 5;
+}
+
+/* Reopen placeholder */
+.window-placeholder {
+  animation: fadeIn 0.2s ease-out;
+}
+
+.reopen-window-btn {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 12px 22px;
+  border-radius: 20px;
+  background: rgba(255, 255, 255, 0.15);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  color: inherit;
+  font-family: inherit;
+  font-size: 13.5px;
+  font-weight: 500;
+  cursor: pointer;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+  transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.reopen-window-btn:hover {
+  transform: translateY(-2px) scale(1.02);
+  background: rgba(255, 255, 255, 0.25);
+  box-shadow: 0 14px 30px rgba(0, 0, 0, 0.3);
+}
+
+.reopen-icon {
+  font-family: monospace;
+  font-weight: 700;
+  background: #007aff;
+  color: #ffffff;
+  padding: 2px 7px;
+  border-radius: 6px;
+  font-size: 12px;
+}
+
+@media (max-width: 600px) {
+  .desktop-workspace {
+    padding: 34px 8px 16px;
+  }
+}
