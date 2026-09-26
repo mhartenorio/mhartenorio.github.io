@@ -64,7 +64,7 @@
   --drag-y: 0px;
   transform: translate3d(var(--drag-x), var(--drag-y), 0) var(--sticker-rot, rotate(0deg));
   transition: transform 0.22s cubic-bezier(0.175, 0.885, 0.32, 1.275),
-              box-shadow 0.22s ease;
+    box-shadow 0.22s ease;
   z-index: 15;
   pointer-events: auto;
 }
@@ -90,7 +90,7 @@
   padding: 14px 14px 12px;
   border-radius: 3px;
   box-shadow: 0 12px 24px -6px rgba(0, 0, 0, 0.22),
-              0 2px 4px rgba(0, 0, 0, 0.1);
+    0 2px 4px rgba(0, 0, 0, 0.1);
   --sticker-rot: rotate(3deg);
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
   z-index: 25;
@@ -99,7 +99,7 @@
 .sticky-note:hover:not(.is-dragging) {
   transform: translate3d(var(--drag-x), var(--drag-y), 0) rotate(0.5deg) scale(1.05) translateY(-5px);
   box-shadow: 0 20px 32px -8px rgba(0, 0, 0, 0.28),
-              0 6px 12px rgba(0, 0, 0, 0.12);
+    0 6px 12px rgba(0, 0, 0, 0.12);
 }
 
 /* Authentic Japanese Washi Tape: Vibrant Purple with Warm Gold / Honey Accent */
@@ -113,7 +113,7 @@
   /* Rich vibrant purple base */
   background-color: rgba(124, 58, 237, 0.88);
   /* Warm gold/honey micro-grid that harmonizes with the yellow Post-it paper */
-  background-image: 
+  background-image:
     linear-gradient(rgba(254, 240, 138, 0.65) 1px, transparent 1px),
     linear-gradient(90deg, rgba(254, 240, 138, 0.65) 1px, transparent 1px),
     linear-gradient(135deg, rgba(255, 255, 255, 0.16) 0%, transparent 60%);
@@ -121,13 +121,11 @@
   backdrop-filter: blur(2px);
   -webkit-backdrop-filter: blur(2px);
   /* Hand-torn deckle / jagged serrated ends on left and right */
-  clip-path: polygon(
-    0% 0%, 
-    100% 0%, 
-    96% 18%, 100% 36%, 95% 54%, 100% 72%, 96% 90%, 100% 100%, 
-    0% 100%, 
-    4% 88%, 0% 70%, 5% 52%, 0% 34%, 4% 16%
-  );
+  clip-path: polygon(0% 0%,
+      100% 0%,
+      96% 18%, 100% 36%, 95% 54%, 100% 72%, 96% 90%, 100% 100%,
+      0% 100%,
+      4% 88%, 0% 70%, 5% 52%, 0% 34%, 4% 16%);
   box-shadow: 0 2px 10px rgba(124, 58, 237, 0.32), 0 1px 3px rgba(0, 0, 0, 0.12);
   opacity: 0.96;
   transition: transform 0.2s ease;
@@ -184,15 +182,16 @@
     display: block;
   }
 
-  /* Yellow Note (Clipped on Mobile) */
+  /* Yellow Note (Bottom Right Corner on Mobile) */
   .sticky-note {
-    bottom: 24px;
-    right: -10px;
-    width: 145px;
+    bottom: -46px;
+    right: 16px;
+    width: 140px;
     padding: 8px 10px 8px;
     border-radius: 3px;
-    box-shadow: 0 8px 16px -4px rgba(0, 0, 0, 0.25);
-    --sticker-rot: rotate(2deg);
+    box-shadow: 0 10px 22px -4px rgba(0, 0, 0, 0.3),
+      0 2px 6px rgba(0, 0, 0, 0.12);
+    --sticker-rot: rotate(3deg);
   }
 
   .sticky-tape {
@@ -200,6 +199,7 @@
     height: 18px;
     top: -9px;
   }
+
   .sticky-content {
     font-size: 10px;
     line-height: 1.35;
