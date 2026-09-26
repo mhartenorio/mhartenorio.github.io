@@ -140,10 +140,31 @@
 .json-key {
   color: var(--json-key-color);
   font-weight: 500;
+  transition: color 0.15s ease;
+}
+
+.json-key.is-root-key {
+  color: var(--json-key-root-color, var(--json-key-color));
+  font-weight: 600;
+}
+
+.json-key.is-nested-key {
+  color: var(--json-key-nested-color, var(--json-key-color));
+  font-weight: 500;
 }
 
 .json-quote {
   color: var(--json-quote-color);
+  opacity: 0.85;
+}
+
+.json-quote.is-root-key {
+  color: var(--json-quote-root-color, var(--json-quote-color));
+  opacity: 0.9;
+}
+
+.json-quote.is-nested-key {
+  color: var(--json-quote-nested-color, var(--json-quote-color));
   opacity: 0.85;
 }
 
@@ -156,6 +177,24 @@
   color: var(--json-punct-color);
 }
 
+/* Rainbow Bracket Pair Colorization */
+.json-bracket {
+  font-weight: 600;
+  transition: color 0.15s ease;
+}
+
+.json-bracket.bracket-lvl-0 {
+  color: var(--json-bracket-lvl-0, #ffd700);
+}
+
+.json-bracket.bracket-lvl-1 {
+  color: var(--json-bracket-lvl-1, #da70d6);
+}
+
+.json-bracket.bracket-lvl-2 {
+  color: var(--json-bracket-lvl-2, #38bdf8);
+}
+
 .json-string {
   color: var(--json-string-color);
   white-space: pre-wrap;
@@ -163,9 +202,14 @@
   overflow-wrap: break-word;
 }
 
+.json-string-quote {
+  color: inherit;
+  opacity: 1;
+}
+
 .json-bold {
   font-weight: 700;
-  color: var(--json-bold-color, inherit);
+  color: inherit;
   letter-spacing: -0.1px;
 }
 

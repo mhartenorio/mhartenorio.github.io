@@ -110,42 +110,44 @@ export const JsonViewer: React.FC<JsonViewerProps> = ({
       );
     }
 
+    const lvl = line.indent % 3;
+
     if (line.type === 'object-open') {
-      return <span className="json-punct">{'{'}</span>;
+      return <span className={`json-bracket bracket-lvl-${lvl}`}>{'{'}</span>;
     }
     if (line.type === 'object-close') {
       return (
-        <span className="json-punct">
-          {'}'}
-          {line.hasComma && ','}
-        </span>
+        <>
+          <span className={`json-bracket bracket-lvl-${lvl}`}>{'}'}</span>
+          {line.hasComma && <span className="json-punct">,</span>}
+        </>
       );
     }
     if (line.type === 'array-open') {
-      return <span className="json-punct">{'['}</span>;
+      return <span className={`json-bracket bracket-lvl-${lvl}`}>{'['}</span>;
     }
     if (line.type === 'array-close') {
       return (
-        <span className="json-punct">
-          {']'}
-          {line.hasComma && ','}
-        </span>
+        <>
+          <span className={`json-bracket bracket-lvl-${lvl}`}>{']'}</span>
+          {line.hasComma && <span className="json-punct">,</span>}
+        </>
       );
     }
     if (line.type === 'empty-object') {
       return (
-        <span className="json-punct">
-          {'{ }'}
-          {line.hasComma && ','}
-        </span>
+        <>
+          <span className={`json-bracket bracket-lvl-${lvl}`}>{'{ }'}</span>
+          {line.hasComma && <span className="json-punct">,</span>}
+        </>
       );
     }
     if (line.type === 'empty-array') {
       return (
-        <span className="json-punct">
-          {'[ ]'}
-          {line.hasComma && ','}
-        </span>
+        <>
+          <span className={`json-bracket bracket-lvl-${lvl}`}>{'[ ]'}</span>
+          {line.hasComma && <span className="json-punct">,</span>}
+        </>
       );
     }
 
@@ -156,7 +158,7 @@ export const JsonViewer: React.FC<JsonViewerProps> = ({
 
       return (
         <span className="json-string">
-          <span className="json-quote">"</span>
+          <span className="json-string-quote">"</span>
           {linkInfo ? (
             <a
               href={linkInfo.href}
@@ -179,7 +181,7 @@ export const JsonViewer: React.FC<JsonViewerProps> = ({
           ) : (
             renderFormattedText(strVal)
           )}
-          <span className="json-quote">"</span>
+          <span className="json-string-quote">"</span>
           {line.hasComma && <span className="json-punct">,</span>}
         </span>
       );
@@ -255,9 +257,11 @@ export const JsonViewer: React.FC<JsonViewerProps> = ({
               >
                 {line.key !== undefined && (
                   <span className="json-key-wrapper">
-                    <span className="json-quote">"</span>
-                    <span className="json-key">{renderHighlighted(line.key)}</span>
-                    <span className="json-quote">"</span>
+                    <span className={`json-quote ${line.indent <= 1 ? 'is-root-key' : 'is-nested-key'}`}>"</span>
+                    <span className={`json-key ${line.indent <= 1 ? 'is-root-key' : 'is-nested-key'}`}>
+                      {renderHighlighted(line.key)}
+                    </span>
+                    <span className={`json-quote ${line.indent <= 1 ? 'is-root-key' : 'is-nested-key'}`}>"</span>
                     <span className="json-colon">: </span>
                   </span>
                 )}
