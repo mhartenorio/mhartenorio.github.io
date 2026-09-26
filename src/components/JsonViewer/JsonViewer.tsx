@@ -192,7 +192,7 @@ export const JsonViewer: React.FC<JsonViewerProps> = ({
           return (
             <div
               key={line.id}
-              className={`json-line ${isMatched ? 'line-match' : ''}`}
+              className={`json-line ${isMatched ? 'line-match' : ''} ${line.isHighlightItem ? 'is-highlight-item' : ''}`}
             >
               {/* Left Gutter: line number & fold chevron */}
               <div className="json-gutter">

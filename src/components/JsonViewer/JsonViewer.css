@@ -1,9 +1,10 @@
 .json-viewer-container {
   flex: 1;
-  overflow: auto;
+  overflow-y: auto;
+  overflow-x: hidden;
   font-family: 'SF Mono', Menlo, Monaco, Consolas, 'Liberation Mono', 'Courier New', monospace;
   font-size: 13.5px;
-  line-height: 1.55;
+  line-height: 1.62;
   background-color: var(--editor-bg);
   color: var(--editor-fg);
   user-select: text;
@@ -35,14 +36,20 @@
   display: flex;
   flex-direction: column;
   padding: 10px 0;
-  min-width: fit-content;
+  width: 100%;
 }
 
 .json-line {
   display: flex;
   align-items: baseline;
   min-height: 22px;
+  width: 100%;
   transition: background-color 0.1s ease;
+}
+
+.json-line.is-highlight-item {
+  margin-top: 5px;
+  margin-bottom: 7px;
 }
 
 .json-line:hover {
@@ -63,6 +70,8 @@
   user-select: none;
   color: var(--gutter-fg);
   padding-right: 12px;
+  align-self: flex-start;
+  height: 22px;
 }
 
 .json-line-num {
@@ -116,15 +125,16 @@
 
 /* Content */
 .json-code-content {
-  display: flex;
-  align-items: baseline;
-  flex-wrap: nowrap;
-  white-space: pre;
+  flex: 1;
+  min-width: 0;
+  white-space: pre-wrap;
+  word-break: break-word;
+  overflow-wrap: break-word;
   padding-right: 24px;
 }
 
 .json-key-wrapper {
-  display: inline-flex;
+  display: inline;
 }
 
 .json-key {
@@ -148,6 +158,9 @@
 
 .json-string {
   color: var(--json-string-color);
+  white-space: pre-wrap;
+  word-break: break-word;
+  overflow-wrap: break-word;
 }
 
 .json-number {
@@ -194,9 +207,9 @@
   text-underline-offset: 3px;
   text-decoration-thickness: 1px;
   text-decoration-color: var(--json-link-underline);
-  display: inline-flex;
-  align-items: center;
-  gap: 3px;
+  display: inline;
+  word-break: break-word;
+  overflow-wrap: break-word;
   cursor: pointer;
   transition: color 0.15s ease, text-decoration-color 0.15s ease;
 }
@@ -208,6 +221,9 @@
 
 .external-icon {
   opacity: 0.7;
+  display: inline-block;
+  vertical-align: middle;
+  margin-left: 3px;
 }
 
 .json-link:hover .external-icon {

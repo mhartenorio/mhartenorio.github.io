@@ -8,6 +8,7 @@ export interface JsonLine {
   hasComma: boolean;
   isFoldable: boolean;
   isFolded?: boolean;
+  isHighlightItem?: boolean;
   itemCount?: number;
   previewText?: string;
   originalLineNumber: number;
@@ -55,7 +56,14 @@ export function buildJsonLines(data: unknown): { lines: JsonLine[]; allFoldableP
   const allFoldablePaths = new Set<string>();
   let currentLine = 1;
 
-  function traverse(value: unknown, indent: number, path: string, key?: string, hasComma: boolean = false) {
+  function traverse(
+    value: unknown,
+    indent: number,
+    path: string,
+    key?: string,
+    hasComma: boolean = false,
+    isHighlightItem: boolean = false
+  ) {
     if (value === null) {
       lines.push({
         id: path,
@@ -67,6 +75,7 @@ export function buildJsonLines(data: unknown): { lines: JsonLine[]; allFoldableP
         valueType: 'null',
         hasComma,
         isFoldable: false,
+        isHighlightItem,
         originalLineNumber: currentLine++,
       });
       return;
@@ -82,10 +91,13 @@ export function buildJsonLines(data: unknown): { lines: JsonLine[]; allFoldableP
           type: 'empty-array',
           hasComma,
           isFoldable: false,
+          isHighlightItem,
           originalLineNumber: currentLine++,
         });
         return;
       }
+
+      const isHighlightsArray = key === 'highlights';
 
       allFoldablePaths.add(path);
       lines.push({
@@ -96,6 +108,7 @@ export function buildJsonLines(data: unknown): { lines: JsonLine[]; allFoldableP
         type: 'array-open',
         hasComma,
         isFoldable: true,
+        isHighlightItem,
         itemCount: value.length,
         previewText: `[ ${value.length} ${value.length === 1 ? 'item' : 'items'} ]`,
         originalLineNumber: currentLine++,
@@ -103,7 +116,7 @@ export function buildJsonLines(data: unknown): { lines: JsonLine[]; allFoldableP
 
       value.forEach((item, index) => {
         const itemHasComma = index < value.length - 1;
-        traverse(item, indent + 1, `${path}[${index}]`, undefined, itemHasComma);
+        traverse(item, indent + 1, `${path}[${index}]`, undefined, itemHasComma, isHighlightsArray);
       });
 
       lines.push({
@@ -129,6 +142,7 @@ export function buildJsonLines(data: unknown): { lines: JsonLine[]; allFoldableP
           type: 'empty-object',
           hasComma,
           isFoldable: false,
+          isHighlightItem,
           originalLineNumber: currentLine++,
         });
         return;
@@ -143,6 +157,7 @@ export function buildJsonLines(data: unknown): { lines: JsonLine[]; allFoldableP
         type: 'object-open',
         hasComma,
         isFoldable: true,
+        isHighlightItem,
         itemCount: keys.length,
         previewText: `{ ${keys.length} ${keys.length === 1 ? 'key' : 'keys'} }`,
         originalLineNumber: currentLine++,
@@ -151,7 +166,7 @@ export function buildJsonLines(data: unknown): { lines: JsonLine[]; allFoldableP
       keys.forEach((childKey, index) => {
         const childVal = (value as Record<string, unknown>)[childKey];
         const childHasComma = index < keys.length - 1;
-        traverse(childVal, indent + 1, `${path}.${childKey}`, childKey, childHasComma);
+        traverse(childVal, indent + 1, `${path}.${childKey}`, childKey, childHasComma, false);
       });
 
       lines.push({
@@ -178,11 +193,12 @@ export function buildJsonLines(data: unknown): { lines: JsonLine[]; allFoldableP
       valueType: valType,
       hasComma,
       isFoldable: false,
+      isHighlightItem,
       originalLineNumber: currentLine++,
     });
   }
 
-  traverse(data, 0, 'root', undefined, false);
+  traverse(data, 0, 'root', undefined, false, false);
   return { lines, allFoldablePaths };
 }
 
