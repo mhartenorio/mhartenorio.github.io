@@ -2,6 +2,7 @@ import React, { useState, useEffect, useMemo, useRef, useCallback } from 'react'
 import type { TabId, TabInfo } from '../../types';
 import { JsonViewer } from '../JsonViewer/JsonViewer';
 import { ImageViewer } from '../ImageViewer/ImageViewer';
+import { TextViewer } from '../TextViewer/TextViewer';
 import { buildJsonLines, searchJson } from '../../utils/jsonParser';
 import './MacWindow.css';
 
@@ -31,10 +32,12 @@ export const MacWindow: React.FC<MacWindowProps> = ({
   const [isSearchOpen, setIsSearchOpen] = useState(false);
   const [foldedMap, setFoldedMap] = useState<Record<TabId, Set<string>>>({
     summary: new Set<string>(),
+    about: new Set<string>(),
     links: new Set<string>(),
     resume: new Set<string>(),
     me: new Set<string>(),
   });
+
 
   const tabbarRef = useRef<HTMLDivElement>(null);
   const [scrollProgress, setScrollProgress] = useState({
@@ -99,10 +102,18 @@ export const MacWindow: React.FC<MacWindowProps> = ({
 
   // Derived match count via useMemo (no cascading effect setState)
   const matchCount = useMemo(() => {
-    if (!searchQuery.trim() || activeTab.type === 'image' || !activeTab.data) return null;
-    const { lines } = buildJsonLines(activeTab.data);
-    return searchJson(lines, searchQuery).matchingLineIds.size;
-  }, [activeTab.data, activeTab.type, searchQuery]);
+    if (!searchQuery.trim() || activeTab.type === 'image') return null;
+    if (activeTab.type === 'text' && activeTab.textContent) {
+      const q = searchQuery.toLowerCase();
+      const textLines = activeTab.textContent.split('\n');
+      return textLines.filter((l) => l.toLowerCase().includes(q)).length;
+    }
+    if (activeTab.data) {
+      const { lines } = buildJsonLines(activeTab.data);
+      return searchJson(lines, searchQuery).matchingLineIds.size;
+    }
+    return null;
+  }, [activeTab, searchQuery]);
 
   // Keyboard shortcut listener
   useEffect(() => {
@@ -117,8 +128,8 @@ export const MacWindow: React.FC<MacWindowProps> = ({
         setIsSearchOpen(false);
         setSearchQuery('');
       }
-      // Cmd/Ctrl + 1, 2, 3, 4 for tabs
-      if ((e.metaKey || e.ctrlKey) && ['1', '2', '3', '4'].includes(e.key)) {
+      // Cmd/Ctrl + 1, 2, 3, 4, 5 for tabs
+      if ((e.metaKey || e.ctrlKey) && ['1', '2', '3', '4', '5'].includes(e.key)) {
         e.preventDefault();
         const index = parseInt(e.key, 10) - 1;
         if (tabs[index]) {
@@ -130,6 +141,7 @@ export const MacWindow: React.FC<MacWindowProps> = ({
     window.addEventListener('keydown', handleKeyDown);
     return () => window.removeEventListener('keydown', handleKeyDown);
   }, [isSearchOpen, tabs, onSelectTab, activeTab.type]);
+
 
   const handleSearchChange = (query: string) => {
     setSearchQuery(query);
@@ -179,7 +191,7 @@ export const MacWindow: React.FC<MacWindowProps> = ({
       className={`macos-window ${isMaximized ? 'maximized' : ''}`}
       data-theme={theme}
       role="dialog"
-      aria-label={`${activeTab.type === 'image' ? 'Image Viewer' : 'JSON Viewer'} - ${activeTab.filename}`}
+      aria-label={`${activeTab.type === 'image' ? 'Image Viewer' : activeTab.type === 'text' ? 'Text Viewer' : 'JSON Viewer'} - ${activeTab.filename}`}
     >
       {/* Title Bar with Traffic Lights & Tabs */}
       <div className="macos-titlebar">
@@ -232,11 +244,16 @@ export const MacWindow: React.FC<MacWindowProps> = ({
                   className={`macos-tab ${isActive ? 'active' : ''}`}
                   onClick={() => onSelectTab(tab.id)}
                 >
-                  <span className={`tab-icon ${tab.type === 'image' ? 'tab-icon-image' : 'tab-icon-json'}`}>
+                  <span className={`tab-icon ${tab.type === 'image' ? 'tab-icon-image' : tab.type === 'text' ? 'tab-icon-text' : 'tab-icon-json'}`}>
                     {tab.type === 'image' ? (
                       <svg viewBox="0 0 16 16" width="13" height="13" fill="currentColor">
                         <path d="M6.002 5.5a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0z" />
                         <path d="M2.002 1a2 2 0 0 0-2 2v10a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V3a2 2 0 0 0-2-2h-12zm12 1a1 1 0 0 1 1 1v6.5l-3.777-1.947a.5.5 0 0 0-.577.093l-3.71 3.71-2.66-1.772a.5.5 0 0 0-.63.062L1.002 12V3a1 1 0 0 1 1-1h12z" />
+                      </svg>
+                    ) : tab.type === 'text' ? (
+                      <svg viewBox="0 0 16 16" width="13" height="13" fill="currentColor">
+                        <path d="M14 4.5V14a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V2a2 2 0 0 1 2-2h5.5L14 4.5zm-3 0A1.5 1.5 0 0 1 9.5 3V1H4a1 1 0 0 0-1 1v12a1 1 0 0 0 1 1h8a1 1 0 0 0 1-1V4.5h-2z" />
+                        <path d="M4.5 6.5h7v1h-7zM4.5 9h7v1h-7zM4.5 11.5h5v1h-5z" opacity="0.85" />
                       </svg>
                     ) : (
                       <svg viewBox="0 0 16 16" width="13" height="13" fill="currentColor">
@@ -269,7 +286,7 @@ export const MacWindow: React.FC<MacWindowProps> = ({
 
         {/* Window Actions */}
         <div className="macos-actions">
-          {/* Search Toggle / Box (JSON tabs only) */}
+          {/* Search Toggle / Box (JSON and Text tabs only) */}
           {activeTab.type !== 'image' && (
             isSearchOpen ? (
               <div className="search-input-wrapper">
@@ -306,7 +323,7 @@ export const MacWindow: React.FC<MacWindowProps> = ({
                 type="button"
                 className="action-btn"
                 onClick={() => setIsSearchOpen(true)}
-                title="Search JSON (Cmd+F)"
+                title="Search (Cmd+F)"
                 aria-label="Search"
               >
                 <svg viewBox="0 0 16 16" width="13" height="13" fill="currentColor">
@@ -337,13 +354,18 @@ export const MacWindow: React.FC<MacWindowProps> = ({
         </div>
       </div>
 
-      {/* Window Body: JSON or Image Viewer */}
+      {/* Window Body: Image, Text, or JSON Viewer */}
       {activeTab.type === 'image' && activeTab.imageUrl ? (
         <ImageViewer
           src={activeTab.imageUrl}
           alt="Mhar Tenorio"
           filename={activeTab.filename}
           dimensions={activeTab.dimensions}
+        />
+      ) : activeTab.type === 'text' && activeTab.textContent !== undefined ? (
+        <TextViewer
+          content={activeTab.textContent}
+          searchQuery={searchQuery}
         />
       ) : (
         <JsonViewer
@@ -358,7 +380,7 @@ export const MacWindow: React.FC<MacWindowProps> = ({
       <div className="macos-statusbar">
         <div className="status-item status-path">
           <span className="status-badge">
-            {activeTab.type === 'image' ? 'src/assets/' : 'src/json/'}
+            {activeTab.type === 'json' ? 'src/json/' : 'src/assets/'}
             {activeTab.filename}
           </span>
         </div>
@@ -375,6 +397,14 @@ export const MacWindow: React.FC<MacWindowProps> = ({
               )}
               <span>JPEG</span>
             </>
+          ) : activeTab.type === 'text' ? (
+            <>
+              <span>{activeTab.textContent?.split('\n').length || 1} lines</span>
+              <span className="status-dot">·</span>
+              <span>UTF-8</span>
+              <span className="status-dot">·</span>
+              <span>Plain Text</span>
+            </>
           ) : (
             <>
               <span>UTF-8</span>
@@ -387,3 +417,4 @@ export const MacWindow: React.FC<MacWindowProps> = ({
     </div>
   );
 };
+

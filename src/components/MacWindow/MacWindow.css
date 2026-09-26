@@ -314,6 +314,19 @@
   color: #c084fc;
 }
 
+.tab-icon.tab-icon-text {
+  color: #38bdf8;
+}
+
+.macos-window[data-theme='light'] .tab-icon.tab-icon-text {
+  color: #0284c7;
+}
+
+.macos-window[data-theme='dark'] .tab-icon.tab-icon-text {
+  color: #38bdf8;
+}
+
+
 
 .tab-title {
   letter-spacing: -0.2px;

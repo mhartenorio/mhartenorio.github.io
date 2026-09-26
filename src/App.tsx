@@ -3,6 +3,7 @@ import summaryData from './json/summary.json';
 import linksData from './json/links.json';
 import resumeData from './json/resume.json';
 import meImage from './assets/me.jpeg';
+import aboutMeText from './assets/about_me.txt?raw';
 import type { TabId, TabInfo } from './types';
 import { MacWindow } from './components/MacWindow/MacWindow';
 import { DesktopCanvas, StickyNote } from './components/DesktopCanvas/DesktopCanvas';
@@ -45,6 +46,14 @@ function App() {
         data: resumeData,
         rawString: rRaw,
         sizeBytes: new Blob([rRaw]).size,
+      },
+      {
+        id: 'about',
+        filename: 'about_me.txt',
+        title: 'About Me',
+        type: 'text',
+        textContent: aboutMeText,
+        sizeBytes: new Blob([aboutMeText]).size,
       },
       {
         id: 'me',

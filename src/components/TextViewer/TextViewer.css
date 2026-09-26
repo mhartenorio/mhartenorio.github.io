@@ -1,0 +1,110 @@
+/* =========================================================
+   Text File Viewer Container & Lines
+   ========================================================= */
+
+.text-viewer-container {
+  flex: 1;
+  overflow-y: auto;
+  overflow-x: hidden;
+  font-family: 'SF Mono', Menlo, Monaco, Consolas, 'Liberation Mono', 'Courier New', monospace;
+  font-size: 13.5px;
+  line-height: 1.62;
+  background-color: var(--editor-bg);
+  color: var(--editor-fg);
+  user-select: text;
+  position: relative;
+  scrollbar-gutter: stable;
+}
+
+/* Custom sleek scrollbars matching macOS */
+.text-viewer-container::-webkit-scrollbar {
+  width: 10px;
+  height: 10px;
+}
+
+.text-viewer-container::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.text-viewer-container::-webkit-scrollbar-thumb {
+  background: var(--scrollbar-thumb);
+  border-radius: 5px;
+  border: 2px solid var(--editor-bg);
+}
+
+.text-viewer-container::-webkit-scrollbar-thumb:hover {
+  background: var(--scrollbar-thumb-hover);
+}
+
+.text-lines-list {
+  display: flex;
+  flex-direction: column;
+  padding: 12px 0;
+  width: 100%;
+}
+
+.text-line {
+  display: flex;
+  align-items: baseline;
+  min-height: 24px;
+  width: 100%;
+  transition: background-color 0.1s ease;
+}
+
+.text-line:hover {
+  background-color: var(--line-hover-bg);
+}
+
+.text-line.line-match {
+  background-color: var(--line-match-bg);
+}
+
+.text-gutter {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  width: 52px;
+  min-width: 52px;
+  padding-right: 18px;
+  user-select: none;
+  -webkit-user-select: none;
+  color: var(--gutter-fg);
+  opacity: 0.75;
+}
+
+.text-line-num {
+  font-size: 12px;
+  text-align: right;
+  width: 100%;
+}
+
+.text-code-content {
+  flex: 1;
+  min-width: 0;
+  padding-left: 8px;
+  padding-right: 24px;
+  white-space: pre-wrap;
+  word-break: break-word;
+}
+
+@media (max-width: 768px) {
+  .text-viewer-container {
+    font-size: 12px;
+    line-height: 1.55;
+  }
+
+  .text-gutter {
+    width: 38px;
+    min-width: 38px;
+    padding-right: 10px;
+  }
+
+  .text-line-num {
+    font-size: 10.5px;
+  }
+
+  .text-code-content {
+    padding-left: 6px;
+    padding-right: 14px;
+  }
+}
