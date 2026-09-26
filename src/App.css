@@ -12,7 +12,7 @@
 
 /* Dark mode desktop wallpaper */
 .macos-desktop[data-system-theme='dark'] {
-  background: white;
+  background: antiquewhite;
   color: #f5f5f7;
 }
 
