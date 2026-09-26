@@ -10,9 +10,9 @@ interface MacWindowProps {
   onSelectTab: (id: TabId) => void;
   theme: 'dark' | 'light';
   onToggleTheme: () => void;
-  isMinimized: boolean;
-  onMinimize: () => void;
-  onClose: () => void;
+  isMinimized?: boolean;
+  onMinimize?: () => void;
+  onClose?: () => void;
 }
 
 export const MacWindow: React.FC<MacWindowProps> = ({

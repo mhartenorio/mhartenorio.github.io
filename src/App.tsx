@@ -9,7 +9,6 @@ import './App.css';
 function App() {
   const [activeTabId, setActiveTabId] = useState<TabId>('summary');
   const [theme, setTheme] = useState<'dark' | 'light'>('dark');
-  const [isWindowOpen, setIsWindowOpen] = useState(true);
 
   // Prepare tabs with formatted string and accurate byte sizes
   const tabs: TabInfo[] = useMemo(() => {
@@ -54,29 +53,13 @@ function App() {
 
       {/* Main Desktop Area */}
       <main className="desktop-workspace">
-        {isWindowOpen ? (
-          <MacWindow
-            tabs={tabs}
-            activeTabId={activeTabId}
-            onSelectTab={setActiveTabId}
-            theme={theme}
-            onToggleTheme={handleToggleTheme}
-            isMinimized={!isWindowOpen}
-            onMinimize={() => setIsWindowOpen(false)}
-            onClose={() => setIsWindowOpen(false)}
-          />
-        ) : (
-          <div className="window-placeholder">
-            <button
-              type="button"
-              className="reopen-window-btn"
-              onClick={() => setIsWindowOpen(true)}
-            >
-              <span className="reopen-icon">{'{ }'}</span>
-              <span>Click to open JSON Viewer</span>
-            </button>
-          </div>
-        )}
+        <MacWindow
+          tabs={tabs}
+          activeTabId={activeTabId}
+          onSelectTab={setActiveTabId}
+          theme={theme}
+          onToggleTheme={handleToggleTheme}
+        />
       </main>
     </div>
   );
