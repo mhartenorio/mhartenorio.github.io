@@ -16,7 +16,35 @@ export interface JsonLine {
 
 export function isUrl(value: unknown): boolean {
   if (typeof value !== 'string') return false;
-  return /^(https?:\/\/|mailto:)/i.test(value);
+  return /^(https?:\/\/|mailto:)/i.test(value.trim());
+}
+
+export function isEmail(value: unknown): boolean {
+  if (typeof value !== 'string') return false;
+  return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(value.trim());
+}
+
+export interface LinkInfo {
+  href: string;
+  isEmail: boolean;
+}
+
+export function getLinkHref(value: unknown): LinkInfo | null {
+  if (typeof value !== 'string') return null;
+  const str = value.trim();
+  if (isEmail(str)) {
+    return {
+      href: str.startsWith('mailto:') ? str : `mailto:${str}`,
+      isEmail: true,
+    };
+  }
+  if (isUrl(str)) {
+    return {
+      href: str,
+      isEmail: str.startsWith('mailto:'),
+    };
+  }
+  return null;
 }
 
 /**

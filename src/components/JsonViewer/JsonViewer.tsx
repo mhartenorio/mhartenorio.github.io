@@ -4,7 +4,7 @@ import {
   buildJsonLines,
   getVisibleLines,
   searchJson,
-  isUrl,
+  getLinkHref,
 } from '../../utils/jsonParser';
 import './JsonViewer.css';
 
@@ -120,23 +120,29 @@ export const JsonViewer: React.FC<JsonViewerProps> = ({
     // Primitive value
     if (line.valueType === 'string') {
       const strVal = line.value as string;
-      const isLink = isUrl(strVal);
+      const linkInfo = getLinkHref(strVal);
 
       return (
         <span className="json-string">
           <span className="json-quote">"</span>
-          {isLink ? (
+          {linkInfo ? (
             <a
-              href={strVal}
-              target="_blank"
+              href={linkInfo.href}
+              target={linkInfo.isEmail ? undefined : '_blank'}
               rel="noopener noreferrer"
               className="json-link"
-              title={`Open ${strVal} in new tab`}
+              title={linkInfo.isEmail ? `Email ${strVal}` : `Open ${strVal} in new tab`}
             >
               {renderHighlighted(strVal)}
-              <svg className="external-icon" viewBox="0 0 12 12" width="10" height="10" fill="currentColor">
-                <path d="M3.5 2a.5.5 0 0 0 0 1h4.793L1.146 10.146a.5.5 0 0 0 .708.708L9 3.707V8.5a.5.5 0 0 0 1 0v-6.5a.5.5 0 0 0-.5-.5h-6z" />
-              </svg>
+              {linkInfo.isEmail ? (
+                <svg className="external-icon mail-icon" viewBox="0 0 16 16" width="11" height="11" fill="currentColor">
+                  <path d="M0 4a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2V4zm2-1a1 1 0 0 0-1 1v.217l7 4.2 7-4.2V4a1 1 0 0 0-1-1H2zm13 2.383l-4.708 2.825L15 11.105V5.383zm-.034 6.876-5.64-3.471L8 9.583l-1.326-.795-5.64 3.47A1 1 0 0 0 2 13h12a1 1 0 0 0 .966-.741zM1 11.105l4.708-2.897L1 5.383v5.722z" />
+                </svg>
+              ) : (
+                <svg className="external-icon" viewBox="0 0 12 12" width="10" height="10" fill="currentColor">
+                  <path d="M3.5 2a.5.5 0 0 0 0 1h4.793L1.146 10.146a.5.5 0 0 0 .708.708L9 3.707V8.5a.5.5 0 0 0 1 0v-6.5a.5.5 0 0 0-.5-.5h-6z" />
+                </svg>
+              )}
             </a>
           ) : (
             renderHighlighted(strVal)

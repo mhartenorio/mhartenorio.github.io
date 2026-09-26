@@ -8,7 +8,7 @@ import './App.css';
 
 function App() {
   const [activeTabId, setActiveTabId] = useState<TabId>('summary');
-  const [theme, setTheme] = useState<'dark' | 'light'>('dark');
+  const [theme, setTheme] = useState<'dark' | 'light'>('light');
 
   // Prepare tabs with formatted string and accurate byte sizes
   const tabs: TabInfo[] = useMemo(() => {
@@ -19,7 +19,7 @@ function App() {
     return [
       {
         id: 'summary',
-        filename: 'summary.json',
+        filename: 'mhar_tenorio.json',
         title: 'Summary',
         data: summaryData,
         rawString: sRaw,
@@ -50,7 +50,6 @@ function App() {
 
   return (
     <div className="macos-desktop" data-system-theme={theme}>
-
       {/* Main Desktop Area */}
       <main className="desktop-workspace">
         <MacWindow
