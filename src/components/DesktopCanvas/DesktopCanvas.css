@@ -23,14 +23,14 @@
   opacity: 1;
 }
 
-/* Light theme (black desktop): white dashed graph paper */
+/* Light theme (black desktop): blueprint cyan/sky blue dashed grid */
 .blueprint-grid-layer[data-theme='light'] .blueprint-grid {
-  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24'%3E%3Cline x1='0' y1='0.5' x2='24' y2='0.5' stroke='rgba(255,255,255,0.22)' stroke-width='1' stroke-dasharray='3,3'/%3E%3Cline x1='0.5' y1='0' x2='0.5' y2='24' stroke='rgba(255,255,255,0.22)' stroke-width='1' stroke-dasharray='3,3'/%3E%3C/svg%3E");
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24'%3E%3Cline x1='0' y1='0.5' x2='24' y2='0.5' stroke='rgba(56,189,248,0.28)' stroke-width='1' stroke-dasharray='3,3'/%3E%3Cline x1='0.5' y1='0' x2='0.5' y2='24' stroke='rgba(56,189,248,0.28)' stroke-width='1' stroke-dasharray='3,3'/%3E%3C/svg%3E");
 }
 
-/* Dark theme (antiquewhite desktop): dark graphite/sepia dashed graph paper */
+/* Dark theme (antiquewhite desktop): classic drafting blue dashed graph paper */
 .blueprint-grid-layer[data-theme='dark'] .blueprint-grid {
-  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24'%3E%3Cline x1='0' y1='0.5' x2='24' y2='0.5' stroke='rgba(50,35,20,0.22)' stroke-width='1' stroke-dasharray='3,3'/%3E%3Cline x1='0.5' y1='0' x2='0.5' y2='24' stroke='rgba(50,35,20,0.22)' stroke-width='1' stroke-dasharray='3,3'/%3E%3C/svg%3E");
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24'%3E%3Cline x1='0' y1='0.5' x2='24' y2='0.5' stroke='rgba(59,130,246,0.28)' stroke-width='1' stroke-dasharray='3,3'/%3E%3Cline x1='0.5' y1='0' x2='0.5' y2='24' stroke='rgba(59,130,246,0.28)' stroke-width='1' stroke-dasharray='3,3'/%3E%3C/svg%3E");
 }
 
 /* 2. Floating Stickers Layer (Layered Above Desktop Workspace) */
