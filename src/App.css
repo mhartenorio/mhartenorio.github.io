@@ -34,6 +34,12 @@
   z-index: 5;
 }
 
+/* Window wrapper so stickers can clip directly to the window frame */
+.macos-window-wrapper {
+  position: relative;
+  display: inline-flex;
+}
+
 /* Reopen placeholder */
 .window-placeholder {
   animation: fadeIn 0.2s ease-out;

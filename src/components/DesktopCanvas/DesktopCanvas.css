@@ -76,12 +76,13 @@
 }
 
 /* =========================================================
-   Yellow Post-it Note (Bottom-Right Corner)
+   Yellow Post-it Note (Clipped to Right Side of Window)
    ========================================================= */
 
 .sticky-note {
-  bottom: 40px;
-  right: 40px;
+  position: absolute;
+  right: -85px;
+  bottom: 48px;
   width: 195px;
   background: linear-gradient(145deg, #fef9c3, #fef08a);
   color: #713f12;
@@ -89,8 +90,9 @@
   border-radius: 3px;
   box-shadow: 0 12px 24px -6px rgba(0, 0, 0, 0.22),
               0 2px 4px rgba(0, 0, 0, 0.1);
-  --sticker-rot: rotate(2.5deg);
+  --sticker-rot: rotate(3deg);
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  z-index: 25;
 }
 
 .sticky-note:hover:not(.is-dragging) {
@@ -169,10 +171,8 @@
 @media (max-width: 1200px) {
   .sticky-note {
     width: 175px;
-    right: 24px;
-    bottom: 30px;
-    left: auto;
-    top: auto;
+    right: -55px;
+    bottom: 40px;
     font-size: 11px;
   }
 }
@@ -183,13 +183,11 @@
     display: block;
   }
 
-  /* Yellow Note (Bottom-Right on Mobile) */
+  /* Yellow Note (Clipped on Mobile) */
   .sticky-note {
-    bottom: 12px;
-    right: 14px;
-    left: auto;
-    top: auto;
-    width: 148px;
+    bottom: 24px;
+    right: -10px;
+    width: 145px;
     padding: 8px 10px 8px;
     border-radius: 3px;
     box-shadow: 0 8px 16px -4px rgba(0, 0, 0, 0.25);
@@ -201,7 +199,6 @@
     height: 18px;
     top: -9px;
   }
-
   .sticky-content {
     font-size: 10px;
     line-height: 1.35;
@@ -215,4 +212,12 @@
   .sticky-bio {
     font-size: 10px;
   }
+}
+
+/* When window is maximized, tuck note neatly inside */
+.macos-window-wrapper:has(.macos-window.maximized) .sticky-note {
+  right: 18px;
+  bottom: 38px;
+  opacity: 0.25;
+  pointer-events: none;
 }

@@ -82,27 +82,24 @@ const NERD_ASCII = `   .------------.
   \\    \\_||_/    /  
    \\____________/   `;
 
+export const StickyNote: React.FC = () => {
+	return (
+		<DraggableSticker className="sticky-note">
+			<div className="sticky-tape" />
+			<div className="sticky-content">
+				<div className="sticky-ascii-wrap" aria-label="Nerd emoji ASCII art">
+					<pre className="sticky-ascii">{NERD_ASCII}</pre>
+				</div>
+				<p className="sticky-bio">Hi! I'm Mhar, an NYC-based software engineer and Stanford alum.</p>
+			</div>
+		</DraggableSticker>
+	);
+};
+
 export const DesktopCanvas: React.FC<DesktopCanvasProps> = ({ theme }) => {
 	return (
-		<>
-			{/* Blueprint Dot Grid Background Layer */}
-			<div className="blueprint-grid-layer" data-theme={theme} aria-hidden="true">
-				<div className="blueprint-grid" />
-			</div>
-
-			{/* Interactive Desktop Moodboard Stickers Layer */}
-			<div className="desktop-stickers-layer" data-theme={theme}>
-				{/* Yellow macOS Post-it Note (Bottom-Right Corner) */}
-				<DraggableSticker className="sticky-note">
-					<div className="sticky-tape" />
-					<div className="sticky-content">
-						<div className="sticky-ascii-wrap" aria-label="Nerd emoji ASCII art">
-							<pre className="sticky-ascii">{NERD_ASCII}</pre>
-						</div>
-						<p className="sticky-bio">Hi! I'm Mhar, an NYC-based software engineer and Stanford alum.</p>
-					</div>
-				</DraggableSticker>
-			</div>
-		</>
+		<div className="blueprint-grid-layer" data-theme={theme} aria-hidden="true">
+			<div className="blueprint-grid" />
+		</div>
 	);
 };

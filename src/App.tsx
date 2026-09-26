@@ -4,7 +4,7 @@ import linksData from './json/links.json';
 import resumeData from './json/resume.json';
 import type { TabId, TabInfo } from './types';
 import { MacWindow } from './components/MacWindow/MacWindow';
-import { DesktopCanvas } from './components/DesktopCanvas/DesktopCanvas';
+import { DesktopCanvas, StickyNote } from './components/DesktopCanvas/DesktopCanvas';
 import './App.css';
 
 function App() {
@@ -51,18 +51,22 @@ function App() {
 
   return (
     <div className="macos-desktop" data-system-theme={theme}>
-      {/* Background Canvas: Blueprint Grid, Ghost Typography & Moodboard Stickers */}
+      {/* Background Canvas: Blueprint Grid */}
       <DesktopCanvas theme={theme} />
 
       {/* Main Desktop Area */}
       <main className="desktop-workspace">
-        <MacWindow
-          tabs={tabs}
-          activeTabId={activeTabId}
-          onSelectTab={setActiveTabId}
-          theme={theme}
-          onToggleTheme={handleToggleTheme}
-        />
+        <div className="macos-window-wrapper">
+          <MacWindow
+            tabs={tabs}
+            activeTabId={activeTabId}
+            onSelectTab={setActiveTabId}
+            theme={theme}
+            onToggleTheme={handleToggleTheme}
+          />
+          {/* Post-it Note clipped to the side of the window */}
+          <StickyNote />
+        </div>
       </main>
     </div>
   );
