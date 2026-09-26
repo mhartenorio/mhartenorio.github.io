@@ -61,8 +61,8 @@ function App() {
         title: 'me.jpeg',
         type: 'image',
         imageUrl: meImage,
-        sizeBytes: 5815206,
-        dimensions: { width: 2000, height: 3000 },
+        sizeBytes: 531733,
+        dimensions: { width: 1200, height: 1800 },
       },
     ];
   }, []);
