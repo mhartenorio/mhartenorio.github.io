@@ -30,7 +30,8 @@
   "work": [
     {
       "name": "**Squarespace**",
-      "position": "Software Engineer (Front-End)",
+      "link": "https://www.squarespace.com",
+      "position": "Software Engineer **(Front-End)**",
       "startDate": "2025-01",
       "endDate": null,
       "highlights": [
@@ -44,7 +45,8 @@
     },
     {
       "name": "**Remitly (FinTech)**",
-      "position": "Software Engineer (Front-End, Full-Stack)",
+      "link": "https://www.remitly.com",
+      "position": "Software Engineer **(Front-End, Full-Stack)**",
       "startDate": "2024-06",
       "endDate": "2024-09",
       "highlights": [
@@ -55,13 +57,14 @@
     },
     {
       "name": "**Purposer (E-Commerce Start-Up)**",
-      "position": "Software Engineer (Front-End, Full-Stack)",
+      "link:": "https://www.linkedin.com/company/purposer/",
+      "position": "Software Engineer **(Front-End, Full-Stack)**",
       "startDate": "2022-09",
       "endDate": "2023-06",
       "highlights": [
         "Designed and built many core user journeys for fast-paced e-commerce start-up using TypeScript (React) and MySQL, enabling the **MVP launch in ~3 months**, with a strong focus on human-centered user experiences.",
         "**Implemented core purchasing workflow**, enabling users to view and checkout items, track their purchases, process refunds/returns, inventory management, sales throughput, and online storefronts using MaterialUI.",
-        "Designed and built seller dashboards for inventory management, sales throughput, and online storefronts using Figma, React Charts, and LeafletJS.",
+        "Designed and built **seller dashboards** for inventory management, sales throughput, and online storefronts using **Figma, React Charts, and LeafletJS.**",
         "**Contributed multiple framework-level React components** such as buttons, pop-ups, and tables, allowing other engineering team members to reuse these components in their front-end."
       ]
     }

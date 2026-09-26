@@ -209,7 +209,7 @@
 
 .json-bold {
   font-weight: 700;
-  color: inherit;
+  color: var(--json-bold-color, inherit);
   letter-spacing: -0.1px;
 }
 
