@@ -1,4 +1,4 @@
-import { useState, useMemo } from 'react';
+import { useState, useMemo, useEffect } from 'react';
 import summaryData from './json/summary.json';
 import linksData from './json/links.json';
 import resumeData from './json/resume.json';
@@ -6,12 +6,17 @@ import meImage from './assets/me.jpeg';
 import aboutMeText from './assets/about_me.txt?raw';
 import type { TabId, TabInfo } from './types';
 import { MacWindow } from './components/MacWindow/MacWindow';
-import { DesktopCanvas, StickyNote } from './components/DesktopCanvas/DesktopCanvas';
+import { StickyNote } from './components/DesktopCanvas/DesktopCanvas';
 import './App.css';
 
 function App() {
   const [activeTabId, setActiveTabId] = useState<TabId>('summary');
   const [theme, setTheme] = useState<'dark' | 'light'>('light');
+
+  useEffect(() => {
+    document.documentElement.setAttribute('data-theme', theme);
+    document.body.setAttribute('data-theme', theme);
+  }, [theme]);
 
   // Prepare tabs with formatted string and accurate byte sizes
   const tabs: TabInfo[] = useMemo(() => {
@@ -74,7 +79,7 @@ function App() {
   return (
     <div className="macos-desktop" data-system-theme={theme}>
       {/* Background Canvas: Blueprint Grid */}
-      <DesktopCanvas theme={theme} />
+      {/* <DesktopCanvas theme={theme} /> */}
 
       {/* Main Desktop Area */}
       <main className="desktop-workspace">

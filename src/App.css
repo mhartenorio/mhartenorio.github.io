@@ -1,24 +1,24 @@
 .macos-desktop {
-  width: 100vw;
-  height: 100dvh;
+  width: 100%;
+  min-height: calc(100lvh + 1px);
   position: relative;
-  overflow: hidden;
+  overflow: visible;
   display: flex;
   flex-direction: column;
   box-sizing: border-box;
   font-family: -apple-system, BlinkMacSystemFont, 'SF Pro Text', 'SF Pro Display', 'Helvetica Neue', Arial, sans-serif;
-  transition: background 0.4s ease;
+  background: transparent;
 }
 
 /* Dark mode desktop wallpaper */
 .macos-desktop[data-system-theme='dark'] {
-  background: white;
+  background: transparent;
   color: #f5f5f7;
 }
 
 /* Light mode desktop wallpaper */
 .macos-desktop[data-system-theme='light'] {
-  background: black;
+  background: transparent;
   color: #1d1d1f;
 }
 
@@ -82,6 +82,9 @@
 
 @media (max-width: 768px) {
   .desktop-workspace {
-    padding: 30px 8px 58px;
+    padding-top: max(20px, env(safe-area-inset-top));
+    padding-left: 8px;
+    padding-right: 8px;
+    padding-bottom: calc(env(safe-area-inset-bottom, 0px) + 85px);
   }
 }
