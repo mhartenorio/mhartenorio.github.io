@@ -1,0 +1,91 @@
+/* =========================================================
+   Image Viewer Component (Editor Body)
+   ========================================================= */
+
+.image-viewer-container {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: auto;
+  padding: 24px;
+  background-color: var(--editor-bg);
+  position: relative;
+  min-height: 0;
+  scrollbar-gutter: stable;
+  user-select: none;
+  -webkit-user-select: none;
+}
+
+/* Custom sleek scrollbars matching macOS */
+.image-viewer-container::-webkit-scrollbar {
+  width: 10px;
+  height: 10px;
+}
+
+.image-viewer-container::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.image-viewer-container::-webkit-scrollbar-thumb {
+  background: var(--scrollbar-thumb);
+  border-radius: 5px;
+  border: 2px solid var(--editor-bg);
+}
+
+.image-preview-wrapper {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  max-width: 100%;
+  max-height: 100%;
+}
+
+.image-preview {
+  display: block;
+  max-width: 100%;
+  max-height: calc(640px - 140px);
+  width: auto;
+  height: auto;
+  object-fit: contain;
+  border-radius: 8px;
+  box-shadow: 0 16px 36px -8px rgba(0, 0, 0, 0.35),
+              0 2px 8px rgba(0, 0, 0, 0.15),
+              0 0 0 1px rgba(128, 128, 128, 0.15);
+  transition: opacity 0.25s ease, transform 0.25s ease;
+}
+
+/* When the window is maximized, allow the image to grow larger */
+.macos-window.maximized .image-preview {
+  max-height: calc(90vh - 120px);
+}
+
+.image-preview.loading {
+  opacity: 0;
+  transform: scale(0.98);
+}
+
+.image-preview.loaded {
+  opacity: 1;
+  transform: scale(1);
+}
+
+@media (max-width: 768px) {
+  .image-viewer-container {
+    padding: 12px;
+  }
+
+  .image-preview {
+    max-height: calc(84vh - 110px);
+    border-radius: 6px;
+  }
+
+  .image-info-badge {
+    font-size: 9.5px;
+    padding: 3px 6px;
+    bottom: 8px;
+    right: 8px;
+  }
+}

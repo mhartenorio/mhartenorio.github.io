@@ -2,6 +2,7 @@ import { useState, useMemo } from 'react';
 import summaryData from './json/summary.json';
 import linksData from './json/links.json';
 import resumeData from './json/resume.json';
+import meImage from './assets/me.jpeg';
 import type { TabId, TabInfo } from './types';
 import { MacWindow } from './components/MacWindow/MacWindow';
 import { DesktopCanvas, StickyNote } from './components/DesktopCanvas/DesktopCanvas';
@@ -22,6 +23,7 @@ function App() {
         id: 'summary',
         filename: 'mhar_tenorio.json',
         title: 'Summary',
+        type: 'json',
         data: summaryData,
         rawString: sRaw,
         sizeBytes: new Blob([sRaw]).size,
@@ -30,6 +32,7 @@ function App() {
         id: 'links',
         filename: 'links.json',
         title: 'Links',
+        type: 'json',
         data: linksData,
         rawString: lRaw,
         sizeBytes: new Blob([lRaw]).size,
@@ -38,9 +41,19 @@ function App() {
         id: 'resume',
         filename: 'resume.json',
         title: 'Resume',
+        type: 'json',
         data: resumeData,
         rawString: rRaw,
         sizeBytes: new Blob([rRaw]).size,
+      },
+      {
+        id: 'me',
+        filename: 'me.jpeg',
+        title: 'me.jpeg',
+        type: 'image',
+        imageUrl: meImage,
+        sizeBytes: 5815206,
+        dimensions: { width: 2000, height: 3000 },
       },
     ];
   }, []);

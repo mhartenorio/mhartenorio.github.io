@@ -288,6 +288,19 @@
   color: #e3a83b;
 }
 
+.tab-icon.tab-icon-image {
+  color: #a855f7;
+}
+
+.macos-window[data-theme='light'] .tab-icon.tab-icon-image {
+  color: #9333ea;
+}
+
+.macos-window[data-theme='dark'] .tab-icon.tab-icon-image {
+  color: #c084fc;
+}
+
+
 .tab-title {
   letter-spacing: -0.2px;
 }
