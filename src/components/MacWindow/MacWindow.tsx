@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useMemo } from 'react';
+import React, { useState, useEffect, useMemo, useRef, useCallback } from 'react';
 import type { TabId, TabInfo } from '../../types';
 import { JsonViewer } from '../JsonViewer/JsonViewer';
 import { ImageViewer } from '../ImageViewer/ImageViewer';
@@ -35,6 +35,64 @@ export const MacWindow: React.FC<MacWindowProps> = ({
     resume: new Set<string>(),
     me: new Set<string>(),
   });
+
+  const tabbarRef = useRef<HTMLDivElement>(null);
+  const [scrollProgress, setScrollProgress] = useState({
+    thumbWidth: 35,
+    thumbLeft: 0,
+    canScroll: false,
+  });
+
+  const updateScrollProgress = useCallback(() => {
+    const el = tabbarRef.current;
+    if (!el) return;
+    const { scrollLeft, scrollWidth, clientWidth } = el;
+    if (scrollWidth <= clientWidth + 2) {
+      setScrollProgress({ thumbWidth: 100, thumbLeft: 0, canScroll: false });
+      return;
+    }
+    const ratio = clientWidth / scrollWidth;
+    const thumbWidth = Math.max(ratio * 100, 20); // minimum thumb width of 20%
+    const maxScroll = scrollWidth - clientWidth;
+    const scrollPercent = maxScroll > 0 ? scrollLeft / maxScroll : 0;
+    const maxThumbLeft = 100 - thumbWidth;
+    const thumbLeft = scrollPercent * maxThumbLeft;
+
+    setScrollProgress({ thumbWidth, thumbLeft, canScroll: true });
+  }, []);
+
+  const handleScrollbarTrackClick = (e: React.MouseEvent<HTMLDivElement>) => {
+    const track = e.currentTarget;
+    const rect = track.getBoundingClientRect();
+    const clickX = e.clientX - rect.left;
+    const ratio = Math.max(0, Math.min(1, clickX / rect.width));
+    const el = tabbarRef.current;
+    if (el) {
+      const maxScroll = el.scrollWidth - el.clientWidth;
+      el.scrollTo({ left: ratio * maxScroll, behavior: 'smooth' });
+    }
+  };
+
+
+  useEffect(() => {
+    const el = tabbarRef.current;
+    if (!el) return;
+
+    const observer = new ResizeObserver(() => {
+      updateScrollProgress();
+    });
+    observer.observe(el);
+
+    return () => observer.disconnect();
+  }, [updateScrollProgress]);
+
+  useEffect(() => {
+    const activeEl = tabbarRef.current?.querySelector('.macos-tab.active') as HTMLElement | null;
+    if (activeEl) {
+      activeEl.scrollIntoView({ behavior: 'smooth', block: 'nearest', inline: 'nearest' });
+    }
+  }, [activeTabId]);
+
 
   const activeTab = tabs.find((t) => t.id === activeTabId) || tabs[0];
   const currentFolded = foldedMap[activeTabId] || new Set<string>();
@@ -156,35 +214,57 @@ export const MacWindow: React.FC<MacWindowProps> = ({
           </button>
         </div>
 
-        {/* Tab Bar */}
-        <div className="macos-tabbar" role="tablist">
-          {tabs.map((tab) => {
-            const isActive = tab.id === activeTabId;
-            return (
-              <button
-                key={tab.id}
-                role="tab"
-                aria-selected={isActive}
-                className={`macos-tab ${isActive ? 'active' : ''}`}
-                onClick={() => onSelectTab(tab.id)}
-              >
-                <span className={`tab-icon ${tab.type === 'image' ? 'tab-icon-image' : 'tab-icon-json'}`}>
-                  {tab.type === 'image' ? (
-                    <svg viewBox="0 0 16 16" width="13" height="13" fill="currentColor">
-                      <path d="M6.002 5.5a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0z" />
-                      <path d="M2.002 1a2 2 0 0 0-2 2v10a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V3a2 2 0 0 0-2-2h-12zm12 1a1 1 0 0 1 1 1v6.5l-3.777-1.947a.5.5 0 0 0-.577.093l-3.71 3.71-2.66-1.772a.5.5 0 0 0-.63.062L1.002 12V3a1 1 0 0 1 1-1h12z" />
-                    </svg>
-                  ) : (
-                    <svg viewBox="0 0 16 16" width="13" height="13" fill="currentColor">
-                      <path d="M14 4.5V14a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V2a2 2 0 0 1 2-2h5.5L14 4.5zm-3 0A1.5 1.5 0 0 1 9.5 3V1H4a1 1 0 0 0-1 1v12a1 1 0 0 0 1 1h8a1 1 0 0 0 1-1V4.5h-2z" />
-                      <text x="4.5" y="11.5" fontSize="7" fontWeight="bold" fontFamily="monospace" fill="currentColor">{'{ }'}</text>
-                    </svg>
-                  )}
-                </span>
-                <span className="tab-title">{tab.filename}</span>
-              </button>
-            );
-          })}
+        {/* Tab Bar with Mobile Scrollbar Indicator */}
+        <div className="macos-tabbar-wrapper">
+          <div
+            className="macos-tabbar"
+            role="tablist"
+            ref={tabbarRef}
+            onScroll={updateScrollProgress}
+          >
+            {tabs.map((tab) => {
+              const isActive = tab.id === activeTabId;
+              return (
+                <button
+                  key={tab.id}
+                  role="tab"
+                  aria-selected={isActive}
+                  className={`macos-tab ${isActive ? 'active' : ''}`}
+                  onClick={() => onSelectTab(tab.id)}
+                >
+                  <span className={`tab-icon ${tab.type === 'image' ? 'tab-icon-image' : 'tab-icon-json'}`}>
+                    {tab.type === 'image' ? (
+                      <svg viewBox="0 0 16 16" width="13" height="13" fill="currentColor">
+                        <path d="M6.002 5.5a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0z" />
+                        <path d="M2.002 1a2 2 0 0 0-2 2v10a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V3a2 2 0 0 0-2-2h-12zm12 1a1 1 0 0 1 1 1v6.5l-3.777-1.947a.5.5 0 0 0-.577.093l-3.71 3.71-2.66-1.772a.5.5 0 0 0-.63.062L1.002 12V3a1 1 0 0 1 1-1h12z" />
+                      </svg>
+                    ) : (
+                      <svg viewBox="0 0 16 16" width="13" height="13" fill="currentColor">
+                        <path d="M14 4.5V14a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V2a2 2 0 0 1 2-2h5.5L14 4.5zm-3 0A1.5 1.5 0 0 1 9.5 3V1H4a1 1 0 0 0-1 1v12a1 1 0 0 0 1 1h8a1 1 0 0 0 1-1V4.5h-2z" />
+                        <text x="4.5" y="11.5" fontSize="7" fontWeight="bold" fontFamily="monospace" fill="currentColor">{'{ }'}</text>
+                      </svg>
+                    )}
+                  </span>
+                  <span className="tab-title">{tab.filename}</span>
+                </button>
+              );
+            })}
+          </div>
+          {scrollProgress.canScroll && (
+            <div
+              className="mobile-tab-scrollbar"
+              aria-hidden="true"
+              onClick={handleScrollbarTrackClick}
+            >
+              <div
+                className="mobile-tab-scrollbar-thumb"
+                style={{
+                  width: `${scrollProgress.thumbWidth}%`,
+                  left: `${scrollProgress.thumbLeft}%`,
+                }}
+              />
+            </div>
+          )}
         </div>
 
         {/* Window Actions */}

@@ -1,10 +1,7 @@
 {
-  "basics": {
-    "name": "Mhar Tenorio",
-    "label": "**Software Engineer (Front-End / Full-Stack)**",
-    "email": "hi@mhartenorio.com",
-    "url": "https://mhartenorio.com"
-  },
+  "name": "Mhar Tenorio",
+  "position": "**Software Engineer (Front-End / Full-Stack)**",
+  "email": "hi@mhartenorio.com",
   "education": [
     {
       "institution": "**Stanford University**",
@@ -29,7 +26,7 @@
   ],
   "work": [
     {
-      "name": "**Squarespace**",
+      "company": "**Squarespace**",
       "link": "https://www.squarespace.com",
       "position": "Software Engineer **(Front-End)**",
       "startDate": "2025-01",
@@ -44,7 +41,7 @@
       ]
     },
     {
-      "name": "**Remitly (FinTech)**",
+      "company": "**Remitly (FinTech)**",
       "link": "https://www.remitly.com",
       "position": "Software Engineer **(Front-End, Full-Stack)**",
       "startDate": "2024-06",
@@ -56,7 +53,7 @@
       ]
     },
     {
-      "name": "**Purposer (E-Commerce Start-Up)**",
+      "company": "**Purposer (E-Commerce Start-Up)**",
       "link:": "https://www.linkedin.com/company/purposer/",
       "position": "Software Engineer **(Front-End, Full-Stack)**",
       "startDate": "2022-09",
