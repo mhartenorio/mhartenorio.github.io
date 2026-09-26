@@ -265,8 +265,11 @@ export function searchJson(lines: JsonLine[], query: string): { matchingLineIds:
     if (line.key && line.key.toLowerCase().includes(q)) {
       matched = true;
     }
-    if (line.value !== undefined && String(line.value).toLowerCase().includes(q)) {
-      matched = true;
+    if (line.value !== undefined) {
+      const valStr = String(line.value).toLowerCase();
+      if (valStr.includes(q) || valStr.replace(/\*\*/g, '').includes(q)) {
+        matched = true;
+      }
     }
 
     if (matched) {

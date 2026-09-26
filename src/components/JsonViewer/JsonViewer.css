@@ -163,6 +163,12 @@
   overflow-wrap: break-word;
 }
 
+.json-bold {
+  font-weight: 700;
+  color: var(--json-bold-color, inherit);
+  letter-spacing: -0.1px;
+}
+
 .json-number {
   color: var(--json-number-color);
 }

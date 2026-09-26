@@ -64,6 +64,38 @@ export const JsonViewer: React.FC<JsonViewerProps> = ({
     return parts;
   };
 
+  // Helper to render markdown bold (**text**) and search highlights
+  const renderFormattedText = (text: string) => {
+    if (!text.includes('**')) {
+      return renderHighlighted(text);
+    }
+
+    const segments = text.split('**');
+    const nodes: React.ReactNode[] = [];
+
+    for (let i = 0; i < segments.length; i++) {
+      const seg = segments[i];
+      if (!seg) continue;
+
+      if (i % 2 === 1) {
+        // Inside **...** -> bold
+        nodes.push(
+          <strong key={i} className="json-bold">
+            {renderHighlighted(seg)}
+          </strong>
+        );
+      } else {
+        nodes.push(
+          <React.Fragment key={i}>
+            {renderHighlighted(seg)}
+          </React.Fragment>
+        );
+      }
+    }
+
+    return nodes;
+  };
+
   const renderValue = (line: JsonLine) => {
     if (line.isFolded) {
       return (
@@ -133,7 +165,7 @@ export const JsonViewer: React.FC<JsonViewerProps> = ({
               className="json-link"
               title={linkInfo.isEmail ? `Email ${strVal}` : `Open ${strVal} in new tab`}
             >
-              {renderHighlighted(strVal)}
+              {renderFormattedText(strVal)}
               {linkInfo.isEmail ? (
                 <svg className="external-icon mail-icon" viewBox="0 0 16 16" width="11" height="11" fill="currentColor">
                   <path d="M0 4a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2V4zm2-1a1 1 0 0 0-1 1v.217l7 4.2 7-4.2V4a1 1 0 0 0-1-1H2zm13 2.383l-4.708 2.825L15 11.105V5.383zm-.034 6.876-5.64-3.471L8 9.583l-1.326-.795-5.64 3.47A1 1 0 0 0 2 13h12a1 1 0 0 0 .966-.741zM1 11.105l4.708-2.897L1 5.383v5.722z" />
@@ -145,7 +177,7 @@ export const JsonViewer: React.FC<JsonViewerProps> = ({
               )}
             </a>
           ) : (
-            renderHighlighted(strVal)
+            renderFormattedText(strVal)
           )}
           <span className="json-quote">"</span>
           {line.hasComma && <span className="json-punct">,</span>}

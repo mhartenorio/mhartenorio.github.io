@@ -53,6 +53,7 @@
   --json-key-color: #9cdcfe;
   --json-quote-color: #79b8ff;
   --json-string-color: #ce9178;
+  --json-bold-color: #ffffff;
   --json-number-color: #b5cea8;
   --json-boolean-color: #569cd6;
   --json-null-color: #569cd6;
@@ -108,6 +109,7 @@
   --json-key-color: #0550ae;
   --json-quote-color: #0969da;
   --json-string-color: #0a3069;
+  --json-bold-color: #021430;
   --json-number-color: #116329;
   --json-boolean-color: #cf222e;
   --json-null-color: #8250df;
